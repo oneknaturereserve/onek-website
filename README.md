@@ -11,6 +11,8 @@ This project combines the visual character and wildlife archive of the original 
 - Vercel creates a unique preview URL for each branch and pull request.
 - The existing `oneknaturereserve.org` domain remains unchanged until final launch.
 
+For multi-account development and review rules, see [COLLABORATION.md](./COLLABORATION.md).
+
 ## Local development
 
 ```bash
