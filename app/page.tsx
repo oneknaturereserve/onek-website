@@ -7,9 +7,10 @@ type Lang = "en" | "zh";
 const copy = {
   en: {
     nav: [
+      ["Home", "/"],
       ["About", "/about"], ["Field Notes", "/field-notes"], ["Research", "/research"],
       ["Programs", "/programs"], ["Species", "/species"], ["Natural Echo", "/natural-echo"],
-      ["Archive", "/archive"],
+      ["Archive", "/archive"], ["Discover & Observe", "/discover-observe"],
     ],
     reserve: "Private Nature Reserve · Costa Rica",
     title: "OneK Nature Reserve",
@@ -55,9 +56,10 @@ const copy = {
   },
   zh: {
     nav: [
+      ["主页", "/"],
       ["关于 OneK", "/about"], ["雨林信息", "/field-notes"], ["科研监测", "/research"],
       ["参与项目", "/programs"], ["物种档案", "/species"], ["自然回声", "/natural-echo"],
-      ["历史档案", "/archive"],
+      ["历史档案", "/archive"], ["发现与观察", "/discover-observe"],
     ],
     reserve: "哥斯达黎加私人自然保护区",
     title: "OneK 自然保护区",

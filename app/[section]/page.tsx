@@ -11,6 +11,7 @@ const sections: Record<string, { eyebrow: string; title: string; zh: string; des
   species: { eyebrow: "SPECIES ARCHIVE", title: "The lives recorded at OneK", zh: "物种档案", description: "Mammals, birds, insects, amphibians, and reptiles documented across the reserve.", image: "/onek/birds.png" },
   "natural-echo": { eyebrow: "NATURAL ECHO", title: "Let nature be heard", zh: "让自然的声音被更多孩子听见", description: "Youth-led nature education, birdwatching, community learning, and a growing network of young conservationists.", image: "/onek/education.jpg" },
   archive: { eyebrow: "ONEK HISTORICAL ARCHIVE", title: "A story still being written", zh: "历史档案", description: "Milestones from 2018 to today: roads, springs, restoration, anti-poaching, community initiatives, and discoveries.", image: "/onek/hero.jpg" },
+  "discover-observe": { eyebrow: "DISCOVER & OBSERVE", title: "Look closer. Discover more.", zh: "发现与观察", description: "Follow wildlife encounters, seasonal changes, field observations, and the small discoveries that reveal how OneK’s rainforest lives and changes.", image: "/onek/fieldnote.jpg" },
   support: { eyebrow: "SUPPORT ONEK", title: "Protect the rainforest. Protect life.", zh: "支持 OneK 保护行动", description: "Donation methods for Costa Rica, the Americas, and China will be connected after the organization’s verified payment details are ready.", image: "/onek/camera.jpg" },
 };
 
