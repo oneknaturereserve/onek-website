@@ -146,7 +146,8 @@ export default function Home() {
       <a className="brand" href="#top" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></a>
       <nav className={menu ? "nav-open" : ""} aria-label="Primary navigation">
         {t.nav.map(([label, href]) => <a href={href} key={href}>{label}</a>)}
-        <a href="/support">{lang === "en" ? "Support" : "支持我们"}</a>
+        <a className="nav-contact" href="/contact">{lang === "en" ? "Contact Us" : "联系我们"}</a>
+        <a className="nav-support" href="/support">{lang === "en" ? "Support" : "支持我们"}</a>
       </nav>
       <div className="header-actions">
         <button className="language" onClick={() => setLang(lang === "en" ? "zh" : "en")} aria-label="Switch language"><b>{lang === "en" ? "EN" : "中"}</b><span>{lang === "en" ? "中" : "EN"}</span></button>
@@ -218,7 +219,7 @@ export default function Home() {
 
     <section className="archive-section"><div className="archive-year">2018—2026</div><div><p className="kicker">{t.archiveKicker}</p><h2>{t.archiveTitle}</h2><p>{t.archiveBody}</p><a className="text-link" href="/archive">EXPLORE THE ARCHIVE ↗</a></div><div className="timeline"><span>2018<small>THE BEGINNING</small></span><i></i><span>2020<small>RESTORATION</small></span><i></i><span>2023<small>RESEARCH</small></span><i></i><span>2026<small>GROWING</small></span></div></section>
 
-    <section className="contact-section"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><div className="contact-links"><a href="mailto:OneK.CR2018@gmail.com">Email ↗</a><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer">WhatsApp ↗</a><button onClick={() => navigator.clipboard?.writeText("jiangnan010801")}>WeChat · jiangnan010801</button><a href="/support">Donate / 捐赠 ↗</a></div></section>
+    <section className="contact-section"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact Us" : "联系我们"} ↗</a><a href="mailto:OneK.CR2018@gmail.com">Email ↗</a><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer">WhatsApp ↗</a><button onClick={() => navigator.clipboard?.writeText("jiangnan010801")}>WeChat · jiangnan010801</button><a href="/support">Donate / 捐赠 ↗</a></div></section>
 
     <footer><div className="footer-brand"><img src="/onek/logo.png" alt="OneK"/><p>OneK Nature Reserve<span>Southern Costa Rica</span></p></div><p>© 2018–2026 OneK Nature Reserve</p><a href="#top">BACK TO CANOPY ↑</a></footer>
   </main>;

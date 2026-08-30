@@ -23,5 +23,6 @@ export default async function SectionPage({ params }: { params: Promise<{ sectio
     <section style={{ backgroundImage: `linear-gradient(90deg,rgba(5,20,11,.78),rgba(5,20,11,.2)),url('${page.image}')` }}>
       <p>{page.eyebrow}</p><h1>{page.title}</h1><h2>{page.zh}</h2><p>{page.description}</p><span>PAGE FRAMEWORK · CONTENT WILL BE ADDED AFTER HOMEPAGE APPROVAL</span>
     </section>
+    <aside className="framework-contact"><div><small>CONTINUE THE CONVERSATION</small><h2>Work with OneK<br/><span>与 OneK 建立联系</span></h2></div><div><Link href="/contact">Contact Us / 联系我们 ↗</Link><a href="mailto:OneK.CR2018@gmail.com">Email ↗</a><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer">WhatsApp ↗</a></div></aside>
   </main>;
 }
