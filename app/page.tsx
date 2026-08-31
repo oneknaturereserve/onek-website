@@ -32,8 +32,8 @@ const copy = {
     cameraTitle: "The forest does not sleep",
     cameraPrompt: "Reveal tonight’s visitor",
     cameraFact: "Collared peccary · forest floor survey · temporary image",
-    programsKicker: "Explore · Learn · Protect",
-    programsTitle: "Different paths into the same living forest",
+    programsKicker: "Explore OneK Private Reserve",
+    programsTitle: "Immerse yourself in the rainforest through field exploration, conservation volunteering, and professional research opportunities.",
     speciesKicker: "Species archive",
     speciesTitle: "Meet the neighbours",
     nonprofitKicker: "OneK Conservation",
@@ -78,8 +78,8 @@ const copy = {
     cameraTitle: "雨林从不入睡",
     cameraPrompt: "揭晓今晚的访客",
     cameraFact: "领西猯 · 林下监测 · 临时示意图片",
-    programsKicker: "探索自然 · 学习科学 · 守护雨林",
-    programsTitle: "用不同方式，走进同一片雨林",
+    programsKicker: "探索 OneK 私人自然保护区",
+    programsTitle: "通过野外探索、保护志愿服务和专业研究机会，深入体验热带雨林。",
     speciesKicker: "物种档案",
     speciesTitle: "认识生活在这里的邻居",
     nonprofitKicker: "OneK 保护行动",
@@ -100,9 +100,9 @@ const copy = {
 } as const;
 
 const programs = [
-  { no: "01", en: "Rainforest Exploration", zh: "探索之旅", img: "/onek/explore.jpg", href: "/exploration", bodyEn: "Walk through rainforest and rivers, following the connections between living things.", bodyZh: "走进雨林、河流和真实的自然世界，寻找生命之间的联系。" },
-  { no: "02", en: "International Programs", zh: "国际志愿者项目", img: "/onek/volunteer.jpg", href: "/volunteer", bodyEn: "Join real conservation, ecological research, and environmental education work.", bodyZh: "参与真实的自然保护、生态研究和环境教育工作。" },
-  { no: "03", en: "Nature Education", zh: "自然教育", img: "/onek/education.jpg", href: "/education", bodyEn: "Let the rainforest become the classroom and nature become the teacher.", bodyZh: "让雨林成为课堂，让自然成为老师。" },
+  { no: "01", tagEn: "Adventure", tagZh: "探索", titleEn: "Exploration Journey", titleZh: "探索之旅", img: "/onek/explore.jpg", href: "/exploration", bodyEn: ["Journey into one of the most biodiverse rainforests in Costa Rica, where rivers, waterfalls, and wildlife await around every corner."], bodyZh: ["走进哥斯达黎加生物多样性最丰富的热带雨林之一，在这里，河流、瀑布与野生动物出现在探索旅程的每一个转角。"] },
+  { no: "02", tagEn: "International Programs", tagZh: "国际志愿者项目", titleEn: "Explore. Learn. Protect.", titleZh: "探索自然 · 学习科学 · 守护雨林", img: "/onek/volunteer.jpg", href: "/volunteer", bodyEn: ["OneK International Programs connect people from around the world with real rainforest conservation, ecological research, and environmental education in Costa Rica.", "Join us to experience the rainforest, contribute to meaningful conservation work, and become part of a global community dedicated to protecting biodiversity."], bodyZh: ["OneK 国际项目连接来自世界各地的自然爱好者、学生和青年研究者，共同参与哥斯达黎加热带雨林的自然保护、生态研究和环境教育工作。", "在这里，你不仅是自然的观察者，更是保护行动的参与者。"] },
+  { no: "03", tagEn: "Nature Education", tagZh: "自然教育", titleEn: "Nature Education", titleZh: "自然教育", img: "/onek/education.jpg", href: "/education", bodyEn: ["At OneK, the rainforest becomes the classroom. Through observation, exploration, and hands-on experiences, participants develop an understanding of ecological connections and a deeper commitment to conservation."], bodyZh: ["OneK 的自然教育以真实的雨林为课堂，通过观察、探索与实践，引导参与者理解生命之间的联系，并在体验中建立对自然的尊重与守护意识。"] },
 ];
 
 const species = [
@@ -178,9 +178,12 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="program-section section-shell">
-      <div className="section-heading"><p className="kicker">{t.programsKicker}</p><h2>{t.programsTitle}</h2></div>
-      <div className="program-grid">{programs.map(p => <a href={p.href} className="program-card" key={p.no}><img src={p.img} alt={p.en}/><div className="shade"></div><span className="temporary">{t.temp}</span><div className="program-no">{p.no}</div><div className="program-copy"><small>{p.en}</small><h3>{lang === "en" ? p.en : p.zh}</h3><p>{lang === "en" ? p.bodyEn : p.bodyZh}</p><b>EXPLORE ↗</b></div></a>)}</div>
+    <section className="program-section">
+      <div className="program-heading"><h2>{t.programsKicker}</h2><p>{t.programsTitle}</p></div>
+      <div className="program-grid">{programs.map(p => <article className="program-card" key={p.no}>
+        <div className="program-image"><img src={p.img} alt={p.titleEn}/></div>
+        <div className="program-copy"><small>{lang === "en" ? p.tagEn : p.tagZh}</small><h3>{lang === "en" ? p.titleEn : p.titleZh}</h3>{(lang === "en" ? p.bodyEn : p.bodyZh).map((paragraph, i) => <p key={i}>{paragraph}</p>)}<a href={p.href}>{lang === "en" ? "Explore" : "了解更多"} ↗</a></div>
+      </article>)}</div>
     </section>
 
     <section className="species-section">
