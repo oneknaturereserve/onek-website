@@ -84,7 +84,7 @@ const copy = {
     speciesKicker: "物种档案",
     speciesHeading: "保护区的野生动物",
     speciesIntro: "数千种生物共同交织成这片热带雨林生态系统生生不息的生命网络。",
-    nonprofitKicker: "OneK 保护行动",
+    nonprofitKicker: "非盈利组织",
     nonprofitTitle: "守护雨林，保护生命。",
     nonprofitBody: "Asociación ONE K Conservación de la Biodiversidad Costa Rica 致力于生物多样性保护、生态恢复、科学研究、环境教育与社区参与。",
     support: "支持保护行动",
