@@ -37,7 +37,7 @@ const copy = {
     speciesKicker: "Species archive",
     speciesHeading: "Wildlife in the Reserve",
     speciesIntro: "Thousands of species are woven into the living fabric of this rainforest ecosystem.",
-    nonprofitKicker: "OneK Conservation",
+    nonprofitKicker: "Nonprofit Organization",
     nonprofitTitle: "Protect the rainforest. Protect life.",
     nonprofitBody: "Asociación ONE K Conservación de la Biodiversidad Costa Rica advances biodiversity conservation, restoration, research, environmental education, and community participation.",
     support: "Support our work",
