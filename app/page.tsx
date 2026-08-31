@@ -20,9 +20,6 @@ const copy = {
     aboutTitle: "Growing together with the rainforest",
     aboutBody: "OneK Nature Reserve is a private rainforest reserve in Costa Rica. It is a home for wildlife and a place where ecological restoration, scientific research, and nature education grow together. Through long-term protection and careful stewardship, we work to safeguard biodiversity and keep this land full of life.",
     readStory: "Discover our story",
-    pulseKicker: "The rainforest is transmitting",
-    pulseTitle: "Follow a living signal",
-    pulseIntro: "Four quiet signals are moving through OneK right now. Choose one to reveal a field story.",
     fieldKicker: "Latest field note · July 2025",
     fieldTitle: "A Costa Rican endemic appears in the understory",
     fieldBody: "The Black-cheeked Ant-Tanager was recorded in the rainforest understory at OneK Biological Station—an encounter that adds another point to our long-term record of this remarkable forest.",
@@ -69,9 +66,6 @@ const copy = {
     aboutTitle: "与雨林共同成长",
     aboutBody: "OneK Nature Reserve 是一片位于哥斯达黎加热带雨林中的私人自然保护区。这里不仅是野生动物的家园，也是生态恢复、科学研究和自然教育共同开展的地方。通过长期保护与管理，我们致力于守护生物多样性，并让这片土地持续焕发生命力。",
     readStory: "了解我们的故事",
-    pulseKicker: "雨林正在发出信号",
-    pulseTitle: "跟随一束生命信号",
-    pulseIntro: "此刻，四种微弱的信号正在 OneK 雨林里移动。请选择一个，发现它背后的故事。",
     fieldKicker: "最新雨林记录 · 2025年7月",
     fieldTitle: "在林下遇见哥斯达黎加特有鸟",
     fieldBody: "OneK Biological Station 在保护区雨林下层记录到黑颊蚁唐纳雀。这次相遇，为我们长期记录这片雨林增添了新的坐标。",
@@ -105,13 +99,6 @@ const copy = {
   },
 } as const;
 
-const signals = [
-  { id: "01", label: ["Black-cheeked Ant-Tanager", "黑颊蚁唐纳雀"], meta: ["Endemic bird · Jul 2025", "特有鸟类 · 2025年7月"], link: "/field-notes" },
-  { id: "02", label: ["Nest ecology", "鸟巢生态"], meta: ["Active research", "正在开展的研究"], link: "/research" },
-  { id: "03", label: ["Camera-trap monitoring", "红外相机监测"], meta: ["24/7 field data", "全天候野外数据"], link: "/research" },
-  { id: "04", label: ["Natural Echo", "自然回声"], meta: ["Youth nature education", "青少年自然教育"], link: "/natural-echo" },
-];
-
 const programs = [
   { no: "01", en: "Rainforest Exploration", zh: "探索之旅", img: "/onek/explore.jpg", href: "/exploration", bodyEn: "Walk through rainforest and rivers, following the connections between living things.", bodyZh: "走进雨林、河流和真实的自然世界，寻找生命之间的联系。" },
   { no: "02", en: "International Programs", zh: "国际志愿者项目", img: "/onek/volunteer.jpg", href: "/volunteer", bodyEn: "Join real conservation, ecological research, and environmental education work.", bodyZh: "参与真实的自然保护、生态研究和环境教育工作。" },
@@ -128,12 +115,10 @@ const species = [
 export default function Home() {
   const [lang, setLang] = useState<Lang>("en");
   const [menu, setMenu] = useState(false);
-  const [activeSignal, setActiveSignal] = useState(0);
   const [cameraOpen, setCameraOpen] = useState(false);
   const [soundMessage, setSoundMessage] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const t = copy[lang];
-  const zi = lang === "zh" ? 1 : 0;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -175,15 +160,6 @@ export default function Home() {
       <div className="section-index">01</div>
       <div className="about-image image-placeholder"><img src="/onek/about.jpg" alt="OneK rainforest life"/><span>{t.temp}</span></div>
       <div className="about-copy"><p className="kicker">{t.aboutKicker}</p><h2>{t.aboutTitle}</h2><p className="lead">{t.aboutBody}</p><p className="mission-line">Research · Education · Conservation</p><a className="text-link" href="/about">{t.readStory} <b>↗</b></a></div>
-    </section>
-
-    <section className="signals">
-      <div className="signals-intro"><p className="kicker light">{t.pulseKicker}</p><h2>{t.pulseTitle}</h2><p>{t.pulseIntro}</p></div>
-      <div className="signal-field" aria-label="Interactive rainforest signals">
-        <div className="radar-rings"><i></i><i></i><i></i></div>
-        {signals.map((s, i) => <button key={s.id} className={`signal signal-${i + 1} ${activeSignal === i ? "active" : ""}`} onClick={() => setActiveSignal(i)} aria-label={s.label[zi]}><span></span><b>{s.id}</b></button>)}
-        <a className="signal-card" href={signals[activeSignal].link}><small>LIVE SIGNAL · {signals[activeSignal].id}</small><h3>{signals[activeSignal].label[zi]}</h3><p>{signals[activeSignal].meta[zi]}</p><b>EXPLORE ↗</b></a>
-      </div>
     </section>
 
     <section className="field-note section-shell">
