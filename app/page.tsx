@@ -164,9 +164,11 @@ export default function Home() {
       <div className="about-copy"><p className="kicker">{t.aboutKicker}</p><h2>{t.aboutTitle}</h2><p className="lead">{t.aboutBody}</p><p className="mission-line">Research · Education · Conservation</p><a className="text-link" href="/about">{t.readStory} <b>↗</b></a></div>
     </section>
 
-    <section className="field-note section-shell">
-      <div className="field-photo image-placeholder"><img src="/onek/fieldnote.jpg" alt="Bird recorded at OneK"/><span>{t.temp}</span><div className="photo-label">FIELD RECORD · 2025.07</div></div>
-      <article><p className="kicker">{t.fieldKicker}</p><h2>{t.fieldTitle}</h2><p className="latin">Black-cheeked Ant-Tanager · <i>Driophlox atrimaxillaris</i></p><p className="lead">{t.fieldBody}</p><div className="data-row"><span><b>TYPE</b>Field observation</span><span><b>HABITAT</b>Rainforest understory</span><span><b>STATION</b>OneK</span></div><a className="text-link" href="/field-notes">{t.readNote} <b>↗</b></a></article>
+    <section className="field-note-section">
+      <article className="field-note-card">
+        <div className="field-note-card-copy"><p className="kicker">{t.fieldKicker}</p><h2>{t.fieldTitle}</h2><p className="latin">Black-cheeked Ant-Tanager · <i>Driophlox atrimaxillaris</i></p><p className="field-note-body">{t.fieldBody}</p><div className="data-row"><span><b>TYPE</b>Field observation</span><span><b>HABITAT</b>Rainforest understory</span><span><b>STATION</b>OneK</span></div><a href="/field-notes">{t.readNote} <b>↗</b></a></div>
+        <div className="field-note-card-image image-placeholder"><img src="/onek/fieldnote.jpg" alt="Bird recorded at OneK"/><span>{t.temp}</span><div className="photo-label">FIELD RECORD · 2025.07</div></div>
+      </article>
     </section>
 
     <section className="research-section">
