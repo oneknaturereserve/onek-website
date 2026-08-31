@@ -9,7 +9,7 @@ const copy = {
     nav: [
       ["Home", "/"],
       ["About", "/about"], ["Field Notes", "/field-notes"], ["Research", "/research"],
-      ["Programs", "/programs"], ["Species", "/species"], ["Natural Echo", "/natural-echo"],
+      ["Programs", "/programs"], ["Species", "/#species"], ["Natural Echo", "/natural-echo"],
       ["Archive", "/archive"], ["Discover & Observe", "/discover-observe"],
     ],
     reserve: "Private Nature Reserve · Costa Rica",
@@ -35,7 +35,6 @@ const copy = {
     programsKicker: "Explore OneK Private Reserve",
     programsTitle: "Immerse yourself in the rainforest through field exploration, conservation volunteering, and professional research opportunities.",
     speciesKicker: "Species archive",
-    speciesTitle: "Meet the neighbours",
     nonprofitKicker: "OneK Conservation",
     nonprofitTitle: "Protect the rainforest. Protect life.",
     nonprofitBody: "Asociación ONE K Conservación de la Biodiversidad Costa Rica advances biodiversity conservation, restoration, research, environmental education, and community participation.",
@@ -55,7 +54,7 @@ const copy = {
     nav: [
       ["主页", "/"],
       ["关于 OneK", "/about"], ["雨林信息", "/field-notes"], ["科研监测", "/research"],
-      ["参与项目", "/programs"], ["物种档案", "/species"], ["自然回声", "/natural-echo"],
+      ["参与项目", "/programs"], ["物种档案", "/#species"], ["自然回声", "/natural-echo"],
       ["历史档案", "/archive"], ["发现与观察", "/discover-observe"],
     ],
     reserve: "哥斯达黎加私人自然保护区",
@@ -81,7 +80,6 @@ const copy = {
     programsKicker: "探索 OneK 私人自然保护区",
     programsTitle: "通过野外探索、保护志愿服务和专业研究机会，深入体验热带雨林。",
     speciesKicker: "物种档案",
-    speciesTitle: "认识生活在这里的邻居",
     nonprofitKicker: "OneK 保护行动",
     nonprofitTitle: "守护雨林，保护生命。",
     nonprofitBody: "Asociación ONE K Conservación de la Biodiversidad Costa Rica 致力于生物多样性保护、生态恢复、科学研究、环境教育与社区参与。",
@@ -106,10 +104,10 @@ const programs = [
 ];
 
 const species = [
-  { en: "Mammals", zh: "哺乳动物", img: "/onek/mammals.png", href: "/species" },
-  { en: "Birds", zh: "鸟类", img: "/onek/birds.png", href: "/species" },
-  { en: "Insects", zh: "昆虫", img: "/onek/insects.png", href: "/species" },
-  { en: "Herpetofauna", zh: "两栖与爬行动物", img: "/onek/herps.png", href: "/species" },
+  { en: "Mammals", zh: "哺乳动物", metaEn: "Mammals · 40+ species", metaZh: "哺乳动物 · 40+ 种", bodyEn: "From pumas, ocelots, and jaguarundi to peccaries and brocket deer, the reserve shelters a dynamic tropical mammal community.", bodyZh: "从美洲狮、虎猫和细腰猫，到西猯与小红鹿，保护区庇护着一个充满活力的热带哺乳动物群落。", img: "/onek/species-home/mammals.png", href: "/species-archive/SpeciesPageMammals.html" },
+  { en: "Birds", zh: "鸟类", metaEn: "Birds · Southern Costa Rica hotspot", metaZh: "鸟类 · 哥斯达黎加南部热点", bodyEn: "Southern Costa Rica hosts exceptional avian diversity, and OneK has documented remarkable bird activity across the reserve’s forest, river, and edge habitats.", bodyZh: "哥斯达黎加南部拥有非凡的鸟类多样性，OneK 已在保护区的森林、河流及林缘生境中记录到丰富而活跃的鸟类活动。", img: "/onek/species-home/birds.png", href: "/species-archive/SpeciesPageBirds.html" },
+  { en: "Insects", zh: "昆虫", metaEn: "Insects · Thousands of species", metaZh: "昆虫 · 数千种", bodyEn: "Diverse ecological niches across the lowland rainforest support highly specialized insect communities and a rich foundation for biodiversity research.", bodyZh: "低地雨林中多样的生态位孕育了高度特化的昆虫群落，也为生物多样性研究提供了丰富基础。", img: "/onek/species-home/insects.png", href: "/species-archive/SpeciesPageInsects.html" },
+  { en: "Herps", zh: "两栖与爬行动物", metaEn: "Herps · Amphibians & reptiles", metaZh: "两栖与爬行动物", bodyEn: "Costa Rica is globally recognized for amphibian and reptile diversity, and OneK provides habitat for species that reflect the ecological richness of the southern Pacific region.", bodyZh: "哥斯达黎加以两栖和爬行动物多样性闻名全球，OneK 为众多物种提供栖息地，展现出南太平洋地区丰富的生态特征。", img: "/onek/species-home/herps.png", href: "/species-archive/SpeciesPageHerps.html" },
 ];
 
 export default function Home() {
@@ -186,9 +184,12 @@ export default function Home() {
       </article>)}</div>
     </section>
 
-    <section className="species-section">
-      <div className="species-heading section-shell"><p className="kicker light">{t.speciesKicker}</p><h2>{t.speciesTitle}</h2><p>{lang === "en" ? "Hover, pause, and open a path into OneK’s living archive." : "停留、观察，再打开通往 OneK 生命档案的入口。"}</p></div>
-      <div className="species-grid">{species.map((s, i) => <a href={s.href} key={s.en}><img src={s.img} alt={s.en}/><div><span>0{i + 1}</span><h3>{s[lang === "en" ? "en" : "zh"]}<small>{s.en}</small></h3><b>↗</b></div></a>)}</div>
+    <section className="species-section" id="species">
+      <div className="species-kicker section-shell"><p className="kicker light">{t.speciesKicker}</p></div>
+      <div className="species-legacy-list">{species.map((s, i) => <article className={`species-legacy-card ${i % 2 ? "reverse" : ""}`} key={s.en}>
+        <div className="species-legacy-copy"><p className="species-legacy-meta">{lang === "en" ? s.metaEn : s.metaZh}</p><h3>{lang === "en" ? s.en : s.zh}</h3><p className="species-legacy-body">{lang === "en" ? s.bodyEn : s.bodyZh}</p><a href={s.href}>{lang === "en" ? "Learn More" : "了解更多"} ↗</a></div>
+        <a className="species-legacy-image" href={s.href} aria-label={`${lang === "en" ? "View" : "查看"} ${lang === "en" ? s.en : s.zh}`}><img src={s.img} alt={lang === "en" ? s.en : s.zh}/></a>
+      </article>)}</div>
     </section>
 
     <section className="dual-feature section-shell">
