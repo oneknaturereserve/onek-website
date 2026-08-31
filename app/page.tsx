@@ -35,6 +35,8 @@ const copy = {
     programsKicker: "Explore OneK Private Reserve",
     programsTitle: "Immerse yourself in the rainforest through field exploration, conservation volunteering, and professional research opportunities.",
     speciesKicker: "Species archive",
+    speciesHeading: "Wildlife in the Reserve",
+    speciesIntro: "Thousands of species are woven into the living fabric of this rainforest ecosystem.",
     nonprofitKicker: "OneK Conservation",
     nonprofitTitle: "Protect the rainforest. Protect life.",
     nonprofitBody: "Asociación ONE K Conservación de la Biodiversidad Costa Rica advances biodiversity conservation, restoration, research, environmental education, and community participation.",
@@ -80,6 +82,8 @@ const copy = {
     programsKicker: "探索 OneK 私人自然保护区",
     programsTitle: "通过野外探索、保护志愿服务和专业研究机会，深入体验热带雨林。",
     speciesKicker: "物种档案",
+    speciesHeading: "保护区的野生动物",
+    speciesIntro: "数千种生物共同交织成这片热带雨林生态系统生生不息的生命网络。",
     nonprofitKicker: "OneK 保护行动",
     nonprofitTitle: "守护雨林，保护生命。",
     nonprofitBody: "Asociación ONE K Conservación de la Biodiversidad Costa Rica 致力于生物多样性保护、生态恢复、科学研究、环境教育与社区参与。",
@@ -186,8 +190,9 @@ export default function Home() {
 
     <section className="species-section" id="species">
       <div className="species-kicker section-shell"><p className="kicker light">{t.speciesKicker}</p></div>
+      <div className="species-legacy-heading"><h2>{t.speciesHeading}</h2><p>{t.speciesIntro}</p></div>
       <div className="species-legacy-list">{species.map((s, i) => <article className={`species-legacy-card ${i % 2 ? "reverse" : ""}`} key={s.en}>
-        <div className="species-legacy-copy"><p className="species-legacy-meta">{lang === "en" ? s.metaEn : s.metaZh}</p><h3>{lang === "en" ? s.en : s.zh}</h3><p className="species-legacy-body">{lang === "en" ? s.bodyEn : s.bodyZh}</p><a href={s.href}>{lang === "en" ? "Learn More" : "了解更多"} ↗</a></div>
+        <div className="species-legacy-copy"><p className="species-legacy-meta">{lang === "en" ? s.metaEn : s.metaZh}</p><h3>{lang === "en" ? s.en : s.zh}</h3><p className="species-legacy-body">{lang === "en" ? s.bodyEn : s.bodyZh}</p><a href={s.href}>{lang === "en" ? "Learn More" : "了解更多"}</a></div>
         <a className="species-legacy-image" href={s.href} aria-label={`${lang === "en" ? "View" : "查看"} ${lang === "en" ? s.en : s.zh}`}><img src={s.img} alt={lang === "en" ? s.en : s.zh}/></a>
       </article>)}</div>
     </section>
