@@ -184,7 +184,7 @@ export default function Home() {
       <div className="program-heading"><h2>{t.programsKicker}</h2><p>{t.programsTitle}</p></div>
       <div className="program-grid">{programs.map(p => <article className="program-card" key={p.no}>
         <div className="program-image"><img src={p.img} alt={p.titleEn}/></div>
-        <div className="program-copy"><small>{lang === "en" ? p.tagEn : p.tagZh}</small><h3>{lang === "en" ? p.titleEn : p.titleZh}</h3>{(lang === "en" ? p.bodyEn : p.bodyZh).map((paragraph, i) => <p key={i}>{paragraph}</p>)}<a href={p.href}>{lang === "en" ? "Explore" : "了解更多"} ↗</a></div>
+        <div className="program-copy"><small>{lang === "en" ? p.tagEn : p.tagZh}</small><h3>{lang === "en" ? p.titleEn : p.titleZh}</h3>{(lang === "en" ? p.bodyEn : p.bodyZh).map((paragraph, i) => <p key={i}>{paragraph}</p>)}<a href={p.href}>{lang === "en" ? "Explore" : "了解更多"}</a></div>
       </article>)}</div>
     </section>
 
