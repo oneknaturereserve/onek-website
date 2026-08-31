@@ -167,7 +167,7 @@ export default function Home() {
     <section className="field-note-section">
       <article className="field-note-card">
         <div className="field-note-card-copy"><p className="kicker">{t.fieldKicker}</p><h2>{t.fieldTitle}</h2><p className="latin">Black-cheeked Ant-Tanager · <i>Driophlox atrimaxillaris</i></p><p className="field-note-body">{t.fieldBody}</p><div className="data-row"><span><b>TYPE</b>Field observation</span><span><b>HABITAT</b>Rainforest understory</span><span><b>STATION</b>OneK</span></div><a href="/field-notes">{t.readNote} <b>↗</b></a></div>
-        <div className="field-note-card-image image-placeholder"><img src="/onek/fieldnote.jpg" alt="Bird recorded at OneK"/><span>{t.temp}</span><div className="photo-label">FIELD RECORD · 2025.07</div></div>
+        <a className="field-note-card-image image-placeholder" href="/field-notes" aria-label={lang === "en" ? "Open the field note" : "打开雨林信息"}><img src="/onek/fieldnote.jpg" alt="Bird recorded at OneK"/><span>{t.temp}</span><div className="photo-label">FIELD RECORD · 2025.07</div></a>
       </article>
     </section>
 
@@ -200,7 +200,7 @@ export default function Home() {
     </section>
 
     <section className="dual-feature section-shell">
-      <article className="nonprofit-card"><div className="org-logo"><img src="/onek/conservation-logo.jpg" alt="OneK Conservation logo" /></div><div><p className="kicker">{t.nonprofitKicker}</p><h2>{t.nonprofitTitle}</h2><p>{t.nonprofitBody}</p><a className="dark-button" href="/support">{t.support} ↗</a></div></article>
+      <article className="nonprofit-card"><div className="org-logo"><img src="/onek/conservation-logo.jpg" alt="OneK Conservation logo" /></div><div><p className="kicker">{t.nonprofitKicker}</p><h2>{t.nonprofitTitle}</h2><p>{t.nonprofitBody}</p><a className="dark-button" href="/support">{t.support}</a></div></article>
     </section>
 
     <section className="contact-section"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact Us" : "联系我们"} ↗</a><a href="mailto:OneK.CR2018@gmail.com">Email ↗</a><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer">WhatsApp ↗</a><button onClick={() => navigator.clipboard?.writeText("jiangnan010801")}>WeChat · jiangnan010801</button><a href="/support">Donate / 捐赠 ↗</a></div></section>

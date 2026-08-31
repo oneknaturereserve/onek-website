@@ -44,3 +44,6 @@
 /* Keep the shared cream-background sections visually connected. */
 .about{padding-bottom:70px}.field-note-section{padding-top:40px}
 @media (max-width:700px){.about{padding-bottom:55px}.field-note-section{padding-top:35px}}
+
+.field-note-card-image{display:block;overflow:hidden}.field-note-card-image img{object-fit:contain;transition:transform .7s ease}.field-note-card:hover .field-note-card-image img{transform:scale(1.025)}
+.dark-button{display:inline-flex;align-items:center;justify-content:center;min-width:150px;padding:14px 24px;margin-top:30px;border:1.5px solid var(--forest);border-radius:999px;background:transparent;color:var(--forest);font-size:.95rem;font-weight:600;letter-spacing:.04em;transition:all .28s ease}.dark-button:hover{background:var(--forest);color:white;transform:translateY(-2px)}
