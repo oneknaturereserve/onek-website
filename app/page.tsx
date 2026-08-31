@@ -199,10 +199,7 @@ export default function Home() {
 
     <section className="dual-feature section-shell">
       <article className="nonprofit-card"><div className="org-logo"><img src="/onek/conservation-logo.jpg" alt="OneK Conservation logo" /></div><div><p className="kicker">{t.nonprofitKicker}</p><h2>{t.nonprofitTitle}</h2><p>{t.nonprofitBody}</p><a className="dark-button" href="/support">{t.support} ↗</a></div></article>
-      <article className="echo-card"><div className="echo-photo image-placeholder"><img src="/onek/education.jpg" alt="Nature education at OneK"/><span>{t.temp}</span></div><div><p className="kicker light">{t.echoKicker}</p><h2>{t.echoTitle}</h2><p>{t.echoBody}</p><a className="light-link" href="/natural-echo">EXPLORE NATURAL ECHO ↗</a></div></article>
     </section>
-
-    <section className="archive-section"><div className="archive-year">2018—2026</div><div><p className="kicker">{t.archiveKicker}</p><h2>{t.archiveTitle}</h2><p>{t.archiveBody}</p><a className="text-link" href="/archive">EXPLORE THE ARCHIVE ↗</a></div><div className="timeline"><span>2018<small>THE BEGINNING</small></span><i></i><span>2020<small>RESTORATION</small></span><i></i><span>2023<small>RESEARCH</small></span><i></i><span>2026<small>GROWING</small></span></div></section>
 
     <section className="contact-section"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact Us" : "联系我们"} ↗</a><a href="mailto:OneK.CR2018@gmail.com">Email ↗</a><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer">WhatsApp ↗</a><button onClick={() => navigator.clipboard?.writeText("jiangnan010801")}>WeChat · jiangnan010801</button><a href="/support">Donate / 捐赠 ↗</a></div></section>
 
