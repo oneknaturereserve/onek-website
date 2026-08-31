@@ -48,6 +48,7 @@ const copy = {
     archiveTitle: "One forest. One family. A story still being written.",
     archiveBody: "From the first path in 2018 to wildlife monitoring, restoration, and education today—explore the moments that shaped OneK.",
     contactTitle: "Continue the rainforest story with us.",
+    contactBody: "Protect rainforest habitat, support long-term research, or take part in field programs at OneK Nature Reserve.",
     temp: "Temporary image · replace later",
     sound: "Listen to OneK",
     soundPending: "Rainforest recording will be added here",
@@ -95,6 +96,7 @@ const copy = {
     archiveTitle: "一片森林，一个家庭，一段持续书写的故事。",
     archiveBody: "从2018年的第一条道路，到今天的物种监测、生态修复和自然教育——沿着时间，发现塑造 OneK 的重要时刻。",
     contactTitle: "与我们一起，继续书写雨林的未来。",
+    contactBody: "守护雨林栖息地、支持长期科研监测，或亲自参与 OneK 自然保护区的野外项目。",
     temp: "临时图片 · 后续替换",
     sound: "聆听 OneK",
     soundPending: "雨林声音素材将在这里加入",
@@ -203,8 +205,12 @@ export default function Home() {
       <article className="nonprofit-card"><div className="org-logo"><img src="/onek/conservation-logo.jpg" alt="OneK Conservation logo" /></div><div><p className="kicker">{t.nonprofitKicker}</p><h2>{t.nonprofitTitle}</h2><p>{t.nonprofitBody}</p><a className="dark-button" href="/support">{t.support}</a></div></article>
     </section>
 
-    <section className="contact-section"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact Us" : "联系我们"} ↗</a><a href="mailto:OneK.CR2018@gmail.com">Email ↗</a><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer">WhatsApp ↗</a><button onClick={() => navigator.clipboard?.writeText("jiangnan010801")}>WeChat · jiangnan010801</button><a href="/support">Donate / 捐赠 ↗</a></div></section>
+    <section className="contact-section legacy-contact"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><p className="legacy-contact-body">{t.contactBody}</p><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact OneK" : "联系 OneK"}</a><a href="/programs">{lang === "en" ? "Join a Program" : "参与项目"}</a><a href="/support">{lang === "en" ? "Support Conservation" : "支持保护行动"}</a></div></section>
 
-    <footer><div className="footer-brand"><img src="/onek/logo.png" alt="OneK"/><p>OneK Nature Reserve<span>Southern Costa Rica</span></p></div><p>© 2018–2026 OneK Nature Reserve</p><a href="#top">BACK TO CANOPY ↑</a></footer>
+    <footer className="legacy-footer"><div className="legacy-footer-inner">
+      <div className="legacy-footer-about"><img src="/onek/logo.png" alt="OneK Nature Reserve"/><b>{lang === "en" ? "Established in 2018" : "始于 2018 年"}</b><p>{lang === "en" ? "OneK protects tropical rainforest through habitat conservation, ecological restoration, long-term research, nature education, and community participation in southern Costa Rica." : "OneK 在哥斯达黎加南部通过栖息地保护、生态恢复、长期科研、自然教育与社区参与守护热带雨林。"}</p></div>
+      <div className="legacy-footer-col"><h3>{lang === "en" ? "Quick Links" : "快速导航"}</h3><a href="#top">{lang === "en" ? "Home" : "主页"}</a><a href="/about">{lang === "en" ? "About" : "关于 OneK"}</a><a href="/#species">{lang === "en" ? "Species" : "物种档案"}</a><a href="/research">{lang === "en" ? "Research" : "科研监测"}</a><a href="/programs">{lang === "en" ? "Programs" : "参与项目"}</a></div>
+      <div className="legacy-footer-col legacy-footer-contact"><h3>{lang === "en" ? "Contact" : "联系我们"}</h3><a href="mailto:OneK.CR2018@gmail.com">Email<br/><span>OneK.CR2018@gmail.com</span></a><a href="tel:+50687628888">{lang === "en" ? "Phone" : "电话"}<br/><span>+506 8762-8888 (CR)</span></a><div className="legacy-socials"><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer" aria-label="WhatsApp"><img src="/species-archive/GeneralImage/WhatUp.png" alt=""/></a><span aria-label="Instagram link reserved"><img src="/species-archive/GeneralImage/Instagram.png" alt=""/></span><button onClick={() => navigator.clipboard?.writeText("jiangnan010801")} aria-label="Copy WeChat ID"><img src="/species-archive/GeneralImage/wechat.png" alt=""/><i>WeChat<br/><strong>jiangnan010801</strong></i></button></div></div>
+    </div><div className="legacy-footer-bottom">© 2026 OneK Nature Reserve · Southern Costa Rica · All Rights Reserved <a href="#top">{lang === "en" ? "Back to canopy" : "返回顶部"} ↑</a></div></footer>
   </main>;
 }
