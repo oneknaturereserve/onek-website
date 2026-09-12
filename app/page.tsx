@@ -148,7 +148,7 @@ export default function Home() {
   }, []);
 
   return <main className="cinema-ready">
-    <div className="cinema-opening" aria-hidden="true"><span>ONEK · COSTA RICA</span></div>
+    <div className="cinema-opening" aria-hidden="true"><i className="cinema-shutter cinema-shutter-left"></i><i className="cinema-shutter cinema-shutter-right"></i><b className="cinema-lens"></b><span>ONEK · COSTA RICA</span></div>
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <a className="brand" href="#top" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></a>
       <nav className={menu ? "nav-open" : ""} aria-label="Primary navigation">
