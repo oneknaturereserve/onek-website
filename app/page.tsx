@@ -166,7 +166,7 @@ export default function Home() {
       <div className="hero-bg"></div><div className="hero-canopy"></div><div className="hero-light"></div><div className="cinema-frame" aria-hidden="true"></div>
       <div className="hero-content">
         <p className="eyebrow">{t.reserve}</p>
-        <h1>{t.title}</h1>
+        <h1><span>OneK</span><span>{lang === "en" ? "Nature Reserve" : "自然保护区"}</span></h1>
         <p className="hero-mission">Research <i>•</i> Education <i>•</i> Conservation</p>
         <p className="hero-line">A place where people and nature grow together.</p>
         <div className="hero-actions-row">
