@@ -125,12 +125,30 @@ export default function Home() {
   const t = copy[lang];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+      document.documentElement.style.setProperty("--hero-scroll", `${Math.min(window.scrollY, window.innerHeight) * 0.12}px`);
+    };
     onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return <main>
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll<HTMLElement>(".cinema-reveal"));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8%" });
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
+  return <main className="cinema-ready">
+    <div className="cinema-opening" aria-hidden="true"><span>ONEK · COSTA RICA</span></div>
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <a className="brand" href="#top" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></a>
       <nav className={menu ? "nav-open" : ""} aria-label="Primary navigation">
@@ -144,8 +162,8 @@ export default function Home() {
       </div>
     </header>
 
-    <section className="hero" id="top">
-      <div className="hero-bg"></div><div className="hero-canopy"></div>
+    <section className="hero" id="top" onPointerMove={(event) => { const rect = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty("--hero-x", `${((event.clientX - rect.left) / rect.width - .5) * -20}px`); event.currentTarget.style.setProperty("--hero-y", `${((event.clientY - rect.top) / rect.height - .5) * -14}px`); }} onPointerLeave={(event) => { event.currentTarget.style.setProperty("--hero-x", "0px"); event.currentTarget.style.setProperty("--hero-y", "0px"); }}>
+      <div className="hero-bg"></div><div className="hero-canopy"></div><div className="hero-light"></div><div className="cinema-frame" aria-hidden="true"></div>
       <div className="hero-content">
         <p className="eyebrow">{t.reserve}</p>
         <h1>{t.title}</h1>
@@ -158,22 +176,23 @@ export default function Home() {
         {soundMessage && <div className="sound-note"><b>Audio placeholder</b><span>{t.soundPending}</span></div>}
       </div>
       <div className="hero-meta"><span>8.6° N · Southern Costa Rica</span><span>{t.signal}</span><span>Since 2018</span></div>
+      <a className="cinema-scroll" href="#about"><span>{lang === "en" ? "Scroll to enter" : "向下进入雨林"}</span><i></i></a>
     </section>
 
-    <section className="about section-shell" id="about">
+    <section className="about section-shell cinema-reveal" id="about">
       <div className="section-index">01</div>
       <div className="about-image image-placeholder"><img src="/onek/about.jpg" alt="OneK rainforest life"/><span>{t.temp}</span></div>
       <div className="about-copy"><p className="kicker">{t.aboutKicker}</p><h2>{t.aboutTitle}</h2><p className="lead">{t.aboutBody}</p><p className="mission-line">Research · Education · Conservation</p><a className="text-link" href="/about">{t.readStory} <b>↗</b></a></div>
     </section>
 
-    <section className="field-note-section">
+    <section className="field-note-section cinema-reveal">
       <article className="field-note-card">
         <div className="field-note-card-copy"><p className="kicker">{t.fieldKicker}</p><h2>{t.fieldTitle}</h2><p className="latin">Black-cheeked Ant-Tanager · <i>Driophlox atrimaxillaris</i></p><p className="field-note-body">{t.fieldBody}</p><div className="data-row"><span><b>TYPE</b>Field observation</span><span><b>HABITAT</b>Rainforest understory</span><span><b>STATION</b>OneK</span></div><a href="/field-notes">{t.readNote} <b>↗</b></a></div>
         <a className="field-note-card-image image-placeholder" href="/field-notes" aria-label={lang === "en" ? "Open the field note" : "打开雨林信息"}><img src="/onek/fieldnote.jpg" alt="Bird recorded at OneK"/><span>{t.temp}</span><div className="photo-label">FIELD RECORD · 2025.07</div></a>
       </article>
     </section>
 
-    <section className="research-section">
+    <section className="research-section cinema-reveal">
       <div className="research-bg"></div>
       <div className="research-copy"><p className="kicker light">{t.researchKicker}</p><h2>{t.researchTitle}</h2><p>{t.researchBody}</p><a className="light-link" href="/research">{t.enterStation} ↗</a></div>
       <div className={`camera-card ${cameraOpen ? "revealed" : ""}`}>
@@ -184,7 +203,7 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="program-section">
+    <section className="program-section cinema-reveal">
       <div className="program-heading"><h2>{t.programsKicker}</h2><p>{t.programsTitle}</p></div>
       <div className="program-grid">{programs.map(p => <article className="program-card" key={p.no}>
         <div className="program-image"><img src={p.img} alt={p.titleEn}/></div>
@@ -192,7 +211,7 @@ export default function Home() {
       </article>)}</div>
     </section>
 
-    <section className="species-section" id="species">
+    <section className="species-section cinema-reveal" id="species">
       <div className="species-kicker section-shell"><p className="kicker light">{t.speciesKicker}</p></div>
       <div className="species-legacy-heading"><h2>{t.speciesHeading}</h2><p>{t.speciesIntro}</p></div>
       <div className="species-legacy-list">{species.map((s, i) => <article className={`species-legacy-card ${i % 2 ? "reverse" : ""}`} key={s.en}>
@@ -201,11 +220,11 @@ export default function Home() {
       </article>)}</div>
     </section>
 
-    <section className="dual-feature section-shell">
+    <section className="dual-feature section-shell cinema-reveal">
       <article className="nonprofit-card"><div className="org-logo"><img src="/onek/conservation-logo.jpg" alt="OneK Conservation logo" /></div><div><p className="kicker">{t.nonprofitKicker}</p><h2>{t.nonprofitTitle}</h2><p>{t.nonprofitBody}</p><a className="dark-button" href="/support">{t.support}</a></div></article>
     </section>
 
-    <section className="contact-section legacy-contact"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><p className="legacy-contact-body">{t.contactBody}</p><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact OneK" : "联系 OneK"}</a><a href="/programs">{lang === "en" ? "Join a Program" : "参与项目"}</a><a href="/support">{lang === "en" ? "Support Conservation" : "支持保护行动"}</a></div></section>
+    <section className="contact-section legacy-contact cinema-reveal"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><p className="legacy-contact-body">{t.contactBody}</p><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact OneK" : "联系 OneK"}</a><a href="/programs">{lang === "en" ? "Join a Program" : "参与项目"}</a><a href="/support">{lang === "en" ? "Support Conservation" : "支持保护行动"}</a></div></section>
 
     <footer className="legacy-footer"><div className="legacy-footer-inner">
       <div className="legacy-footer-about"><img src="/onek/logo.png" alt="OneK Nature Reserve"/><b>{lang === "en" ? "Established in 2018" : "始于 2018 年"}</b><p>{lang === "en" ? "OneK protects tropical rainforest through habitat conservation, ecological restoration, long-term research, nature education, and community participation in southern Costa Rica." : "OneK 在哥斯达黎加南部通过栖息地保护、生态恢复、长期科研、自然教育与社区参与守护热带雨林。"}</p></div>
