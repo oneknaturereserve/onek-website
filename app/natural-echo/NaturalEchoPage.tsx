@@ -190,7 +190,7 @@ export default function NaturalEchoPage() {
     <section className="natural-echo-hero">
       <img src="/onek/explore.jpg" alt={isEn ? "Young naturalists observing wildlife" : "青年自然观察者"} />
       <div className="natural-echo-hero-shade" />
-      <div className="natural-echo-hero-copy"><p>NATURAL ECHO</p><h1>{isEn ? "Natural Echo" : "让自然的声音，被更多孩子听见"}</h1><h2>{isEn ? "Youth–Led Nature Education" : "由青少年发起的自然教育项目"}</h2><a href="#introduction">{isEn ? "Read the introduction" : "阅读完整介绍"} ↓</a></div>
+      <div className="natural-echo-hero-copy"><p>NATURAL ECHO</p><h1>{isEn ? "Let the Voice of Nature Be Heard by More Children" : "让自然的声音，被更多孩子听见"}</h1><h2>{isEn ? "Youth–Led Nature Education" : "由青少年发起的自然教育项目"}</h2><a href="#introduction">{isEn ? "Read the introduction" : "阅读完整介绍"} ↓</a></div>
     </section>
 
     <section className="natural-echo-intro" id="introduction">
