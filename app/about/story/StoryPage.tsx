@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { navItems } from "../../navigation";
+import SiteEnding from "../../_components/SiteEnding";
 
 type Lang = "en" | "zh";
 
@@ -102,7 +103,7 @@ export default function StoryPage() {
   const [menu, setMenu] = useState(false);
   const isEn = lang === "en";
 
-  return <main className="story-detail-page">
+  return <main className="story-detail-page" id="top">
     <header className="interior-header">
       <Link className="interior-brand" href="/"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link>
       <nav className={menu ? "is-open" : ""}><Link href="/">{isEn ? "Home" : "主页"}</Link>{navItems.map(([en, zh, href]) => <Link key={href} href={href}>{isEn ? en : zh}</Link>)}<Link href="/contact">{isEn ? "Contact" : "联系我们"}</Link></nav>
@@ -118,5 +119,6 @@ export default function StoryPage() {
     <section className="story-belief"><p>{isEn ? "WHAT WE BELIEVE" : "我们相信"}</p><div>{isEn ? <><h2>Every species recorded is a key to understanding nature.</h2><p>Every nest discovered is part of the rainforest’s story.<br />Every stream restored creates new opportunities for life.<br />And every encounter with nature has the power to change a person forever.</p><p>The story of OneK is still being written. It belongs not only to our family, but also to everyone who loves nature and wishes to contribute to biodiversity conservation.</p><p>Because we believe that true conservation is not simply about protecting the forest we see today. It is about ensuring that future generations inherit a world that is still alive with the richness and diversity of nature.</p></> : <><h2>每一个被记录的物种，都是理解自然的一把钥匙。</h2><p>每一个被发现的鸟巢，都是雨林故事的一部分。<br />每一条恢复的溪流，都会重新孕育生命。<br />而每一次与自然的相遇，都可能改变一个人的一生。</p><p>OneK 的故事仍在继续。它不仅属于我们一家人，也属于所有热爱自然、愿意为生物多样性保护贡献力量的人。</p><p>因为我们相信：真正的保护，不只是守护今天的森林。更是为下一代留下一个依然充满生命的未来。</p></>}</div></section>
 
     <div className="story-back"><Link href="/about">← {isEn ? "Back to About OneK" : "返回关于 OneK"}</Link></div>
+    <SiteEnding lang={lang} />
   </main>;
 }

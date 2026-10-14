@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Lang, SitePage } from "../site-data";
 import { navItems } from "../navigation";
+import SiteEnding from "./SiteEnding";
 
 const copy = {
   en: { home: "Home", menu: "Menu", contact: "Contact", support: "Support", explore: "Explore", back: "Back", placeholder: "Temporary image · replace after confirmation", related: "Continue exploring", apply: "Contact OneK", footer: "Protecting rainforest through research, education, and conservation." },
@@ -16,7 +17,7 @@ export default function InteriorPage({ page }: { page: SitePage }) {
   const [menu, setMenu] = useState(false);
   const t = copy[lang];
 
-  return <main className="interior-page">
+  return <main className="interior-page" id="top">
     <header className="interior-header">
       <Link className="interior-brand" href="/" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link>
       <nav className={menu ? "is-open" : ""} aria-label="Primary navigation">
@@ -46,7 +47,6 @@ export default function InteriorPage({ page }: { page: SitePage }) {
       {page.quote ? <blockquote className="interior-quote">“{page.quote[lang]}”</blockquote> : null}
     </div>
 
-    <section className="interior-cta"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{lang === "en" ? "Continue the rainforest story with us." : "与我们一起，继续书写雨林的未来。"}</h2><div><Link href="/contact">{t.contact}</Link><Link href="/programs">{lang === "en" ? "Join a program" : "参与项目"}</Link><Link href="/support">{t.support}</Link></div></section>
-    <footer className="interior-footer"><div><img src="/onek/logo.png" alt="OneK" /><p>{t.footer}</p></div><div><a href="mailto:OneK.CR2018@gmail.com">OneK.CR2018@gmail.com</a><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer">WhatsApp · +506 8762-8888</a><span>WeChat · jiangnan010801</span></div><div><Link href="/">{t.home}</Link><Link href="/contact">{t.contact}</Link><a href="#content">↑ {lang === "en" ? "Back to content" : "返回内容"}</a></div></footer>
+    <SiteEnding lang={lang} />
   </main>;
 }

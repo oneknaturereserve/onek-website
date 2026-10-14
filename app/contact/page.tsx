@@ -1,3 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+import SiteEnding from "../_components/SiteEnding";
+
 const enquiries = [
   { no: "01", en: "General Enquiries", zh: "一般咨询", subject: "General enquiry" },
   { no: "02", en: "Research Collaboration", zh: "科研合作", subject: "Research collaboration" },
@@ -8,8 +12,8 @@ const enquiries = [
 ];
 
 export default function ContactPage() {
-  return <main className="contact-page">
-    <header><a href="/"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></a><a href="/">← BACK TO HOME / 返回主页</a></header>
+  return <main className="contact-page" id="top">
+    <header><Link href="/"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link><Link href="/">← BACK TO HOME / 返回主页</Link></header>
     <section className="contact-hero">
       <p>CONTACT ONEK · COSTA RICA</p>
       <h1>Continue the rainforest story with us.</h1>
@@ -25,5 +29,6 @@ export default function ContactPage() {
       <div><small>DIRECT CONTACT</small><h2>Reach us directly<br/><span>直接联系我们</span></h2></div>
       <div className="direct-contact-links"><a href="mailto:OneK.CR2018@gmail.com"><span>Email</span><b>OneK.CR2018@gmail.com ↗</b></a><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer"><span>WhatsApp</span><b>+506 8762 8888 ↗</b></a><div><span>WeChat</span><b>jiangnan010801</b></div></div>
     </section>
+    <SiteEnding lang="en" />
   </main>;
 }

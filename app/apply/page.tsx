@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { FormEvent } from "react";
+import SiteEnding from "../_components/SiteEnding";
 
 export default function ApplyPage() {
   const [sent, setSent] = useState(false);
@@ -25,7 +26,7 @@ export default function ApplyPage() {
     window.location.href = `mailto:OneK.CR2018@gmail.com?subject=${encodeURIComponent("[OneK] Program application")}&body=${encodeURIComponent(body)}`;
   }
 
-  return <main className="application-page">
+  return <main className="application-page" id="top">
     <header><Link href="/"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link><Link href="/volunteer">← PROGRAMS / 返回项目</Link></header>
     <section className="application-intro"><p>ONEK INTERNATIONAL PROGRAMS</p><h1>Apply to OneK</h1><h2>申请参与 OneK</h2><p>Complete the form below. Submitting will open your email application with the information already prepared. You may also contact us directly through WhatsApp.</p><p>请填写下面的申请信息。提交后将打开电子邮件并自动整理内容；您也可以直接通过 WhatsApp 联系我们。</p></section>
     <section className="application-layout">
@@ -43,5 +44,6 @@ export default function ApplyPage() {
       </form>
       <aside><p>OTHER WAYS TO APPLY</p><h2>Contact OneK directly</h2><a href="mailto:OneK.CR2018@gmail.com">Email<br/><b>OneK.CR2018@gmail.com ↗</b></a><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer">WhatsApp<br/><b>+506 8762-8888 ↗</b></a><span>WeChat<br/><b>jiangnan010801</b></span><small>Applications are reviewed individually. Dates, fees, accommodation, supervision, safety, and project scope will be confirmed before participation.</small></aside>
     </section>
+    <SiteEnding lang="en" />
   </main>;
 }
