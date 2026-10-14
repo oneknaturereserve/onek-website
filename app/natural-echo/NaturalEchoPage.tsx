@@ -169,10 +169,10 @@ const vision = {
 } as const;
 
 const activities = [
-  { href: "/natural-echo/bay-area-birding", image: "/onek/birds.png", kickerEn: "CLUB ACTIVITY", kickerZh: "社团活动", titleEn: "Bay Area Birdwatching", titleZh: "湾区观鸟", summaryEn: "Weekend birdwatching and nature exploration for children in the San Francisco Bay Area.", summaryZh: "面向旧金山湾区儿童开展的周末观鸟与自然探索活动。" },
-  { href: "/natural-echo/book-donation", image: "/onek/about-old/conservation.jpg", kickerEn: "COMMUNITY ENGAGEMENT · 2023", kickerZh: "社区参与 · 2023", titleEn: "Books across borders", titleZh: "图书捐赠与文化交流", summaryEn: "Students from the United States and Costa Rica met through books, reading, and shared stories.", summaryZh: "美国与哥斯达黎加学生因书籍、阅读和故事分享而相遇。" },
-  { href: "/natural-echo/amazon-exchange", image: "/onek/explore.jpg", kickerEn: "COMMUNITY ENGAGEMENT · 2018", kickerZh: "社区参与 · 2018", titleEn: "Friendship in the Amazon", titleZh: "亚马逊社区交流", summaryEn: "A visit, school supplies, and a football match became a lesson in culture, nature, and friendship.", summaryZh: "一次探访、学习用品与一场足球赛，成为关于文化、自然和友谊的课程。" },
-  { href: "/natural-echo/story", image: "/onek/natural-echo-logo.png", kickerEn: "FROM BEIJING TO THE WORLD", kickerZh: "从北京到世界", titleEn: "The Natural Echo story", titleZh: "Natural Echo 的故事", summaryEn: "How global nature journeys and the OneK rainforest inspired a youth-led initiative.", summaryZh: "在全球自然旅行和 OneK 雨林中成长的经历，如何催生一个青少年自然教育项目。" },
+  { href: "/natural-echo/bay-area-birding", image: "/species-archive/BirdsImage/20-200.jpg", kickerEn: "CLUB ACTIVITY", kickerZh: "社团活动", titleEn: "Bay Area Birdwatching 1", titleZh: "湾区观鸟1", summaryEn: "Weekend birdwatching and nature exploration for children in the San Francisco Bay Area.", summaryZh: "面向旧金山湾区儿童开展的周末观鸟与自然探索活动。" },
+  { href: "/natural-echo/book-donation", image: "/onek/about-old/conservation.jpg", kickerEn: "COMMUNITY ENGAGEMENT", kickerZh: "社区参与", titleEn: "Books across borders", titleZh: "图书捐赠与文化交流", summaryEn: "Students from the United States and Costa Rica met through books, reading, and shared stories.", summaryZh: "美国与哥斯达黎加学生因书籍、阅读和故事分享而相遇。" },
+  { href: "/natural-echo/amazon-exchange", image: "/onek/explore.jpg", kickerEn: "COMMUNITY ENGAGEMENT", kickerZh: "社区参与", titleEn: "Friendship in the Amazon", titleZh: "亚马逊社区交流", summaryEn: "A visit, school supplies, and a football match became a lesson in culture, nature, and friendship.", summaryZh: "一次探访、学习用品与一场足球赛，成为关于文化、自然和友谊的课程。" },
+  { href: "/natural-echo/story", image: "/species-archive/BirdsImage/7-1.jpg", kickerEn: "CLUB ACTIVITY", kickerZh: "社团活动", titleEn: "Bay Area Birdwatching 2", titleZh: "湾区观鸟2", summaryEn: "A second chapter of youth-led birdwatching and outdoor nature learning in the San Francisco Bay Area.", summaryZh: "由青少年继续带领的湾区观鸟与户外自然学习活动。" },
 ] as const;
 
 export default function NaturalEchoPage() {
@@ -207,7 +207,12 @@ export default function NaturalEchoPage() {
 
     <section className="natural-echo-activities">
       <div className="natural-echo-activities-heading"><p>NATURAL ECHO</p><h2>{isEn ? "Historical Activities" : "历史活动"}</h2></div>
-      <div className="natural-echo-grid">{activities.map((activity) => <Link href={activity.href} className="natural-echo-card" key={activity.href}><div className="natural-echo-card-image"><img src={activity.image} alt={isEn ? activity.titleEn : activity.titleZh} /></div><div className="natural-echo-card-copy"><small>{isEn ? activity.kickerEn : activity.kickerZh}</small><h3>{isEn ? activity.titleEn : activity.titleZh}</h3><p>{isEn ? activity.summaryEn : activity.summaryZh}</p><b>{isEn ? "Explore" : "了解更多"} ↗</b></div></Link>)}</div>
+      <div className="natural-echo-activity-index">{activities.map((activity, index) => <Link href={activity.href} className="natural-echo-activity-row" key={activity.href}>
+        <small>{isEn ? activity.kickerEn : activity.kickerZh}</small>
+        <div><span>{String(index + 1).padStart(2, "0")}</span><h3>{isEn ? activity.titleEn : activity.titleZh}</h3><p>{isEn ? activity.summaryEn : activity.summaryZh}</p></div>
+        <b>↗</b>
+        <img src={activity.image} alt="" aria-hidden="true" />
+      </Link>)}</div>
     </section>
 
     <SiteEnding lang={lang} />
