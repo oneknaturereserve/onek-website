@@ -153,6 +153,17 @@
 @media (max-width:920px){.story-legacy-opening,.story-legacy-chapter,.story-legacy-chapter.reverse,.story-legacy-work-body{grid-template-columns:1fr}.story-legacy-opening article,.story-legacy-chapter article{max-width:none}.story-legacy-chapter.reverse article,.story-legacy-chapter.reverse .story-legacy-image{order:initial}.story-legacy-chapter .story-legacy-image{position:relative;top:auto;height:520px}.story-legacy-work-body .story-legacy-image{min-height:480px}}
 @media (max-width:560px){.story-legacy-page .interior-header{height:70px}.story-legacy-hero{min-height:760px}.story-legacy-hero-copy{width:calc(100% - 48px);margin-left:24px}.story-legacy-opening,.story-legacy-chapter,.story-legacy-work,.story-legacy-belief{padding-top:84px;padding-bottom:84px}.story-legacy-opening,.story-legacy-chapter{gap:36px}.story-legacy-image,.story-legacy-chapter .story-legacy-image{height:390px;border-radius:24px}.story-legacy-work-body .story-legacy-image{min-height:390px}.story-legacy-work-body article{padding:34px 25px}.story-legacy-work-body li{padding-left:28px}.story-legacy-back{padding:34px 18px}}
 
+/* Natural Echo · book donation and cultural exchange */
+.book-donation-page .interior-header{position:fixed;height:78px;background:rgba(17,30,22,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1)}
+.book-donation-hero>img{object-position:center 42%}
+.book-donation-hero .story-legacy-hero-copy{width:min(930px,90%)}
+.book-donation-hero .story-legacy-hero-copy h1{max-width:930px;font-size:clamp(3rem,6.4vw,5rem)}
+.book-donation-opening h2{font-size:clamp(2rem,3.5vw,2.9rem);line-height:1.15}
+.book-donation-page .story-legacy-image figcaption{display:none}
+.book-donation-chapter{background:var(--story-soft)}
+.book-donation-chapter .story-legacy-image img{object-position:center 42%}
+@media (max-width:560px){.book-donation-page .interior-header{height:70px}.book-donation-hero .story-legacy-hero-copy h1{font-size:clamp(2.65rem,12vw,4rem)}}
+
 /* Natural Echo mission page */
 .natural-echo-page{--echo-cream:#f6f1e8;--echo-soft:#fbf8f2;--echo-forest:#1f3328;--echo-forest-2:#2d4638;--echo-gold:#b79b62;--echo-text:#233126;--echo-muted:#5e655b;background:var(--echo-cream);color:var(--echo-text);font-family:Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75}
 .natural-echo-page h1,.natural-echo-page h2,.natural-echo-page h3{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:0}
