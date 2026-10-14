@@ -190,12 +190,12 @@ export default function NaturalEchoPage() {
     <section className="natural-echo-hero">
       <img src="/onek/explore.jpg" alt={isEn ? "Young naturalists observing wildlife" : "青年自然观察者"} />
       <div className="natural-echo-hero-shade" />
-      <div className="natural-echo-hero-copy"><p>NATURAL ECHO</p><h1>{isEn ? "Natural Echo" : "让自然的声音，被更多孩子听见"}</h1><h2>{isEn ? "Youth-Led Nature Education" : "由青少年发起的自然教育项目"}</h2><a href="#introduction">{isEn ? "Read the introduction" : "阅读完整介绍"} ↓</a></div>
+      <div className="natural-echo-hero-copy"><p>NATURAL ECHO</p><h1>{isEn ? "Natural Echo" : "让自然的声音，被更多孩子听见"}</h1><h2>{isEn ? "Youth–Led Nature Education" : "由青少年发起的自然教育项目"}</h2><a href="#introduction">{isEn ? "Read the introduction" : "阅读完整介绍"} ↓</a></div>
     </section>
 
     <section className="natural-echo-intro" id="introduction">
       <figure><img src="/onek/natural-echo-logo.png" alt="Natural Echo" /></figure>
-      <article><p className="natural-echo-kicker">NATURAL ECHO</p><h2>{isEn ? "Youth-Led Nature Education" : "由青少年发起的自然教育项目"}</h2>{opening[lang].map((paragraph, index) => <p className={index === 2 ? "echo-emphasis" : ""} key={paragraph}>{paragraph}</p>)}</article>
+      <article><p className="natural-echo-kicker">NATURAL ECHO</p><h2>{isEn ? "Youth–Led Nature Education" : "由青少年发起的自然教育项目"}</h2>{opening[lang].map((paragraph, index) => <p className={index === 2 ? "echo-emphasis" : ""} key={paragraph}>{paragraph}</p>)}</article>
     </section>
 
     <div className="natural-echo-story-sections">{sections.map((section, index) => <section className={index % 2 ? "natural-echo-story-section reverse" : "natural-echo-story-section"} key={section.enTitle}>
