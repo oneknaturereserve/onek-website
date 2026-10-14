@@ -45,18 +45,21 @@ export default function BookDonationPage() {
     </header>
 
     <section className="story-legacy-hero book-donation-hero">
-      <img src="/onek/about-old/story.jpg" alt={isEn ? "Children learning and sharing together" : "孩子们共同阅读与交流"} />
+      <img src="/onek/explore.jpg" alt={isEn ? "Young naturalists observing wildlife" : "青年自然观察者"} />
       <div className="story-legacy-hero-shade" />
       <div className="story-legacy-hero-copy">
-        <p>{isEn ? "COMMUNITY ENGAGEMENT · 2023" : "社区参与 · 2023"}</p>
-        <h1>{page.title}</h1>
+        <p>NATURAL ECHO</p>
+        <h1>{isEn ? "Let the Voice of Nature Be Heard by More Children" : "让自然的声音，被更多孩子听见"}</h1>
+        <h2>{isEn ? "Youth–Led Nature Education" : "由青少年发起的自然教育项目"}</h2>
+        <a href="#book-donation-content">{isEn ? "Read the activity" : "阅读活动内容"} ↓</a>
       </div>
     </section>
 
-    <section className="story-legacy-opening book-donation-opening">
+    <section className="story-legacy-opening book-donation-opening" id="book-donation-content">
       <figure className="story-legacy-image"><img src="/onek/about-old/research.jpg" alt={isEn ? "Learning together through books" : "通过书籍共同学习"} /></figure>
       <article>
-        <p className="story-legacy-kicker">{isEn ? "BOOKS ACROSS BORDERS" : "跨越国界的书籍"}</p>
+        <p className="story-legacy-kicker">{isEn ? "COMMUNITY ENGAGEMENT · 2023" : "社区参与 · 2023"}</p>
+        <h1 className="book-donation-content-title">{page.title}</h1>
         <h2>{page.lead}</h2>
         {page.paragraphs.slice(0, 2).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       </article>
