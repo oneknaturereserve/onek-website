@@ -187,6 +187,31 @@
 @media (max-width:900px){.research-station-card-grid,.research-station-monitoring .research-station-card-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.research-station-page .interior-header{height:70px}.research-station-intro .about-story-image{height:390px}.research-station-collaboration,.research-station-monitoring,.research-station-invitation{padding-top:84px;padding-bottom:84px}.research-station-card-grid,.research-station-monitoring .research-station-card-grid{grid-template-columns:1fr}.research-station-card-grid>a{min-height:230px}.research-station-report{min-height:560px;padding:84px 24px}}
 
+/* Research hub and research detail pages */
+.research-station-hero{background-image:linear-gradient(90deg,rgba(13,27,19,.78),rgba(13,27,19,.18)),url('/onek/research-old/ResearchHeader.JPG')}
+.research-station-hero>div{width:min(760px,82%);max-width:none;margin-left:max(9vw,calc((100vw - 1180px)/2 + 42px));padding-top:88px}
+.research-station-page .about-detail-hero h1{font-size:clamp(3.2rem,7vw,5.3rem);line-height:1.02;letter-spacing:0}
+.research-feature{width:min(1180px,92%);margin:auto;padding:118px 0;display:grid;grid-template-columns:1.02fr .98fr;gap:58px;align-items:center}
+.research-feature.reverse{grid-template-columns:.98fr 1.02fr}.research-feature.reverse figure{order:2}.research-feature.reverse article{order:1}
+.research-feature figure{height:620px;margin:0;overflow:hidden;border-radius:30px;background:#d9d3c7;box-shadow:0 14px 38px rgba(0,0,0,.13)}
+.research-feature figure img{height:100%;object-fit:cover}
+.research-feature article>p{color:var(--about-gold);font-size:.92rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.research-feature h2{margin:16px 0 28px;color:var(--about-forest);font:600 clamp(2.7rem,5vw,4.2rem)/1.06 "Cormorant Garamond",Georgia,serif}
+.research-feature article>span{display:block;margin:0 0 15px;color:var(--about-text);font:1rem/1.9 Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif}
+.research-feature article>a{display:inline-flex;margin-top:18px;padding:14px 24px;border:1.5px solid var(--about-forest);border-radius:999px;color:var(--about-forest);font-size:.95rem;font-weight:600}
+.research-station-heading>span{margin-bottom:14px}.research-station-invitation{background:#263c31 url('/onek/research-old/ResearchHeader.JPG') center/cover;background-blend-mode:multiply;color:white}.research-station-invitation h2{color:white}.research-station-invitation>span{display:block;max-width:820px;margin:0 auto;line-height:1.9;color:rgba(255,255,255,.84)}.research-station-invitation a{color:white}
+.research-detail-page .interior-header,.research-projects-page .interior-header{position:fixed;height:78px;background:rgba(17,30,22,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1)}
+.research-detail-hero>img,.research-projects-hero>img{object-position:center;transform:scale(1.02)}
+.research-detail-hero .story-legacy-hero-copy,.research-projects-hero .story-legacy-hero-copy{margin-left:max(9vw,calc((100vw - 1180px)/2 + 42px))}
+.research-detail-sections{background:var(--story-soft)}.research-detail-sections>.story-legacy-opening{background:var(--story-cream)}
+.research-detail-sections article h3{margin:30px 0 12px;color:var(--story-forest);font:600 1.55rem/1.25 "Cormorant Garamond",Georgia,serif}
+.research-detail-sections article ul{margin:0 0 22px;padding:0;list-style:none}.research-detail-sections article li{position:relative;padding:8px 0 8px 24px;color:var(--story-text);line-height:1.75}.research-detail-sections article li:before{content:"";position:absolute;left:4px;top:18px;width:7px;height:7px;border-radius:50%;background:var(--story-gold)}
+.research-project-list{padding:118px 0;background:#ede3d1}.research-project-list article{width:min(1180px,92%);min-height:470px;margin:0 auto 32px;display:grid;grid-template-columns:.92fr 1.08fr;overflow:hidden;border-radius:30px;background:#f7f2e8;box-shadow:0 12px 32px rgba(26,45,34,.13)}
+.research-project-list article.reverse{grid-template-columns:1.08fr .92fr}.research-project-list article.reverse>div{order:2}.research-project-list article.reverse>img{order:1}
+.research-project-list article>div{padding:48px;display:flex;flex-direction:column;justify-content:center}.research-project-list article>div>p{color:var(--story-gold);font-size:.92rem;font-weight:700;letter-spacing:2px}.research-project-list h2{margin:10px 0 20px;color:var(--story-forest);font:600 clamp(2.2rem,4vw,3.3rem)/1.06 "Cormorant Garamond",Georgia,serif}.research-project-list span{color:var(--story-text);line-height:1.85}.research-project-list a{align-self:flex-start;margin-top:28px;padding:13px 22px;border:1.5px solid var(--story-forest);border-radius:999px;color:var(--story-forest);font-weight:600}.research-project-list article>img{height:100%;min-height:470px;object-fit:cover}
+@media (max-width:920px){.research-feature,.research-feature.reverse,.research-project-list article,.research-project-list article.reverse{grid-template-columns:1fr}.research-feature.reverse figure,.research-feature.reverse article,.research-project-list article.reverse>div,.research-project-list article.reverse>img{order:initial}.research-feature figure{height:520px}.research-detail-hero .story-legacy-hero-copy,.research-projects-hero .story-legacy-hero-copy,.research-station-hero>div{margin-left:7vw}}
+@media (max-width:560px){.research-station-hero>div,.research-detail-hero .story-legacy-hero-copy,.research-projects-hero .story-legacy-hero-copy{width:calc(100% - 48px);margin-left:24px}.research-feature,.research-project-list{padding-top:84px;padding-bottom:84px}.research-feature{gap:36px}.research-feature figure{height:390px;border-radius:24px}.research-project-list article>div{padding:34px 26px}.research-project-list article>img{min-height:320px}}
+
 /* Natural Echo mission page */
 .natural-echo-page{--echo-cream:#f6f1e8;--echo-soft:#fbf8f2;--echo-forest:#1f3328;--echo-forest-2:#2d4638;--echo-gold:#b79b62;--echo-text:#233126;--echo-muted:#5e655b;background:var(--echo-cream);color:var(--echo-text);font-family:Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75}
 .natural-echo-page h1,.natural-echo-page h2,.natural-echo-page h3{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:0}
