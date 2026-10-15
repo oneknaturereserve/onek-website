@@ -161,7 +161,7 @@
 .book-donation-hero .story-legacy-hero-copy h2{margin:0 0 40px;color:rgba(255,255,255,.82);font:500 clamp(1.25rem,2.2vw,1.8rem)/1.35 Inter,Arial,sans-serif}
 .book-donation-hero .story-legacy-hero-copy a{display:inline-flex;min-width:190px;justify-content:center;padding:14px 24px;border:1px solid rgba(255,255,255,.72);border-radius:999px;color:white;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .book-donation-content-title{margin:14px 0 20px;color:var(--story-forest);font:600 clamp(2.5rem,4vw,3.6rem)/1.05 "Cormorant Garamond",Georgia,serif}
-.book-donation-opening h2{font-size:clamp(2rem,3.5vw,2.9rem);line-height:1.15}
+.book-donation-lead{margin:0 0 12px!important;color:var(--story-text)!important;font:1rem/1.9 Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif!important}
 .book-donation-page .story-legacy-image figcaption{display:none}
 .book-donation-chapter{background:var(--story-soft)}
 .book-donation-chapter .story-legacy-image img{object-position:center 42%}

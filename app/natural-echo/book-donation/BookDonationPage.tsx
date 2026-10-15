@@ -60,7 +60,7 @@ export default function BookDonationPage() {
       <article>
         <p className="story-legacy-kicker">{isEn ? "COMMUNITY ENGAGEMENT · 2023" : "社区参与 · 2023"}</p>
         <h1 className="book-donation-content-title">{page.title}</h1>
-        <h2>{page.lead}</h2>
+        <p className="book-donation-lead">{page.lead}</p>
         {page.paragraphs.slice(0, 2).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       </article>
     </section>
