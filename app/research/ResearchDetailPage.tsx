@@ -16,15 +16,21 @@ const supportingImages = [
   "/onek/research-old/ResearchHeader.JPG",
 ];
 
-function contentGroups(raw: string, isStation: boolean, isChineseStation: boolean, isAnnualReport: boolean, isEn: boolean) {
+function contentGroups(raw: string, isStation: boolean, isChineseStation: boolean, isAnnualReport: boolean, isCameraTrap: boolean, isEn: boolean) {
   const sections = raw.split(/\n\s*⸻\s*\n/g).map((part) => part.trim()).filter(Boolean);
   if (isStation && sections.length > 2) return sections.slice(0, 6);
   if (sections.length > 2) return sections;
   const chunks = raw.split(/\n{2,}/g).map((part) => part.trim()).filter((part) => Boolean(part) && part !== "⸻");
   if (isAnnualReport) {
     const boundaries = isEn
-      ? [[0, 9], [9, 15], [15, 22], [22, 27], [27, 38], [38, 47], [47, 56], [56, 62], [62, 68], [68, 79], [79, 84], [84, 95], [95, 103]]
-      : [[0, 7], [7, 13], [13, 20], [20, 25], [25, 36], [36, 45], [45, 54], [54, 60], [60, 66], [66, 77], [77, 82], [82, 94], [94, 101]];
+      ? [[0, 9], [9, 15], [15, 22], [22, 28], [28, 38], [38, 47], [47, 56], [56, 62], [62, 68], [68, 79], [79, 84], [84, 95], [95, 103]]
+      : [[0, 7], [7, 13], [13, 20], [20, 26], [26, 36], [36, 45], [45, 54], [54, 60], [60, 66], [66, 77], [77, 82], [82, 94], [94, 101]];
+    return boundaries.map(([start, end]) => chunks.slice(start, end).join("\n\n")).filter(Boolean);
+  }
+  if (isCameraTrap) {
+    const boundaries = isEn
+      ? [[0, 5], [5, 9], [9, 14], [14, 18], [18, 23], [23, 27], [27, 30], [30, 34]]
+      : [[0, 5], [5, 9], [9, 14], [14, 18], [18, 24], [24, 28], [28, 32], [32, 36]];
     return boundaries.map(([start, end]) => chunks.slice(start, end).join("\n\n")).filter(Boolean);
   }
   if (isChineseStation) {
@@ -40,12 +46,14 @@ function TextBlock({ value, firstHeading = false, openingLabel }: { value: strin
   const chunks = value.split(/\n{2,}/g).map((part) => part.trim()).filter(Boolean);
   const visibleChunks = openingLabel ? chunks.filter((chunk, index) => index > 0 && chunk !== chunks[0] && !/^[￼\uFFFC]$/.test(chunk)) : chunks;
   return <>{openingLabel && <h2 className="research-station-opening-label">{openingLabel}</h2>}{visibleChunks.map((chunk, index) => {
-    const lines = chunk.split("\n").map((line) => line.trim()).filter(Boolean);
+    const splitLines = chunk.split("\n").map((line) => line.trim()).filter(Boolean);
+    const lines = splitLines.includes("iNaturalist") ? [splitLines.join(" ")] : splitLines;
     const bullets = lines.filter((line) => line.startsWith("•"));
     if (bullets.length === lines.length) return <ul key={index}>{bullets.map((line) => <li key={line}>{line.replace(/^•\s*/, "")}</li>)}</ul>;
     if (openingLabel && /^(Exploring Life|探索生命)/.test(lines[0])) return <h2 key={index}>{lines[0]}</h2>;
     if (firstHeading && index === 0) return <h2 key={index}>{lines[0]}</h2>;
     if (lines.length === 1 && ["Avian Ecology", "鸟类生态学"].includes(lines[0])) return <p key={index}>{lines[0]}</p>;
+    if (lines.length === 1 && /顶级捕食者与中型捕食者时间分化机制/.test(lines[0])) return <p key={index}>{lines[0]}</p>;
     if (lines.length === 1 && index > 0 && lines[0].length < 72 && !/[。.!?！？，,；;：:]$/.test(lines[0])) return <h3 key={index}>{lines[0]}</h3>;
     return <p key={index}>{lines.map((line, lineIndex) => <span key={lineIndex}>{line.replace(/^•\s*/, "")}{lineIndex < lines.length - 1 && <br />}</span>)}</p>;
   })}</>;
@@ -58,8 +66,9 @@ export default function ResearchDetailPage({ detail, backHref }: { detail: Detai
   const title = isEn ? detail.titleEn : detail.titleZh;
   const isStation = detail.titleZh === "OneK 生物站";
   const isAnnualReport = detail.titleZh === "2025 年度生态监测报告";
+  const isCameraTrap = detail.titleZh === "红外相机野生动物长期监测";
   const isChineseStation = !isEn && isStation;
-  const groups = contentGroups(isEn ? detail.en : detail.zh, isStation, isChineseStation, isAnnualReport, isEn);
+  const groups = contentGroups(isEn ? detail.en : detail.zh, isStation, isChineseStation, isAnnualReport, isCameraTrap, isEn);
 
   return <main className={`story-legacy-page research-detail-page${isStation ? " research-station-detail" : ""}`} id="top">
     <header className="interior-header"><Link className="interior-brand" href="/"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link><nav className={menu ? "is-open" : ""}><Link href="/">{isEn ? "Home" : "主页"}</Link>{navItems.map(([en, zh, href]) => <Link key={href} href={href}>{isEn ? en : zh}</Link>)}<Link href="/contact">{isEn ? "Contact" : "联系我们"}</Link></nav><div className="interior-actions"><button onClick={() => setLang(isEn ? "zh" : "en")}><b>{isEn ? "EN" : "中"}</b><span>{isEn ? "中" : "EN"}</span></button><button className="interior-menu" onClick={() => setMenu(!menu)}>{isEn ? "Menu" : "菜单"}</button></div></header>
