@@ -59,7 +59,7 @@ function projectLanguageContent(detail: Detail, isEn: boolean) {
     return isEn ? combined.slice(boundary) : combined.slice(0, boundary).trim();
   }
   if (detail.titleZh === "霸鹟科繁殖生态监测") {
-    const marker = "OneK Tyrannidae Breeding Ecology Program\n\nLong-term Monitoring of Flycatcher Nesting Ecology";
+    const marker = "OneK Tyrannidae Breeding Ecology Program\n\nLong–term Monitoring of Flycatcher Nesting Ecology";
     const boundary = detail.en.indexOf(marker);
     return isEn ? detail.en.slice(boundary) : detail.en.slice(0, boundary).trim();
   }
@@ -75,7 +75,6 @@ function groupByProjectHeadings(chunks: string[], headings: string[]) {
 function contentGroups(raw: string, titleZh: string, isStation: boolean, isChineseStation: boolean, isAnnualReport: boolean, isCameraTrap: boolean, isEn: boolean) {
   const sections = raw.split(/\n\s*⸻\s*\n/g).map((part) => part.trim()).filter(Boolean);
   if (isStation && sections.length > 2) return sections.slice(0, 6);
-  if (sections.length > 2) return sections;
   const chunks = raw.split(/\n{2,}/g).map((part) => part.trim()).filter((part) => Boolean(part) && part !== "⸻");
   if (isAnnualReport) {
     const boundaries = isEn
@@ -91,6 +90,7 @@ function contentGroups(raw: string, titleZh: string, isStation: boolean, isChine
   }
   const headings = projectSectionHeadings[titleZh]?.[isEn ? "en" : "zh"];
   if (headings) return groupByProjectHeadings(chunks, headings);
+  if (sections.length > 2) return sections;
   if (isChineseStation) {
     const groups = [chunks.slice(0, 5).join("\n\n"), chunks.slice(5, 8).join("\n\n"), chunks.slice(8, 17).join("\n\n"), chunks.slice(17, 21).join("\n\n"), chunks.slice(21, 24).join("\n\n"), chunks.slice(24, 29).join("\n\n")];
     return groups.filter(Boolean);
