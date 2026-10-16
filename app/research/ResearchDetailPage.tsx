@@ -16,11 +16,17 @@ const supportingImages = [
   "/onek/research-old/ResearchHeader.JPG",
 ];
 
-function contentGroups(raw: string, isStation: boolean, isChineseStation: boolean) {
+function contentGroups(raw: string, isStation: boolean, isChineseStation: boolean, isAnnualReport: boolean, isEn: boolean) {
   const sections = raw.split(/\n\s*⸻\s*\n/g).map((part) => part.trim()).filter(Boolean);
   if (isStation && sections.length > 2) return sections.slice(0, 6);
   if (sections.length > 2) return sections;
-  const chunks = raw.split(/\n{2,}/g).map((part) => part.trim()).filter(Boolean);
+  const chunks = raw.split(/\n{2,}/g).map((part) => part.trim()).filter((part) => Boolean(part) && part !== "⸻");
+  if (isAnnualReport) {
+    const boundaries = isEn
+      ? [[0, 9], [9, 15], [15, 22], [22, 27], [27, 38], [38, 47], [47, 56], [56, 62], [62, 68], [68, 79], [79, 84], [84, 95], [95, 103]]
+      : [[0, 7], [7, 13], [13, 20], [20, 25], [25, 36], [36, 45], [45, 54], [54, 60], [60, 66], [66, 77], [77, 82], [82, 94], [94, 101]];
+    return boundaries.map(([start, end]) => chunks.slice(start, end).join("\n\n")).filter(Boolean);
+  }
   if (isChineseStation) {
     const groups = [chunks.slice(0, 5).join("\n\n"), chunks.slice(5, 8).join("\n\n"), chunks.slice(8, 17).join("\n\n"), chunks.slice(17, 21).join("\n\n"), chunks.slice(21, 24).join("\n\n"), chunks.slice(24, 29).join("\n\n")];
     return groups.filter(Boolean);
@@ -51,8 +57,9 @@ export default function ResearchDetailPage({ detail, backHref }: { detail: Detai
   const isEn = lang === "en";
   const title = isEn ? detail.titleEn : detail.titleZh;
   const isStation = detail.titleZh === "OneK 生物站";
+  const isAnnualReport = detail.titleZh === "2025 年度生态监测报告";
   const isChineseStation = !isEn && isStation;
-  const groups = contentGroups(isEn ? detail.en : detail.zh, isStation, isChineseStation);
+  const groups = contentGroups(isEn ? detail.en : detail.zh, isStation, isChineseStation, isAnnualReport, isEn);
 
   return <main className={`story-legacy-page research-detail-page${isStation ? " research-station-detail" : ""}`} id="top">
     <header className="interior-header"><Link className="interior-brand" href="/"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link><nav className={menu ? "is-open" : ""}><Link href="/">{isEn ? "Home" : "主页"}</Link>{navItems.map(([en, zh, href]) => <Link key={href} href={href}>{isEn ? en : zh}</Link>)}<Link href="/contact">{isEn ? "Contact" : "联系我们"}</Link></nav><div className="interior-actions"><button onClick={() => setLang(isEn ? "zh" : "en")}><b>{isEn ? "EN" : "中"}</b><span>{isEn ? "中" : "EN"}</span></button><button className="interior-menu" onClick={() => setMenu(!menu)}>{isEn ? "Menu" : "菜单"}</button></div></header>
