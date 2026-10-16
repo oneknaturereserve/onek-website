@@ -18,7 +18,7 @@ const supportingImages = [
 
 const projectSectionHeadings: Record<string, { en: string[]; zh: string[] }> = {
   "雨林人工树洞生态恢复": {
-    zh: ["项目理念", "为什么树洞如此重要？", "OneK 的工作方式", "长期生态监测", "为什么这项工作重要？", "我们相信"],
+    zh: ["项目理念", "为什么树洞如此重要？", "OneK 的工作方式", "长期生态监测", "一个正在成长的雨林实验室", "为什么这项工作重要？", "我们相信"],
     en: ["Project Vision", "Why Tree Cavities Matter", "Our Approach", "Long–Term Ecological Monitoring", "A Living Rainforest Laboratory", "Why This Work Matters", "We Believe"],
   },
   "鸟巢生态长期监测": {
@@ -56,7 +56,8 @@ function projectLanguageContent(detail: Detail, isEn: boolean) {
     const combined = `${detail.zh}\n\n${detail.en}`;
     const marker = "OneK Artificial Cavities Project\n\nRestoring Tree Cavity Ecosystems in the Tropical Rainforest";
     const boundary = combined.indexOf(marker);
-    return isEn ? combined.slice(boundary) : combined.slice(0, boundary).trim();
+    if (isEn) return combined.slice(boundary);
+    return projectSectionHeadings[detail.titleZh].zh.reduce((content, heading) => content.replace(heading, `\n\n${heading}\n\n`), combined.slice(0, boundary)).trim();
   }
   if (detail.titleZh === "霸鹟科繁殖生态监测") {
     const marker = "OneK Tyrannidae Breeding Ecology Program\n\nLong–term Monitoring of Flycatcher Nesting Ecology";
