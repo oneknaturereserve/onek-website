@@ -45,13 +45,34 @@ const projectSectionHeadings: Record<string, { en: string[]; zh: string[] }> = {
     zh: ["我们正在做什么", "已取得的恢复成效", "为什么这个项目重要", "长期监测与未来计划", "教育与科研价值", "OneK 的理念"],
     en: ["What We Are Doing", "Restoration Achievements", "Why This Project Matters", "Long–term Monitoring & Future Plans", "Educational & Scientific Value", "Our Philosophy"],
   },
-  "河流与溪流生态恢复": {
+  "河流生态恢复": {
     zh: ["已取得的恢复成效", "为什么这个项目重要", "长期监测与未来计划", "教育与科研价值", "OneK 的理念"],
     en: ["Recovery Achievements", "Why This Project Matters", "Long–term Monitoring & Future Plans", "Educational & Scientific Value", "Our Philosophy"],
   },
 };
 
 function projectLanguageContent(detail: Detail, isEn: boolean) {
+  if (detail.titleZh === "红外相机野生动物长期监测" && !isEn) {
+    return detail.zh.replace(/^OneK Long–term Camera Trap Wildlife Monitoring Program/, "OneK 红外相机野生动物长期监测项目");
+  }
+  if (detail.titleZh === "昆虫生物多样性长期调查" && !isEn) {
+    return detail.zh.replace(/^OneK Long–term Insect Biodiversity Survey Program/, "OneK 昆虫生物多样性长期调查项目");
+  }
+  if (detail.titleZh === "森林生态恢复" && !isEn) {
+    return detail.zh.replace(/^OneK Forest Restoration Ecology Project/, "OneK 森林生态恢复项目");
+  }
+  if (detail.titleZh === "河流生态恢复" && !isEn) {
+    return detail.zh.replace(/^OneK River Ecosystem Recovery Project/, "OneK 河流生态恢复项目");
+  }
+  if (detail.titleZh === "霸鹟科繁殖生态监测" && !isEn) {
+    const marker = "OneK Tyrannidae Breeding Ecology Program\n\nLong–term Monitoring of Flycatcher Nesting Ecology";
+    const boundary = detail.en.indexOf(marker);
+    return detail.en
+      .slice(0, boundary)
+      .trim()
+      .replace(/^OneK Tyrannidae Breeding Ecology Program/, "OneK 霸鹟科繁殖生态长期监测计划")
+      .replace(/\n\n从 OneK 整体项目体系来看，这个项目与娇鹟监测、蚁鸟监测、蝴蝶药物摄食项目相比，最大的优势是样本量稳定、每年可重复、容易形成时间序列数据。如果持续10年以上，它很可能成为 OneK 最具科研价值的长期数据库之一。$/, "");
+  }
   if (detail.titleZh === "雨林人工树洞生态恢复") {
     const combined = `${detail.zh}\n\n${detail.en}`;
     const marker = "OneK Artificial Cavities Project\n\nRestoring Tree Cavity Ecosystems in the Tropical Rainforest";

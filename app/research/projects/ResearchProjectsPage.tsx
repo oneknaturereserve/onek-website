@@ -15,7 +15,7 @@ const projects = [
   ["butterfly-ecology", "Butterfly Chemical Ecology", "蝴蝶药物摄食与化学生态", "Studying the hidden chemical relationships between butterflies and rainforest plants.", "研究蝴蝶药物摄食行为及其与雨林植物之间隐藏的化学生态联系。", "/species-archive/InsectsImage/50-11.jpg"],
   ["insect-diversity", "Insect Biodiversity Survey", "昆虫生物多样性长期调查", "Creating a long–term species archive for the organisms that sustain rainforest ecosystems.", "为支撑雨林生态系统运转的昆虫建立长期物种档案与生态数据库。", "/onek/research-old/ResearchInsect.jpg"],
   ["forest-restoration", "Forest Restoration Ecology", "森林生态恢复", "Helping arrested forest succession regain native structure and ecological connections.", "推动生态停滞区域重新恢复原生森林结构与生物多样性连接。", "/onek/research-old/IntroductionImage2.png"],
-  ["stream-restoration", "River Ecosystem Recovery", "河流与溪流生态恢复", "Following the recovery of freshwater life and ecological function after years of protection.", "通过长期保护和监测，记录淡水生命与河流生态功能的恢复过程。", "/onek/research-old/ResearchHeader.JPG"],
+  ["stream-restoration", "River Ecosystem Restoration", "河流生态恢复", "Following the recovery of freshwater life and ecological function after years of protection.", "通过长期保护和监测，记录淡水生命与河流生态功能的恢复过程。", "/onek/research-old/ResearchHeader.JPG"],
 ] as const;
 
 export default function ResearchProjectsPage() {
