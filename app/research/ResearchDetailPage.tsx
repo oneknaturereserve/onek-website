@@ -16,7 +16,63 @@ const supportingImages = [
   "/onek/research-old/ResearchHeader.JPG",
 ];
 
-function contentGroups(raw: string, isStation: boolean, isChineseStation: boolean, isAnnualReport: boolean, isCameraTrap: boolean, isEn: boolean) {
+const projectSectionHeadings: Record<string, { en: string[]; zh: string[] }> = {
+  "雨林人工树洞生态恢复": {
+    zh: ["项目理念", "为什么树洞如此重要？", "OneK 的工作方式", "长期生态监测", "为什么这项工作重要？", "我们相信"],
+    en: ["Project Vision", "Why Tree Cavities Matter", "Our Approach", "Long–Term Ecological Monitoring", "A Living Rainforest Laboratory", "Why This Work Matters", "We Believe"],
+  },
+  "鸟巢生态长期监测": {
+    zh: ["研究目标", "调查内容", "为什么研究鸟巢？", "长期愿景", "参与方式"],
+    en: ["Project Objectives", "What We Record", "Why Study Bird Nests?", "Long–term Vision", "Education and Citizen Science", "Project Information"],
+  },
+  "娇鹟长期生态监测": {
+    zh: ["项目背景", "项目目标", "为什么娇鹟如此重要？", "OneK 的长期愿景", "我们相信"],
+    en: ["Project Background", "Project Objectives", "Why Manakins Matter", "OneK’s Long–Term Vision", "We Believe"],
+  },
+  "霸鹟科繁殖生态监测": {
+    zh: ["为什么研究霸鹟科？", "旗舰研究物种", "研究目标", "我们记录什么？", "科学意义", "长期愿景", "教育与公众参与", "项目信息"],
+    en: ["Why Flycatchers?", "Focal Species", "Research Objectives", "What We Record", "Scientific Significance", "Long-term Vision", "Education and Participation", "Project Information"],
+  },
+  "蝴蝶药物摄食与化学生态": {
+    zh: ["项目目标", "研究内容", "科学意义", "教育与公众参与", "长期愿景"],
+    en: ["Project Objectives", "Research Components", "Scientific Importance", "Education and Citizen Science", "Long–Term Vision"],
+  },
+  "昆虫生物多样性长期调查": {
+    zh: ["项目目标", "调查内容", "调查方法", "项目意义", "OneK 的理念"],
+    en: ["Project Objectives", "Survey Focus", "Survey Methods", "Why It Matters", "Our Philosophy"],
+  },
+  "森林生态恢复": {
+    zh: ["我们正在做什么", "已取得的恢复成效", "为什么这个项目重要", "长期监测与未来计划", "教育与科研价值", "OneK 的理念"],
+    en: ["What We Are Doing", "Restoration Achievements", "Why This Project Matters", "Long–term Monitoring & Future Plans", "Educational & Scientific Value", "Our Philosophy"],
+  },
+  "河流与溪流生态恢复": {
+    zh: ["已取得的恢复成效", "为什么这个项目重要", "长期监测与未来计划", "教育与科研价值", "OneK 的理念"],
+    en: ["Recovery Achievements", "Why This Project Matters", "Long–term Monitoring & Future Plans", "Educational & Scientific Value", "Our Philosophy"],
+  },
+};
+
+function projectLanguageContent(detail: Detail, isEn: boolean) {
+  if (detail.titleZh === "雨林人工树洞生态恢复") {
+    const combined = `${detail.zh}\n\n${detail.en}`;
+    const marker = "OneK Artificial Cavities Project\n\nRestoring Tree Cavity Ecosystems in the Tropical Rainforest";
+    const boundary = combined.indexOf(marker);
+    return isEn ? combined.slice(boundary) : combined.slice(0, boundary).trim();
+  }
+  if (detail.titleZh === "霸鹟科繁殖生态监测") {
+    const marker = "OneK Tyrannidae Breeding Ecology Program\n\nLong-term Monitoring of Flycatcher Nesting Ecology";
+    const boundary = detail.en.indexOf(marker);
+    return isEn ? detail.en.slice(boundary) : detail.en.slice(0, boundary).trim();
+  }
+  if (detail.titleZh === "鸟巢生态长期监测" && isEn) return detail.en.split("\n\n我建议在 OneK 官网")[0].trim();
+  return isEn ? detail.en : detail.zh;
+}
+
+function groupByProjectHeadings(chunks: string[], headings: string[]) {
+  const boundaries = headings.map((heading) => chunks.findIndex((chunk) => chunk === heading)).filter((index) => index > 2);
+  return [0, ...boundaries, chunks.length].slice(0, -1).map((start, index, starts) => chunks.slice(start, starts[index + 1] ?? chunks.length).join("\n\n")).filter(Boolean);
+}
+
+function contentGroups(raw: string, titleZh: string, isStation: boolean, isChineseStation: boolean, isAnnualReport: boolean, isCameraTrap: boolean, isEn: boolean) {
   const sections = raw.split(/\n\s*⸻\s*\n/g).map((part) => part.trim()).filter(Boolean);
   if (isStation && sections.length > 2) return sections.slice(0, 6);
   if (sections.length > 2) return sections;
@@ -33,6 +89,8 @@ function contentGroups(raw: string, isStation: boolean, isChineseStation: boolea
       : [[0, 5], [5, 9], [9, 14], [14, 18], [18, 24], [24, 28], [28, 32], [32, 36]];
     return boundaries.map(([start, end]) => chunks.slice(start, end).join("\n\n")).filter(Boolean);
   }
+  const headings = projectSectionHeadings[titleZh]?.[isEn ? "en" : "zh"];
+  if (headings) return groupByProjectHeadings(chunks, headings);
   if (isChineseStation) {
     const groups = [chunks.slice(0, 5).join("\n\n"), chunks.slice(5, 8).join("\n\n"), chunks.slice(8, 17).join("\n\n"), chunks.slice(17, 21).join("\n\n"), chunks.slice(21, 24).join("\n\n"), chunks.slice(24, 29).join("\n\n")];
     return groups.filter(Boolean);
@@ -68,7 +126,8 @@ export default function ResearchDetailPage({ detail, backHref }: { detail: Detai
   const isAnnualReport = detail.titleZh === "2025 年度生态监测报告";
   const isCameraTrap = detail.titleZh === "红外相机野生动物长期监测";
   const isChineseStation = !isEn && isStation;
-  const groups = contentGroups(isEn ? detail.en : detail.zh, isStation, isChineseStation, isAnnualReport, isCameraTrap, isEn);
+  const rawContent = projectLanguageContent(detail, isEn);
+  const groups = contentGroups(rawContent, detail.titleZh, isStation, isChineseStation, isAnnualReport, isCameraTrap, isEn);
 
   return <main className={`story-legacy-page research-detail-page${isStation ? " research-station-detail" : ""}`} id="top">
     <header className="interior-header"><Link className="interior-brand" href="/"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link><nav className={menu ? "is-open" : ""}><Link href="/">{isEn ? "Home" : "主页"}</Link>{navItems.map(([en, zh, href]) => <Link key={href} href={href}>{isEn ? en : zh}</Link>)}<Link href="/contact">{isEn ? "Contact" : "联系我们"}</Link></nav><div className="interior-actions"><button onClick={() => setLang(isEn ? "zh" : "en")}><b>{isEn ? "EN" : "中"}</b><span>{isEn ? "中" : "EN"}</span></button><button className="interior-menu" onClick={() => setMenu(!menu)}>{isEn ? "Menu" : "菜单"}</button></div></header>
