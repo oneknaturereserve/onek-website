@@ -190,8 +190,9 @@
 
 /* Research hub and research detail pages */
 .research-station-hero{background-image:linear-gradient(90deg,rgba(13,27,19,.78),rgba(13,27,19,.18)),url('/onek/research-old/ResearchHeader.JPG')}
-.research-station-hero>div{width:min(760px,82%);max-width:none;margin-left:max(9vw,calc((100vw - 1180px)/2 + 42px));padding-top:88px}
+.research-station-hero>div{width:min(1020px,82%);max-width:none;margin-left:max(9vw,calc((100vw - 1180px)/2 + 42px));padding-top:88px}
 .research-station-page .about-detail-hero h1{font-size:clamp(3.2rem,7vw,5.3rem);line-height:1.02;letter-spacing:0}
+.research-hero-title-two-lines>span{display:block;white-space:nowrap}
 .research-feature{width:min(1180px,92%);margin:auto;padding:118px 0;display:grid;grid-template-columns:1.02fr .98fr;gap:58px;align-items:center}
 .research-feature.reverse{grid-template-columns:.98fr 1.02fr}.research-feature.reverse figure{order:2}.research-feature.reverse article{order:1}
 .research-feature figure{height:620px;margin:0;overflow:hidden;border-radius:30px;background:#d9d3c7;box-shadow:0 14px 38px rgba(0,0,0,.13)}
@@ -214,7 +215,7 @@
 .research-project-list article.reverse{grid-template-columns:1.08fr .92fr}.research-project-list article.reverse>div{order:2}.research-project-list article.reverse>img{order:1}
 .research-project-list article>div{padding:48px;display:flex;flex-direction:column;justify-content:center}.research-project-list article>div>p{color:var(--story-gold);font-size:.92rem;font-weight:700;letter-spacing:2px}.research-project-list h2{margin:10px 0 20px;color:var(--story-forest);font:600 clamp(2.2rem,4vw,3.3rem)/1.06 "Cormorant Garamond",Georgia,serif}.research-project-list span{color:var(--story-text);line-height:1.85}.research-project-list a{align-self:flex-start;margin-top:28px;padding:13px 22px;border:1.5px solid var(--story-forest);border-radius:999px;color:var(--story-forest);font-weight:600}.research-project-list article>img{height:100%;min-height:470px;object-fit:cover}
 @media (max-width:920px){.research-feature,.research-feature.reverse,.research-project-list article,.research-project-list article.reverse{grid-template-columns:1fr}.research-feature.reverse figure,.research-feature.reverse article,.research-project-list article.reverse>div,.research-project-list article.reverse>img{order:initial}.research-feature figure{height:520px}.research-detail-hero .story-legacy-hero-copy,.research-projects-hero .story-legacy-hero-copy,.research-station-hero>div{margin-left:7vw}}
-@media (max-width:560px){.research-station-hero>div,.research-detail-hero .story-legacy-hero-copy,.research-projects-hero .story-legacy-hero-copy{width:calc(100% - 48px);margin-left:24px}.research-feature,.research-project-list{padding-top:84px;padding-bottom:84px}.research-feature{gap:36px}.research-feature figure{height:390px;border-radius:24px}.research-project-list article>div{padding:34px 26px}.research-project-list article>img{min-height:320px}}
+@media (max-width:560px){.research-station-hero>div,.research-detail-hero .story-legacy-hero-copy,.research-projects-hero .story-legacy-hero-copy{width:calc(100% - 48px);margin-left:24px}.research-hero-title-two-lines>span{white-space:normal}.research-feature,.research-project-list{padding-top:84px;padding-bottom:84px}.research-feature{gap:36px}.research-feature figure{height:390px;border-radius:24px}.research-project-list article>div{padding:34px 26px}.research-project-list article>img{min-height:320px}}
 
 /* Natural Echo mission page */
 .natural-echo-page{--echo-cream:#f6f1e8;--echo-soft:#fbf8f2;--echo-forest:#1f3328;--echo-forest-2:#2d4638;--echo-gold:#b79b62;--echo-text:#233126;--echo-muted:#5e655b;background:var(--echo-cream);color:var(--echo-text);font-family:Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75}

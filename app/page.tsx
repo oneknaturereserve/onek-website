@@ -18,15 +18,15 @@ const copy = {
     signal: "A living signal from southern Costa Rica",
     aboutKicker: "About OneK",
     aboutTitle: "Growing together with the rainforest",
-    aboutBody: "OneK Nature Reserve is a private rainforest reserve in Costa Rica. It is a home for wildlife and a place where ecological restoration, scientific research, and nature education grow together. Through long‑term protection and careful stewardship, we work to safeguard biodiversity and keep this land full of life.",
+    aboutBody: "OneK Nature Reserve is a private rainforest reserve in Costa Rica. It is a home for wildlife and a place where ecological restoration, scientific research, and nature education grow together. Through long–term protection and careful stewardship, we work to safeguard biodiversity and keep this land full of life.",
     readStory: "Discover our story",
     fieldKicker: "Latest field note · July 2025",
     fieldTitle: "A Costa Rican endemic appears in the understory",
-    fieldBody: "The Black-cheeked Ant-Tanager was recorded in the rainforest understory at OneK Biological Station—an encounter that adds another point to our long‑term record of this remarkable forest.",
+    fieldBody: "The Black-cheeked Ant-Tanager was recorded in the rainforest understory at OneK Biological Station—an encounter that adds another point to our long–term record of this remarkable forest.",
     readNote: "Read the field note",
-    researchKicker: "Research & long‑term monitoring",
+    researchKicker: "Research & long–term monitoring",
     researchTitle: "The forest changes. We keep listening.",
-    researchBody: "Through camera trapping, field surveys, biodiversity inventories, and restoration assessments, OneK continuously monitors ecological changes within the tropical rainforest. Long‑term monitoring helps us understand biodiversity dynamics while providing valuable information for research and conservation management. We believe that effective conservation is built upon long‑term data and a deeper understanding of nature.",
+    researchBody: "Through camera trapping, field surveys, biodiversity inventories, and restoration assessments, OneK continuously monitors ecological changes within the tropical rainforest. Long–term monitoring helps us understand biodiversity dynamics while providing valuable information for research and conservation management. We believe that effective conservation is built upon long–term data and a deeper understanding of nature.",
     enterStation: "Enter the biological station",
     cameraKicker: "Camera trap · Night signal",
     cameraTitle: "The forest does not sleep",
@@ -48,7 +48,7 @@ const copy = {
     archiveTitle: "One forest. One family. A story still being written.",
     archiveBody: "From the first path in 2018 to wildlife monitoring, restoration, and education today—explore the moments that shaped OneK.",
     contactTitle: "Continue the rainforest story with us.",
-    contactBody: "Protect rainforest habitat, support long‑term research, or take part in field programs at OneK Nature Reserve.",
+    contactBody: "Protect rainforest habitat, support long–term research, or take part in field programs at OneK Nature Reserve.",
     temp: "Temporary image · replace later",
     sound: "Listen to OneK",
     soundPending: "Rainforest recording will be added here",
@@ -227,7 +227,7 @@ export default function Home() {
     <section className="contact-section legacy-contact cinema-reveal"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><p className="legacy-contact-body">{t.contactBody}</p><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact OneK" : "联系 OneK"}</a><a href="/programs">{lang === "en" ? "Join a Program" : "参与项目"}</a><a href="/support">{lang === "en" ? "Support Conservation" : "支持保护行动"}</a></div></section>
 
     <footer className="legacy-footer"><div className="legacy-footer-inner">
-      <div className="legacy-footer-about"><img src="/onek/logo.png" alt="OneK Nature Reserve"/><b>{lang === "en" ? "Established in 2018" : "始于 2018 年"}</b><p>{lang === "en" ? "OneK protects tropical rainforest through habitat conservation, ecological restoration, long‑term research, nature education, and community participation in southern Costa Rica." : "OneK 在哥斯达黎加南部通过栖息地保护、生态恢复、长期科研、自然教育与社区参与守护热带雨林。"}</p></div>
+      <div className="legacy-footer-about"><img src="/onek/logo.png" alt="OneK Nature Reserve"/><b>{lang === "en" ? "Established in 2018" : "始于 2018 年"}</b><p>{lang === "en" ? "OneK protects tropical rainforest through habitat conservation, ecological restoration, long–term research, nature education, and community participation in southern Costa Rica." : "OneK 在哥斯达黎加南部通过栖息地保护、生态恢复、长期科研、自然教育与社区参与守护热带雨林。"}</p></div>
       <div className="legacy-footer-col"><h3>{lang === "en" ? "Quick Links" : "快速导航"}</h3><a href="#top">{lang === "en" ? "Home" : "主页"}</a><a href="/about">{lang === "en" ? "About" : "关于 OneK"}</a><a href="/#species">{lang === "en" ? "Species" : "物种档案"}</a><a href="/research">{lang === "en" ? "Research" : "科研监测"}</a><a href="/programs">{lang === "en" ? "Programs" : "参与项目"}</a></div>
       <div className="legacy-footer-col legacy-footer-contact"><h3>{lang === "en" ? "Contact" : "联系我们"}</h3><a href="mailto:OneK.CR2018@gmail.com">Email<br/><span>OneK.CR2018@gmail.com</span></a><a href="tel:+50687628888">{lang === "en" ? "Phone" : "电话"}<br/><span>+506 8762-8888 (CR)</span></a><div className="legacy-socials"><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer" aria-label="WhatsApp"><img src="/species-archive/GeneralImage/WhatUp.png" alt=""/></a><span aria-label="Instagram link reserved"><img src="/species-archive/GeneralImage/Instagram.png" alt=""/></span><button onClick={() => navigator.clipboard?.writeText("jiangnan010801")} aria-label="Copy WeChat ID"><img src="/species-archive/GeneralImage/wechat.png" alt=""/><i>WeChat<br/><strong>jiangnan010801</strong></i></button></div></div>
     </div><div className="legacy-footer-bottom">© 2026 OneK Nature Reserve · Southern Costa Rica · All Rights Reserved <a href="#top">{lang === "en" ? "Back to canopy" : "返回顶部"} ↑</a></div></footer>

@@ -127,17 +127,17 @@ const chapters: readonly StorySection[] = [
     image: "/onek/camera.jpg",
     imagePosition: "center",
     en: [
-      "As our observations grew deeper, we began to build systems for long‑term documentation.",
+      "As our observations grew deeper, we began to build systems for long–term documentation.",
       "From the chance discovery of a bird nest to monitoring the breeding behavior of the same species over many years;",
       "From recording a butterfly to studying the relationship between insects and plants;",
       "From protecting a stream to following the recovery of an entire watershed ecosystem.",
       "The direction of OneK gradually became clear.",
       "We began to understand:",
-      "Long‑term monitoring is the foundation for understanding ecological change;",
+      "Long–term monitoring is the foundation for understanding ecological change;",
       "Natural history observation is an essential starting point for ecological research;",
       "Scientific research and ecological conservation should support one another.",
       "And so, OneK was no longer simply a protected forest.",
-      "It gradually grew into a platform for long‑term ecological monitoring and natural history research.",
+      "It gradually grew into a platform for long–term ecological monitoring and natural history research.",
       "A biological station connecting conservation, research, and education.",
     ],
     zh: [
@@ -160,7 +160,7 @@ const chapters: readonly StorySection[] = [
 const workItems = {
   en: [
     "Biodiversity surveys and species documentation",
-    "Long‑term monitoring of avian breeding ecology",
+    "Long–term monitoring of avian breeding ecology",
     "Insect and butterfly ecology research",
     "Research on army ants and ant-following birds",
     "Camera-trap monitoring of mammals",
@@ -184,11 +184,11 @@ const closing = {
     "It is also about building knowledge for the future, restoring ecosystems, and nurturing the next generation’s understanding and love of nature.",
     "OneK did not grow from a blueprint designed in advance.",
     "It took shape little by little through countless observations, records, discoveries, and reflections.",
-    "From a nature reserve to a long‑term ecological monitoring base;",
+    "From a nature reserve to a long–term ecological monitoring base;",
     "From loving nature to understanding nature;",
     "From a dream to an ongoing endeavor.",
     "This journey continues.",
-    "Through long‑term effort, we hope that the story of this rainforest can be recorded, understood, and passed on for generations to come.",
+    "Through long–term effort, we hope that the story of this rainforest can be recorded, understood, and passed on for generations to come.",
   ],
   zh: [
     "真正的保护不仅仅是守护今天的自然。",
