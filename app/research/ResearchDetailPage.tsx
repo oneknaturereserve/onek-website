@@ -39,6 +39,7 @@ function TextBlock({ value, firstHeading = false, openingLabel }: { value: strin
     if (bullets.length === lines.length) return <ul key={index}>{bullets.map((line) => <li key={line}>{line.replace(/^•\s*/, "")}</li>)}</ul>;
     if (openingLabel && /^(Exploring Life|探索生命)/.test(lines[0])) return <h2 key={index}>{lines[0]}</h2>;
     if (firstHeading && index === 0) return <h2 key={index}>{lines[0]}</h2>;
+    if (lines.length === 1 && ["Avian Ecology", "鸟类生态学"].includes(lines[0])) return <p key={index}>{lines[0]}</p>;
     if (lines.length === 1 && index > 0 && lines[0].length < 72 && !/[。.!?！？，,；;：:]$/.test(lines[0])) return <h3 key={index}>{lines[0]}</h3>;
     return <p key={index}>{lines.map((line, lineIndex) => <span key={lineIndex}>{line.replace(/^•\s*/, "")}{lineIndex < lines.length - 1 && <br />}</span>)}</p>;
   })}</>;
