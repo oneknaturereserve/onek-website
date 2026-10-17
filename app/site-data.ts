@@ -230,8 +230,19 @@ observations.forEach(([date, en, zh, enSummary, zhSummary, slug, image]) => add(
 
 add({ path: "support", eyebrow: L("NONPROFIT ORGANIZATION", "非营利组织"), title: L("Protect the rainforest. Protect life.", "守护雨林，保护生命"), subtitle: L("Asociación ONEK de Conservación de Biodiversidad Costa Rica", "Asociación ONEK de Conservación de Biodiversidad Costa Rica"), intro: L("Registration No. 3-002-971175. OneK's nonprofit platform advances biodiversity conservation, ecological restoration, research, environmental education, and community participation.", "注册号 3-002-971175。OneK 的非营利平台致力于生物多样性保护、生态恢复、科学研究、环境教育与社区参与。"), image: "/onek/conservation-logo.jpg", sections: [
   section("Purpose", "组织宗旨", ["The association protects and restores Costa Rica's biodiversity and natural ecosystems while promoting environmental education, scientific research, sustainability, and community participation."], ["协会旨在保护、维护与恢复哥斯达黎加的生物多样性及自然生态系统，并推动环境教育、科学研究、可持续发展与社区参与。"]),
-  section("Areas of action", "行动方向", ["Work includes rainforest and watershed protection, restoration, biological monitoring, education, citizen science, volunteering, responsible ecotourism, and institutional collaboration."], ["工作包括雨林与流域保护、生态恢复、生物监测、环境教育、公民科学、志愿服务、负责任生态旅游与机构合作。"], [L("Biodiversity conservation", "生物多样性保护"), L("Ecological restoration", "生态恢复"), L("Scientific research", "科学研究"), L("Environmental education", "环境教育"), L("Community engagement", "社区参与")]),
-  section("Donations", "捐赠方式", ["Verified donation channels for the Americas and China will be connected here. Until then, contact OneK directly before making any contribution."], ["面向美洲与中国的正式收款方式将在核验后接入。在此之前，请先联系 OneK 确认，再进行任何捐赠。"]),
+  section("Areas of action", "行动方向", [], [], [
+    L("Protect and maintain tropical rainforests, wetlands, rivers, biological corridors, and wildlife habitats.", "保护和维护热带雨林、湿地、河流、生物廊道以及野生动植物栖息地。"),
+    L("Advance ecological restoration, forest recovery, and the rebuilding of degraded ecosystems.", "推动生态修复、森林恢复以及退化生态系统重建项目。"),
+    L("Promote scientific research, biological monitoring, and the documentation of wildlife species.", "促进科学研究、生物监测以及野生物种资料记录工作。"),
+    L("Deliver environmental education, ecological interpretation, and programs that strengthen public awareness of biodiversity conservation.", "开展环境教育、生态导览解说以及提升公众生物多样性保护意识的相关项目。"),
+    L("Advance citizen science, environmental volunteering, and community participation programs.", "推动公民科学、环保志愿服务以及社区参与项目。"),
+    L("Promote responsible ecotourism and educational tourism guided by environmental protection.", "推广以环境保护为导向的负责任生态旅游与教育旅游活动。"),
+    L("Build partnerships with government agencies, private organizations, universities, local communities, and national and international organizations to strengthen nature conservation.", "与政府机构、私人组织、高校、当地社区及国内外组织建立合作关系，共同加强自然保护工作。"),
+    L("Conduct projects related to sustainable development, climate change, water-resource protection, and endangered-species conservation.", "开展与可持续发展、气候变化、水资源保护及濒危物种保护相关的项目。"),
+    L("Establish and manage private nature reserves, environmental education centers, and ecological conservation projects.", "建立和管理私人自然保护区、环境教育中心以及生态保护项目。"),
+    L("Administer domestic and international donations, funds, cooperation agreements, and related projects dedicated to environmental protection and ecological well-being.", "管理用于环境保护与生态福祉的国内外捐赠、基金、合作协议及相关项目。"),
+  ]),
+      section("Donations", "捐赠方式", ["Verified donation channels will be connected here. Until then, contact OneK directly before making any contribution."], ["正式收款方式将在核验后接入。在此之前，请先联系 OneK 确认，再进行任何捐赠。"]),
 ] });
 
 export function getSitePage(slug: string[]): SitePage | undefined {

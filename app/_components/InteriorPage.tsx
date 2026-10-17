@@ -36,11 +36,14 @@ export default function InteriorPage({ page }: { page: SitePage }) {
 
     <div id="content">
       {isNaturalEchoActivity && <section className="interior-section natural-echo-activity-intro"><div className="interior-section-number">01</div><div className="interior-section-title"><p>{page.eyebrow[lang]}</p><h2>{page.title[lang]}</h2></div><div className="interior-section-body"><p>{page.intro[lang]}</p></div></section>}
-      {page.sections ? page.sections.map((item, index) => <section className={`interior-section ${index % 2 ? "tint" : ""}`} key={`${item.title.en}-${index}`}>
-        <div className="interior-section-number">{String(index + (isNaturalEchoActivity ? 2 : 1)).padStart(2, "0")}</div>
-        <div className="interior-section-title"><p>{page.eyebrow[lang]}</p><h2>{item.title[lang]}</h2></div>
-        <div className="interior-section-body">{item.body.map((paragraph, p) => <p key={p}>{paragraph[lang]}</p>)}{item.bullets && <ul>{item.bullets.map((bullet, b) => <li key={b}>{bullet[lang]}</li>)}</ul>}</div>
-      </section>) : null}
+      {page.sections ? page.sections.map((item, index) => {
+        const isNonprofitActions = page.path === "support" && item.title.zh === "行动方向";
+        return <section className={`interior-section ${index % 2 ? "tint" : ""}${isNonprofitActions ? " nonprofit-actions-section" : ""}`} key={`${item.title.en}-${index}`}>
+          <div className="interior-section-number">{String(index + (isNaturalEchoActivity ? 2 : 1)).padStart(2, "0")}</div>
+          <div className="interior-section-title"><p>{page.eyebrow[lang]}</p><h2>{item.title[lang]}</h2></div>
+          <div className="interior-section-body">{item.body.map((paragraph, p) => <p key={p}>{paragraph[lang]}</p>)}{item.bullets && (isNonprofitActions ? <ol className="nonprofit-action-grid">{item.bullets.map((bullet, b) => <li key={b}>{bullet[lang]}</li>)}</ol> : <ul>{item.bullets.map((bullet, b) => <li key={b}>{bullet[lang]}</li>)}</ul>)}</div>
+        </section>;
+      }) : null}
 
       {page.cards ? <section className="interior-related"><div className="interior-related-heading"><p>{page.eyebrow[lang]}</p><h2>{t.related}</h2></div><div className="interior-card-grid">
         {page.cards.map((item) => <Link className="interior-card" href={item.href} key={item.href}><div className="interior-card-image"><img src={item.image} alt={item.title[lang]} />{item.placeholder && <span>{t.placeholder}</span>}</div><div className="interior-card-copy"><small>{item.kicker[lang]}</small><h3>{item.title[lang]}</h3><p>{item.summary[lang]}</p><b>{t.explore} ↗</b></div></Link>)}
