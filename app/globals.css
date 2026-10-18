@@ -293,3 +293,19 @@
 @media (max-width:700px){.nonprofit-actions-section{padding:80px 18px;grid-template-columns:1fr;gap:15px}.nonprofit-actions-section .interior-section-title{position:static;margin-bottom:24px}.nonprofit-action-grid{grid-template-columns:1fr}.nonprofit-action-grid li{min-height:0;padding:58px 22px 24px}}
 
 .archive-page .interior-header{position:fixed;background:rgba(17,30,22,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1)}.archive-story-content{background:var(--story-cream)}.archive-story-opening .story-legacy-image img,.archive-story-content .story-legacy-chapter .story-legacy-image img{width:100%;height:100%;object-fit:cover}.archive-story-content article ul{list-style:none;margin:18px 0 28px;padding:0;border-top:1px solid rgba(31,51,40,.18)}.archive-story-content article li{position:relative;padding:12px 8px 12px 30px;border-bottom:1px solid rgba(31,51,40,.18);color:var(--story-text);font-size:1rem;line-height:1.7}.archive-story-content article li:before{content:"";position:absolute;left:7px;top:22px;width:7px;height:7px;border-radius:50%;background:var(--story-gold)}
+
+.field-notes-content{--field-forest:#1f3328;--field-gold:#b79b62;--field-cream:#f6f1e8;--field-soft:#fbf8f2;--field-text:#283a2f;background:var(--field-cream);color:var(--field-text)}
+.field-notes-feature{width:min(1180px,92%);margin:auto;padding:118px 0;display:grid;grid-template-columns:.92fr 1.08fr;gap:58px;align-items:start}
+.field-notes-feature figure{position:sticky;top:104px;height:690px;margin:0;border-radius:30px;overflow:hidden;background:#d9d3c7;box-shadow:0 14px 38px rgba(0,0,0,.13)}
+.field-notes-feature figure img{width:100%;height:100%;object-fit:cover}
+.field-notes-feature figcaption{position:absolute;left:18px;bottom:18px;padding:8px 12px;border-radius:999px;background:rgba(251,248,242,.94);color:#5e655b;font-size:.7rem;font-weight:700;letter-spacing:.08em}
+.field-notes-feature article{max-width:650px}.field-notes-kicker{margin:0 0 14px!important;color:var(--field-gold)!important;font-size:.92rem!important;font-weight:700!important;letter-spacing:2px;text-transform:uppercase}
+.field-notes-feature h2{margin:0 0 14px;color:var(--field-forest);font:600 clamp(2.5rem,4vw,3.7rem)/1.06 "Cormorant Garamond",Georgia,serif}
+.field-notes-latin{margin-bottom:28px!important;color:#667269!important;font-style:italic}
+.field-notes-feature article>p{margin:0 0 15px;font:1rem/1.9 Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif}
+.field-notes-feature ul{list-style:none;margin:30px 0;padding:20px 0;border-top:1px solid rgba(31,51,40,.18);border-bottom:1px solid rgba(31,51,40,.18)}
+.field-notes-feature li{padding:5px 0;font:.82rem/1.6 Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif;color:#526057}
+.field-notes-feature blockquote{margin:34px 0 0;padding-left:24px;border-left:3px solid var(--field-gold);color:var(--field-forest);font:600 1.35rem/1.5 "Cormorant Garamond",Georgia,serif}
+.field-notes-index{padding:118px 0;background:var(--field-soft);overflow:hidden}.field-notes-index-heading{width:min(1120px,94%);margin:0 auto 54px;text-align:center}.field-notes-index-heading p{margin:0 0 12px;color:var(--field-gold);font-size:.92rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}.field-notes-index-heading h2{margin:0;color:var(--field-forest);font:600 clamp(2.7rem,5vw,4.4rem)/1.06 "Cormorant Garamond",Georgia,serif}
+@media (max-width:920px){.field-notes-feature{grid-template-columns:1fr}.field-notes-feature figure{position:relative;top:auto;height:560px}}
+@media (max-width:560px){.field-notes-feature,.field-notes-index{padding-top:84px;padding-bottom:84px}.field-notes-feature{gap:38px}.field-notes-feature figure{height:420px;border-radius:24px}.field-notes-feature h2{font-size:clamp(2.35rem,11vw,3.2rem)}}

@@ -6,6 +6,7 @@ import { useState } from "react";
 import type { Lang, SitePage } from "../site-data";
 import { navItems } from "../navigation";
 import SiteEnding from "./SiteEnding";
+import { featuredFieldNote } from "../field-notes-content";
 
 const copy = {
   en: { home: "Home", menu: "Menu", contact: "Contact", support: "Support", explore: "Explore", back: "Back", placeholder: "Temporary image · replace after confirmation", related: "Continue exploring", apply: "Contact OneK", footer: "Protecting rainforest through research, education, and conservation." },
@@ -18,6 +19,7 @@ export default function InteriorPage({ page }: { page: SitePage }) {
   const t = copy[lang];
   const isNaturalEchoActivity = page.path.startsWith("natural-echo/");
   const isArchivePage = page.path === "archive" || page.path.startsWith("archive/");
+  const isFieldNotes = page.path === "field-notes";
   const isArchiveStory = Boolean(page.archiveStory);
   const archiveSections = page.archiveStory?.[lang] ?? [];
   const archiveImages = [page.image, "/onek/about-old/story.jpg", "/onek/about-old/research.jpg", "/onek/about-old/biodiversity.jpg", "/onek/camera.jpg"];
@@ -39,8 +41,17 @@ export default function InteriorPage({ page }: { page: SitePage }) {
     </section>
 
     <div id="content">
+      {isFieldNotes && <div className="field-notes-content">
+        <section className="field-notes-feature">
+          <figure><img src="/onek/fieldnote.jpg" alt={featuredFieldNote[lang].title} /><figcaption>FIELD RECORD · 2025.07</figcaption></figure>
+          <article><p className="field-notes-kicker">{featuredFieldNote[lang].kicker}</p><h2>{featuredFieldNote[lang].title}</h2><p className="field-notes-latin">{featuredFieldNote[lang].scientificName}</p>{featuredFieldNote[lang].paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<ul>{featuredFieldNote[lang].facts.map((fact) => <li key={fact}>{fact}</li>)}</ul><blockquote>{featuredFieldNote[lang].closing}</blockquote></article>
+        </section>
+        <section className="field-notes-index"><div className="field-notes-index-heading"><p>{page.eyebrow[lang]}</p><h2>{lang === "en" ? "More records from the rainforest" : "更多雨林记录"}</h2></div><div className="natural-echo-activity-index">
+          {page.cards?.filter((item) => item.href !== "/discover-observe/black-cheeked-ant-tanager").map((item, index) => <Link className="natural-echo-activity-row" href={item.href} key={item.href}><small>{item.kicker[lang]}</small><div><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title[lang]}</h3><p>{item.summary[lang]}</p></div><b>↗</b><img src={item.image} alt="" /></Link>)}
+        </div></section>
+      </div>}
       {isNaturalEchoActivity && <section className="interior-section natural-echo-activity-intro"><div className="interior-section-number">01</div><div className="interior-section-title"><p>{page.eyebrow[lang]}</p><h2>{page.title[lang]}</h2></div><div className="interior-section-body"><p>{page.intro[lang]}</p></div></section>}
-      {isArchiveStory && archiveSections.length > 0 ? <div className="archive-story-content">
+      {!isFieldNotes && isArchiveStory && archiveSections.length > 0 ? <div className="archive-story-content">
         <section className="story-legacy-opening archive-story-opening">
           <figure className="story-legacy-image"><img src={archiveImages[0]} alt={archiveSections[0].title} /></figure>
           <article><p className="story-legacy-kicker">01</p><h2>{archiveSections[0].title}</h2>{archiveSections[0].blocks.map((block, index) => block.type === "paragraph" ? <p key={index}>{block.text}</p> : <ul key={index}>{block.items.map((item) => <li key={item}>{item}</li>)}</ul>)}</article>
@@ -59,7 +70,7 @@ export default function InteriorPage({ page }: { page: SitePage }) {
         </section>;
       }) : null}
 
-      {page.cards ? <section className="interior-related"><div className="interior-related-heading"><p>{page.eyebrow[lang]}</p><h2>{t.related}</h2></div><div className="interior-card-grid">
+      {!isFieldNotes && page.cards ? <section className="interior-related"><div className="interior-related-heading"><p>{page.eyebrow[lang]}</p><h2>{t.related}</h2></div><div className="interior-card-grid">
         {page.cards.map((item) => <Link className="interior-card" href={item.href} key={item.href}><div className="interior-card-image"><img src={item.image} alt={item.title[lang]} />{item.placeholder && <span>{t.placeholder}</span>}</div><div className="interior-card-copy"><small>{item.kicker[lang]}</small><h3>{item.title[lang]}</h3><p>{item.summary[lang]}</p><b>{t.explore} ↗</b></div></Link>)}
       </div></section> : null}
 
