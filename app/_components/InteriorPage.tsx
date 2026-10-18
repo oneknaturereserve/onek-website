@@ -20,11 +20,12 @@ export default function InteriorPage({ page }: { page: SitePage }) {
   const isNaturalEchoActivity = page.path.startsWith("natural-echo/");
   const isArchivePage = page.path === "archive" || page.path.startsWith("archive/");
   const isFieldNotes = page.path === "field-notes";
+  const isFieldNotesSection = isFieldNotes || page.path === "discover-observe" || page.path.startsWith("discover-observe/");
   const isArchiveStory = Boolean(page.archiveStory);
   const archiveSections = page.archiveStory?.[lang] ?? [];
   const archiveImages = [page.image, "/onek/about-old/story.jpg", "/onek/about-old/research.jpg", "/onek/about-old/biodiversity.jpg", "/onek/camera.jpg"];
 
-  return <main className={`interior-page${isNaturalEchoActivity ? " natural-echo-activity-page" : ""}${isArchiveStory ? " story-legacy-page archive-story-page" : ""}${isArchivePage ? " archive-page" : ""}`} id="top">
+  return <main className={`interior-page${isNaturalEchoActivity ? " natural-echo-activity-page" : ""}${isArchiveStory ? " story-legacy-page archive-story-page" : ""}${isArchivePage ? " archive-page" : ""}${isFieldNotesSection ? " field-notes-page" : ""}`} id="top">
     <header className="interior-header">
       <Link className="interior-brand" href="/" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link>
       <nav className={menu ? "is-open" : ""} aria-label="Primary navigation">
