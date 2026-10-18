@@ -219,10 +219,6 @@ export const archiveHistoryContent = {
         "blocks": [
           {
             "type": "paragraph",
-            "text": "December 2018 | OneK began construction of the road leading to the reserve."
-          },
-          {
-            "type": "paragraph",
             "text": "In December 2018, construction began on the access road leading to the OneK Nature Reserve."
           },
           {
@@ -465,10 +461,6 @@ export const archiveHistoryContent = {
         "blocks": [
           {
             "type": "paragraph",
-            "text": "April 2019 | Construction of the OneK field camp officially began."
-          },
-          {
-            "type": "paragraph",
             "text": "In April 2019, construction officially began on the OneK field camp."
           },
           {
@@ -699,10 +691,6 @@ export const archiveHistoryContent = {
       {
         "title": "Discovering the Spring That Would Sustain OneK",
         "blocks": [
-          {
-            "type": "paragraph",
-            "text": "May 2019 | During routine surveys and exploration of the reserve, we discovered a perennial underground spring."
-          },
           {
             "type": "paragraph",
             "text": "In May 2019, during routine exploration and surveys within the reserve, we discovered a perennial freshwater spring emerging from the hillside deep inside the forest."
