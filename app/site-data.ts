@@ -1,6 +1,10 @@
+import { archiveHistoryContent } from "./archive-history-content";
+
 export type Lang = "en" | "zh";
 export type Localized = { en: string; zh: string };
 export type ContentSection = { title: Localized; body: Localized[]; bullets?: Localized[] };
+export type ArchiveStoryBlock = { type: "paragraph"; text: string } | { type: "list"; items: readonly string[] };
+export type ArchiveStorySection = { title: string; blocks: readonly ArchiveStoryBlock[] };
 export type PageCard = { href: string; image: string; kicker: Localized; title: Localized; summary: Localized; placeholder?: boolean };
 export type SitePage = {
   path: string;
@@ -11,6 +15,7 @@ export type SitePage = {
   image: string;
   imagePlaceholder?: boolean;
   sections?: ContentSection[];
+  archiveStory?: { en: readonly ArchiveStorySection[]; zh: readonly ArchiveStorySection[] };
   cards?: PageCard[];
   quote?: Localized;
 };
@@ -216,10 +221,23 @@ add({ path: "natural-echo", eyebrow: L("NATURAL ECHO", "自然回声"), title: L
 
 add({ path: "archive", eyebrow: L("ONEK HISTORICAL ARCHIVE", "OneK 历史档案"), title: L("One forest. One family. One continuing story.", "一片森林，一个家庭，一段持续书写的故事"), subtitle: L("Milestones along our journey with the rainforest", "每一个里程碑，都是与雨林共同成长的见证"), intro: L("The archive follows how a piece of rainforest became a reserve, a field base, a biological station, and a growing conservation community.", "历史档案记录一片雨林如何逐渐成为保护区、野外基地、生物站和持续成长的保护共同体。"), image: "/onek/hero.jpg", cards: historyCards });
 
-history.forEach(([date, en, zh, enSummary, zhSummary, slug], index) => add({ path: `archive/${slug}`, eyebrow: L("ONEK HISTORICAL ARCHIVE", "OneK 历史档案"), title: L(en, zh), subtitle: L(date, date), intro: L(enSummary, zhSummary), image: index % 3 === 0 ? "/onek/hero.jpg" : index % 3 === 1 ? "/onek/about.jpg" : "/onek/explore.jpg", imagePlaceholder: true, sections: [
-  section("The moment", "这一时刻", ["This milestone records a practical step in OneK's gradual development from a family conservation dream into a long–term rainforest reserve and biological station."], ["这一里程碑记录了 OneK 从家庭保护梦想逐渐发展为长期雨林保护区与生物站过程中的一个真实步骤。"]),
-  section("What it changed", "它带来的改变", ["Each action created the conditions for later monitoring, restoration, education, or community work. The meaning of the event became clearer as the years accumulated."], ["每一次行动都为之后的监测、恢复、教育或社区工作创造了条件，而它的意义也在多年积累中逐渐显现。"]),
-] }));
+history.forEach(([date, en, zh, enSummary, zhSummary, slug], index) => {
+  const archiveStory = archiveHistoryContent[slug as keyof typeof archiveHistoryContent];
+  add({
+    path: `archive/${slug}`,
+    eyebrow: L("ONEK HISTORICAL ARCHIVE", "OneK 历史档案"),
+    title: L(en, zh),
+    subtitle: L(date, date),
+    intro: L(enSummary, zhSummary),
+    image: index % 3 === 0 ? "/onek/hero.jpg" : index % 3 === 1 ? "/onek/about.jpg" : "/onek/explore.jpg",
+    imagePlaceholder: true,
+    archiveStory,
+    sections: archiveStory ? undefined : [
+      section("The moment", "这一时刻", ["This milestone records a practical step in OneK's gradual development from a family conservation dream into a long–term rainforest reserve and biological station."], ["这一里程碑记录了 OneK 从家庭保护梦想逐渐发展为长期雨林保护区与生物站过程中的一个真实步骤。"]),
+      section("What it changed", "它带来的改变", ["Each action created the conditions for later monitoring, restoration, education, or community work. The meaning of the event became clearer as the years accumulated."], ["每一次行动都为之后的监测、恢复、教育或社区工作创造了条件，而它的意义也在多年积累中逐渐显现。"]),
+    ],
+  });
+});
 
 add({ path: "discover-observe", eyebrow: L("DISCOVER & OBSERVE", "发现与观察"), title: L("Look closer. Discover more.", "靠近观察，发现更多"), subtitle: L("Species events recorded through the years", "这些年发现并记录的物种事件"), intro: L("Unexpected encounters often become the starting point for longer questions, new projects, and a deeper understanding of the rainforest.", "一次偶然相遇，常常会成为更长期问题、新项目以及更深入理解雨林的起点。"), image: "/onek/fieldnote.jpg", cards: observationCards });
 

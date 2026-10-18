@@ -17,8 +17,11 @@ export default function InteriorPage({ page }: { page: SitePage }) {
   const [menu, setMenu] = useState(false);
   const t = copy[lang];
   const isNaturalEchoActivity = page.path.startsWith("natural-echo/");
+  const isArchiveStory = Boolean(page.archiveStory);
+  const archiveSections = page.archiveStory?.[lang] ?? [];
+  const archiveImages = [page.image, "/onek/about-old/story.jpg", "/onek/about-old/research.jpg", "/onek/about-old/biodiversity.jpg", "/onek/camera.jpg"];
 
-  return <main className={isNaturalEchoActivity ? "interior-page natural-echo-activity-page" : "interior-page"} id="top">
+  return <main className={isNaturalEchoActivity ? "interior-page natural-echo-activity-page" : isArchiveStory ? "interior-page story-legacy-page archive-story-page" : "interior-page"} id="top">
     <header className="interior-header">
       <Link className="interior-brand" href="/" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link>
       <nav className={menu ? "is-open" : ""} aria-label="Primary navigation">
@@ -36,7 +39,17 @@ export default function InteriorPage({ page }: { page: SitePage }) {
 
     <div id="content">
       {isNaturalEchoActivity && <section className="interior-section natural-echo-activity-intro"><div className="interior-section-number">01</div><div className="interior-section-title"><p>{page.eyebrow[lang]}</p><h2>{page.title[lang]}</h2></div><div className="interior-section-body"><p>{page.intro[lang]}</p></div></section>}
-      {page.sections ? page.sections.map((item, index) => {
+      {isArchiveStory && archiveSections.length > 0 ? <div className="archive-story-content">
+        <section className="story-legacy-opening archive-story-opening">
+          <figure className="story-legacy-image"><img src={archiveImages[0]} alt={archiveSections[0].title} /></figure>
+          <article><p className="story-legacy-kicker">01</p><h2>{archiveSections[0].title}</h2>{archiveSections[0].blocks.map((block, index) => block.type === "paragraph" ? <p key={index}>{block.text}</p> : <ul key={index}>{block.items.map((item) => <li key={item}>{item}</li>)}</ul>)}</article>
+        </section>
+        {archiveSections.length > 1 && <div className="story-legacy-chapters">{archiveSections.slice(1).map((section, index) => <section className={index % 2 ? "story-legacy-chapter reverse" : "story-legacy-chapter"} key={`${section.title}-${index}`}>
+          <article><p className="story-legacy-kicker">{String(index + 2).padStart(2, "0")}</p><h2>{section.title}</h2>{section.blocks.map((block, blockIndex) => block.type === "paragraph" ? <p key={blockIndex}>{block.text}</p> : <ul key={blockIndex}>{block.items.map((item) => <li key={item}>{item}</li>)}</ul>)}</article>
+          <figure className="story-legacy-image"><img src={archiveImages[(index + 1) % archiveImages.length]} alt={section.title} /></figure>
+        </section>)}</div>}
+        <div className="story-legacy-back"><Link href="/archive">← {lang === "en" ? "Back to the historical archive" : "返回历史档案"}</Link></div>
+      </div> : page.sections ? page.sections.map((item, index) => {
         const isNonprofitActions = page.path === "support" && item.title.zh === "行动方向";
         return <section className={`interior-section ${index % 2 ? "tint" : ""}${isNonprofitActions ? " nonprofit-actions-section" : ""}`} key={`${item.title.en}-${index}`}>
           <div className="interior-section-number">{String(index + (isNaturalEchoActivity ? 2 : 1)).padStart(2, "0")}</div>
