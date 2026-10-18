@@ -123,6 +123,10 @@ export const archiveHistoryContent = {
         "blocks": [
           {
             "type": "paragraph",
+            "text": "2018年12月｜OneK启动了通往保护区的道路建设工程。"
+          },
+          {
+            "type": "paragraph",
             "text": "在此之前，进入保护区十分困难。由于地处热带雨林山区，地形复杂，加之长期降雨，人员和物资运输都面临巨大挑战。营地建设所需的建筑材料、供水设施、监测设备以及日常生活物资，都需要依靠人工搬运进入森林。"
           },
           {
@@ -215,7 +219,11 @@ export const archiveHistoryContent = {
         "blocks": [
           {
             "type": "paragraph",
-            "text": "In December 2019, construction began on the access road leading to the OneK Nature Reserve."
+            "text": "December 2018 | OneK began construction of the road leading to the reserve."
+          },
+          {
+            "type": "paragraph",
+            "text": "In December 2018, construction began on the access road leading to the OneK Nature Reserve."
           },
           {
             "type": "paragraph",
@@ -319,6 +327,10 @@ export const archiveHistoryContent = {
       {
         "title": "OneK 营地建设启动",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "2019年4月｜OneK营地正式开始建设。"
+          },
           {
             "type": "paragraph",
             "text": "对于许多位于野外的设施而言，营地往往只是进入自然的落脚点。然而从项目启动之初，我们便希望OneK能够有所不同。"
@@ -451,6 +463,10 @@ export const archiveHistoryContent = {
       {
         "title": "Construction of the OneK Field Camp Begins",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "April 2019 | Construction of the OneK field camp officially began."
+          },
           {
             "type": "paragraph",
             "text": "In April 2019, construction officially began on the OneK field camp."
@@ -591,6 +607,10 @@ export const archiveHistoryContent = {
         "blocks": [
           {
             "type": "paragraph",
+            "text": "2019年5月｜在对保护区进行日常调查和探索的过程中，我们发现了一处常年持续出水的地下泉眼。"
+          },
+          {
+            "type": "paragraph",
             "text": "这处泉眼位于保护区内部山坡区域，即使在旱季期间仍保持稳定出水。对于刚刚开始建设的OneK来说，这一发现具有重要意义。"
           },
           {
@@ -679,6 +699,10 @@ export const archiveHistoryContent = {
       {
         "title": "Discovering the Spring That Would Sustain OneK",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "May 2019 | During routine surveys and exploration of the reserve, we discovered a perennial underground spring."
+          },
           {
             "type": "paragraph",
             "text": "In May 2019, during routine exploration and surveys within the reserve, we discovered a perennial freshwater spring emerging from the hillside deep inside the forest."
@@ -1379,11 +1403,11 @@ export const archiveHistoryContent = {
   "natural-echo-founded": {
     "zh": [
       {
-        "title": "Natural Echo 自然教育社团成立",
+        "title": "Natural Echo（自然回声）自然教育社团成立",
         "blocks": [
           {
             "type": "paragraph",
-            "text": "2024年5月，由 Haoming（虫虫）和 Keying（蝶儿）发起的青少年自然教育社团 Natural Echo 在 OneK 正式成立。"
+            "text": "2024年5月，由李浩铭（虫虫）和李柯莹（蝶儿）发起的青少年自然教育社团 Natural Echo 在 OneK 正式成立。"
           },
           {
             "type": "paragraph",

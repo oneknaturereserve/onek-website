@@ -19,6 +19,8 @@ const stories = [
     enHeader: "December 2018｜Building the Road to OneK",
     zhTitle: "通往 OneK 保护区的道路建设",
     enTitle: "Building the Road to OneK",
+    zhLead: "2018年12月｜OneK启动了通往保护区的道路建设工程。",
+    enLead: "December 2018 | OneK began construction of the road leading to the reserve.",
     zhHeadings: ["为了进入森林，而不是开发森林", "一切建设的开始", "通往未来的第一步"],
     enHeadings: ["Reaching the Forest to Protect It", "The Foundation of Everything That Followed", "The First Step Toward a Bigger Vision"],
   },
@@ -29,6 +31,8 @@ const stories = [
     enHeader: "April 2019｜Construction of the OneK Field Camp Begins",
     zhTitle: "OneK 营地建设启动",
     enTitle: "Construction of the OneK Field Camp Begins",
+    zhLead: "2019年4月｜OneK营地正式开始建设。",
+    enLead: "April 2019 | Construction of the OneK field camp officially began.",
     zhHeadings: ["为保护而设计", "基础设施也是保护工作的一部分", "从营地到生物站", "一种与森林共存的尝试"],
     enHeadings: ["Designed for Conservation", "Infrastructure as Part of Conservation", "From Field Camp to Biological Station", "An Ongoing Experiment in Coexistence"],
   },
@@ -39,6 +43,8 @@ const stories = [
     enHeader: "May 2019｜Discovering the Spring That Would Sustain OneK",
     zhTitle: "发现 OneK 地下泉眼",
     enTitle: "Discovering the Spring That Would Sustain OneK",
+    zhLead: "2019年5月｜在对保护区进行日常调查和探索的过程中，我们发现了一处常年持续出水的地下泉眼。",
+    enLead: "May 2019 | During routine surveys and exploration of the reserve, we discovered a perennial underground spring.",
     zhHeadings: ["雨林中的生命之源", "从泉眼到供水系统", "一次改变未来的发现"],
     enHeadings: ["A Lifeline from the Forest", "Building a Sustainable Water System", "A Discovery That Shaped the Future"],
   },
@@ -98,7 +104,7 @@ const stories = [
     slug: "natural-echo-founded",
     zhHeader: "2024年5月｜Natural Echo 自然教育社团成立",
     enHeader: "May 2024 | Natural Echo is Founded at OneK",
-    zhTitle: "Natural Echo 自然教育社团成立",
+    zhTitle: "Natural Echo（自然回声）自然教育社团成立",
     enTitle: "Natural Echo is Founded at OneK",
     enStop: "Category: Education & Community Engagement",
   },
@@ -185,6 +191,8 @@ for (const story of stories) {
   const enSource = allLines.slice(englishIndex);
   const zhLines = stopAt(removeArchiveLabels(contentAfterLast(zhSource, story.zhHeader), "zh"), story.zhStop);
   const enLines = stopAt(removeArchiveLabels(contentAfterLast(enSource, story.enHeader), "en"), story.enStop);
+  if (story.zhLead) zhLines.unshift(story.zhLead);
+  if (story.enLead) enLines.unshift(story.enLead);
   output[story.slug] = {
     zh: toSections(zhLines, story.zhTitle, story.zhHeadings),
     en: toSections(enLines, story.enTitle, story.enHeadings),
