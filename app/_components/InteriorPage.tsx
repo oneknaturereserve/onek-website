@@ -23,13 +23,14 @@ export default function InteriorPage({ page }: { page: SitePage }) {
   const isFieldNotesSection = isFieldNotes || page.path === "discover-observe" || page.path.startsWith("discover-observe/");
   const isArchiveStory = Boolean(page.archiveStory);
   const isProgramPage = page.path === "volunteer" || page.path.startsWith("volunteer/") || page.path === "education" || page.path.startsWith("education/");
+  const isProgramIndex = page.path === "volunteer" || page.path === "education";
   const archiveSections = page.archiveStory?.[lang] ?? [];
   const archiveImages = [page.image, "/onek/about-old/story.jpg", "/onek/about-old/research.jpg", "/onek/about-old/biodiversity.jpg", "/onek/camera.jpg"];
   const programImages = page.path.startsWith("education")
     ? ["/onek/education.jpg", "/legacy-exploration/ExplorationPageImage/ClassroomImage.JPG", "/legacy-exploration/ExplorationPageImage/birdWatching.jpeg", "/onek/explore.jpg"]
     : ["/onek/volunteer.jpg", "/onek/research-old/ResearchHeader.JPG", "/onek/camera.jpg", "/onek/about-old/biodiversity.jpg", "/legacy-exploration/ExplorationPageImage/Hiking.jpg"];
 
-  return <main className={`interior-page${isNaturalEchoActivity ? " natural-echo-activity-page" : ""}${isArchiveStory ? " story-legacy-page archive-story-page" : ""}${isArchivePage ? " archive-page" : ""}${isFieldNotesSection ? " field-notes-page" : ""}${isProgramPage ? " program-detail-page" : ""}`} id="top">
+  return <main className={`interior-page${isNaturalEchoActivity ? " natural-echo-activity-page" : ""}${isArchiveStory ? " story-legacy-page archive-story-page" : ""}${isArchivePage ? " archive-page" : ""}${isFieldNotesSection ? " field-notes-page" : ""}${isProgramPage ? ` program-detail-page${isProgramIndex ? " program-index-page" : " program-story-detail-page"}` : ""}`} id="top">
     <header className="interior-header">
       <Link className="interior-brand" href="/" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link>
       <nav className={menu ? "is-open" : ""} aria-label="Primary navigation">
@@ -72,7 +73,7 @@ export default function InteriorPage({ page }: { page: SitePage }) {
           <div className="interior-section-number">{String(index + (isNaturalEchoActivity ? 2 : 1)).padStart(2, "0")}</div>
           {isProgramPage && <figure className="program-story-image"><img src={programImages[index % programImages.length]} alt={item.title[lang]} /><figcaption>{lang === "en" ? "Image placeholder · OneK archive" : "图片占位 · OneK 影像档案"}</figcaption></figure>}
           <div className="interior-section-title"><p>{page.eyebrow[lang]}</p><h2>{item.title[lang]}</h2></div>
-          <div className="interior-section-body">{item.body.map((paragraph, p) => <p key={p}>{paragraph[lang]}</p>)}{item.bullets && (isNonprofitActions ? <ol className="nonprofit-action-grid">{item.bullets.map((bullet, b) => <li key={b}>{bullet[lang]}</li>)}</ol> : <ul>{item.bullets.map((bullet, b) => <li key={b}>{bullet[lang]}</li>)}</ul>)}</div>
+          <div className="interior-section-body">{item.body.map((paragraph, p) => <p key={p}>{paragraph[lang]}</p>)}{page.path === "volunteer" && index === 0 && <Link className="program-story-link" href="/volunteer/about">{lang === "en" ? "Read the complete introduction" : "查看完整介绍"} ↗</Link>}{item.bullets && (isNonprofitActions ? <ol className="nonprofit-action-grid">{item.bullets.map((bullet, b) => <li key={b}>{bullet[lang]}</li>)}</ol> : <ul>{item.bullets.map((bullet, b) => <li key={b}>{bullet[lang]}</li>)}</ul>)}</div>
         </section>;
       }) : null}
 
