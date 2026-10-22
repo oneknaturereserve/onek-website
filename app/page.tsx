@@ -9,7 +9,7 @@ const copy = {
     nav: [
       ["Home", "/"],
       ["About", "/about"], ["Field Notes", "/field-notes"], ["Research", "/research"],
-      ["Programs", "/programs"], ["Species", "/species"], ["Natural Echo", "/natural-echo"],
+      ["Programs", "/#programs"], ["Species", "/#species"], ["Natural Echo", "/natural-echo"],
       ["Archive", "/archive"], ["Discover & Observe", "/discover-observe"],
     ],
     reserve: "Private Nature Reserve · Costa Rica",
@@ -57,7 +57,7 @@ const copy = {
     nav: [
       ["主页", "/"],
       ["关于 OneK", "/about"], ["雨林信息", "/field-notes"], ["科研监测", "/research"],
-      ["参与项目", "/programs"], ["物种档案", "/species"], ["自然回声", "/natural-echo"],
+      ["参与项目", "/#programs"], ["物种档案", "/#species"], ["自然回声", "/natural-echo"],
       ["历史档案", "/archive"], ["发现与观察", "/discover-observe"],
     ],
     reserve: "哥斯达黎加私人自然保护区",
@@ -203,7 +203,7 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="program-section cinema-reveal">
+    <section className="program-section cinema-reveal" id="programs">
       <div className="program-heading"><h2>{t.programsKicker}</h2><p>{t.programsTitle}</p></div>
       <div className="program-grid">{programs.map(p => <article className="program-card" key={p.no}>
         <div className="program-image"><img src={p.img} alt={p.titleEn}/></div>
@@ -224,11 +224,11 @@ export default function Home() {
       <article className="nonprofit-card"><div className="org-logo"><img src="/onek/conservation-logo.jpg" alt="OneK Conservation logo" /></div><div><p className="kicker">{t.nonprofitKicker}</p><h2>{t.nonprofitTitle}</h2><p>{t.nonprofitBody}</p><a className="dark-button" href="/support">{t.support}</a></div></article>
     </section>
 
-    <section className="contact-section legacy-contact cinema-reveal"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><p className="legacy-contact-body">{t.contactBody}</p><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact OneK" : "联系 OneK"}</a><a href="/programs">{lang === "en" ? "Join a Program" : "参与项目"}</a><a href="/support">{lang === "en" ? "Support Conservation" : "支持保护行动"}</a></div></section>
+    <section className="contact-section legacy-contact cinema-reveal"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><p className="legacy-contact-body">{t.contactBody}</p><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact OneK" : "联系 OneK"}</a><a href="/#programs">{lang === "en" ? "Join a Program" : "参与项目"}</a><a href="/support">{lang === "en" ? "Support Conservation" : "支持保护行动"}</a></div></section>
 
     <footer className="legacy-footer"><div className="legacy-footer-inner">
       <div className="legacy-footer-about"><img src="/onek/logo.png" alt="OneK Nature Reserve"/><b>{lang === "en" ? "Established in 2018" : "始于 2018 年"}</b><p>{lang === "en" ? "OneK protects tropical rainforest through habitat conservation, ecological restoration, long–term research, nature education, and community participation in southern Costa Rica." : "OneK 在哥斯达黎加南部通过栖息地保护、生态恢复、长期科研、自然教育与社区参与守护热带雨林。"}</p></div>
-      <div className="legacy-footer-col"><h3>{lang === "en" ? "Quick Links" : "快速导航"}</h3><a href="#top">{lang === "en" ? "Home" : "主页"}</a><a href="/about">{lang === "en" ? "About" : "关于 OneK"}</a><a href="/#species">{lang === "en" ? "Species" : "物种档案"}</a><a href="/research">{lang === "en" ? "Research" : "科研监测"}</a><a href="/programs">{lang === "en" ? "Programs" : "参与项目"}</a></div>
+      <div className="legacy-footer-col"><h3>{lang === "en" ? "Quick Links" : "快速导航"}</h3><a href="#top">{lang === "en" ? "Home" : "主页"}</a><a href="/about">{lang === "en" ? "About" : "关于 OneK"}</a><a href="/#species">{lang === "en" ? "Species" : "物种档案"}</a><a href="/research">{lang === "en" ? "Research" : "科研监测"}</a><a href="/#programs">{lang === "en" ? "Programs" : "参与项目"}</a></div>
       <div className="legacy-footer-col legacy-footer-contact"><h3>{lang === "en" ? "Contact" : "联系我们"}</h3><a href="mailto:OneK.CR2018@gmail.com">Email<br/><span>OneK.CR2018@gmail.com</span></a><a href="tel:+50687628888">{lang === "en" ? "Phone" : "电话"}<br/><span>+506 8762-8888 (CR)</span></a><div className="legacy-socials"><a href="https://wa.me/50687628888" target="_blank" rel="noreferrer" aria-label="WhatsApp"><img src="/species-archive/GeneralImage/WhatUp.png" alt=""/></a><span aria-label="Instagram link reserved"><img src="/species-archive/GeneralImage/Instagram.png" alt=""/></span><button onClick={() => navigator.clipboard?.writeText("jiangnan010801")} aria-label="Copy WeChat ID"><img src="/species-archive/GeneralImage/wechat.png" alt=""/><i>WeChat<br/><strong>jiangnan010801</strong></i></button></div></div>
     </div><div className="legacy-footer-bottom">© 2026 OneK Nature Reserve · Southern Costa Rica · All Rights Reserved <a href="#top">{lang === "en" ? "Back to canopy" : "返回顶部"} ↑</a></div></footer>
   </main>;
