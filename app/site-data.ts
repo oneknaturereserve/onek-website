@@ -1,4 +1,5 @@
 import { archiveHistoryContent } from "./archive-history-content";
+import { programPages } from "./program-content";
 
 export type Lang = "en" | "zh";
 export type Localized = { en: string; zh: string };
@@ -262,6 +263,11 @@ add({ path: "support", eyebrow: L("NONPROFIT ORGANIZATION", "非营利组织"), 
   ]),
       section("Donations", "捐赠方式", ["Verified donation channels will be connected here. Until then, contact OneK directly before making any contribution."], ["正式收款方式将在核验后接入。在此之前，请先联系 OneK 确认，再进行任何捐赠。"]),
 ] });
+
+// The international-program and nature-education pages are maintained as a
+// dedicated content collection. They intentionally override the earlier
+// compact placeholders while keeping the shared site renderer and navigation.
+programPages.forEach(add);
 
 export function getSitePage(slug: string[]): SitePage | undefined {
   return pages[slug.join("/")];

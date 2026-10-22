@@ -1,0 +1,118 @@
+import type { ContentSection, Localized, PageCard, SitePage } from "./site-data";
+
+const L = (en: string, zh: string): Localized => ({ en, zh });
+const S = (en: string, zh: string, enBody: string[], zhBody: string[], bullets?: Localized[]): ContentSection => ({
+  title: L(en, zh),
+  body: enBody.map((text, index) => L(text, zhBody[index] ?? zhBody[zhBody.length - 1] ?? text)),
+  bullets,
+});
+const C = (href: string, image: string, enKicker: string, zhKicker: string, enTitle: string, zhTitle: string, enSummary: string, zhSummary: string): PageCard => ({
+  href, image, kicker: L(enKicker, zhKicker), title: L(enTitle, zhTitle), summary: L(enSummary, zhSummary), placeholder: false,
+});
+
+const volunteerCards = [
+  C("/volunteer/about", "/onek/about-old/biodiversity.jpg", "ABOUT THE PROGRAM", "项目介绍", "A working rainforest reserve", "一座持续运转的雨林保护区", "Learn how OneK connects international participation with real conservation, research, restoration, and education.", "了解 OneK 如何把国际参与连接到真实的保护、科研、恢复与教育工作。"),
+  C("/volunteer/research", "/onek/research-old/ResearchHeader.JPG", "SCIENCE", "科研", "Research Internship", "科研实习项目", "Tropical ecology, biodiversity monitoring, field methods, and long-term scientific records.", "参与热带生态研究、生物多样性监测、野外方法训练与长期科学记录。"),
+  C("/volunteer/conservation", "/onek/volunteer.jpg", "ACTION", "行动", "Conservation Volunteer Program", "自然保护志愿者项目", "Hands-on wildlife protection, patrols, restoration, and biodiversity documentation.", "亲身参与野生动物保护、巡护、生态恢复与生物多样性记录。"),
+  C("/volunteer/youth", "/onek/education.jpg", "NEXT GENERATION", "下一代", "Youth Rainforest Camp", "青少年雨林营", "A future-conservationists program combining science, exploration, education, and stewardship.", "融合科学、探索、自然教育与保护行动的未来自然保护者培养计划。"),
+];
+
+const educationCards = [
+  C("/education/about", "/onek/about-old/story.jpg", "OUR APPROACH", "教育理念", "From discovering nature to protecting it", "从认识自然，到守护自然", "The story and philosophy behind more than a decade of field-based nature education.", "了解十余年野外自然教育实践背后的故事与理念。"),
+  C("/education/international-base", "/onek/explore.jpg", "PLATFORM", "教育平台", "International Ecological Education Base", "国际生态教育基地", "Immersive rainforest learning for schools, families, organizations, and international groups.", "面向学校、家庭、教育机构和国际团体的沉浸式雨林学习。"),
+  C("/education/rainforest-school", "/onek/education.jpg", "LEARNING SYSTEM", "教育体系", "Rainforest School", "雨林学校", "Long-term field education among forests, rivers, wildlife, and living ecological processes.", "在森林、溪流、野生动物与真实生态过程中开展长期自然教育。"),
+  C("/education/youth-nature", "/onek/volunteer.jpg", "PROGRAMS", "具体课程", "Youth Nature Programs", "青少年自然课程", "Birds, insects, amphibians, photography, field observation, and citizen science.", "涵盖鸟类、昆虫、两栖动物、自然摄影、野外观察与公民科学。"),
+];
+
+export const programPages: SitePage[] = [
+  {
+    path: "volunteer", eyebrow: L("EXPLORE · LEARN · PROTECT", "探索自然 · 学习科学 · 守护雨林"),
+    title: L("International Programs", "国际项目"), subtitle: L("Join real conservation in the Costa Rican rainforest", "走进哥斯达黎加热带雨林，参与真实的自然保护行动"),
+    intro: L("OneK International Programs connect people from around the world with rainforest conservation, ecological research, and environmental education. Here, you are not only an observer of nature, but a participant in its protection.", "OneK 国际项目连接来自世界各地的自然爱好者、学生和青年研究者，共同参与哥斯达黎加热带雨林的自然保护、生态研究和环境教育工作。在这里，你不仅是自然的观察者，更是保护行动的参与者。"),
+    image: "/onek/volunteer.jpg", sections: [
+      S("Explore. Learn. Protect.", "探索自然 · 学习科学 · 守护雨林", ["OneK offers international students, volunteers, young researchers, families, and nature enthusiasts opportunities to enter a living rainforest and take part in biodiversity monitoring, wildlife conservation, habitat restoration, and environmental education.", "Through fieldwork and direct observation, participants gain practical conservation experience, learn scientific methods, and build a deeper connection with the natural world."], ["OneK 为国际学生、志愿者、青年研究者、家庭与自然爱好者提供走进真实雨林的机会，共同参与生物多样性监测、野生动物保护、生态恢复和环境教育。", "参与者通过野外工作和直接观察获得真实的保护经验、学习科学方法，并与自然建立更深的连接。"]),
+    ], cards: volunteerCards,
+    quote: L("Experience the rainforest. Contribute to meaningful conservation. Become part of the OneK story.", "走进雨林，参与保护，与自然共同成长。"),
+  },
+  {
+    path: "volunteer/about", eyebrow: L("ONEK INTERNATIONAL VOLUNTEER PROGRAM", "OneK 国际志愿者项目"), title: L("Protecting the rainforest through science, conservation, and education", "在雨林中学习，在保护中成长"), subtitle: L("Become part of ongoing conservation work", "成为持续保护工作的一部分"), intro: L("OneK Biological Station is a private reserve and field station in Costa Rica's Pacific lowland rainforest.", "OneK 生物站位于哥斯达黎加太平洋低地热带雨林，是一座以生物多样性保护、生态修复、科学研究和环境教育为核心使命的私人保护区。"), image: "/onek/about-old/biodiversity.jpg", sections: [
+      S("About OneK", "关于 OneK", ["Established in 2018 by a family passionate about nature and wildlife conservation, OneK has grown from a small private reserve into a field-based conservation and research station. Today it protects over 100 hectares of tropical rainforest.", "More than 300 bird species, 1,000 insect species, 60 amphibian and reptile species, and 40 mammal species have been documented within the reserve."], ["OneK 于 2018 年由一个热爱自然与野生动物保护的家庭创立，并从一处小型私人保护区逐渐成长为野外保护与研究基地。如今，OneK 保护着超过 100 公顷的热带雨林。", "截至目前，保护区已记录鸟类 300 余种、昆虫 1000 余种、两栖爬行动物 60 余种、哺乳动物 40 余种。"]),
+      S("Why volunteer at OneK?", "为什么选择 OneK？", ["Unlike programs centered on tourism, OneK invites volunteers into real, ongoing conservation work. Participants learn how a tropical rainforest functions while working alongside conservation practitioners and researchers."], ["与以旅游体验为主的项目不同，OneK 强调参与真实而持续的保护工作。志愿者将与保护实践者和研究人员共同工作，在行动中理解热带生态系统如何运转。"]),
+      S("Volunteer activities", "志愿者参与内容", ["Activities respond to season, weather, monitoring needs, and conservation priorities. They combine observation, documentation, restoration, and education."], ["活动会根据季节、天气、监测需求与保护重点灵活安排，涵盖观察、记录、恢复与教育。"], [L("Biodiversity surveys and species identification", "生物多样性调查与物种识别"), L("Camera-trap and bird monitoring", "红外相机与鸟类监测"), L("Forest and stream restoration", "森林与河流生态恢复"), L("Amphibian and reptile night surveys", "两栖爬行动物夜间调查"), L("Citizen science and environmental education", "公民科学与环境教育")]),
+      S("Who can apply?", "我们欢迎谁？", ["University and high-school students, gap-year participants, photographers, birdwatchers, citizen scientists, nature enthusiasts, and conservation supporters are welcome. No previous scientific experience is required; curiosity, respect, and willingness to learn matter most."], ["欢迎大学生、高中生（需监护人同意）、间隔年学生、自然摄影师、观鸟爱好者、公民科学参与者、自然观察者与生态保护支持者。无需专业背景，最重要的是好奇心、对自然的尊重与学习意愿。"]),
+      S("Our philosophy", "OneK 的理念", ["Conservation begins with understanding. Every observation, record, restored stream, and protected forest contributes to a larger effort to safeguard biodiversity for future generations."], ["保护始于理解。每一次观察、每一份记录、每一条恢复的溪流和每一片被守护的森林，都在为未来世代保护生物多样性。"]),
+    ], cards: volunteerCards.slice(1), quote: L("One observation, one stream, one forest at a time.", "从一次观察、一条溪流、一片森林开始。"),
+  },
+  {
+    path: "volunteer/research", eyebrow: L("ONEK INTERNATIONAL PROGRAMS", "OneK 国际项目"), title: L("OneK Research Internship Program", "OneK 科研实习项目"), subtitle: L("Tropical ecology, biodiversity monitoring and conservation research", "热带生态学、生物多样性监测与自然保护实践"), intro: L("Learn science in the rainforest. Learn how to study nature.", "在雨林中学习科学，学习如何研究自然。"), image: "/onek/research-old/ResearchHeader.JPG", sections: [
+      S("Program overview", "项目简介", ["The program offers university students and early-career researchers hands-on experience in tropical ecology, biodiversity monitoring, conservation biology, and field research. Interns join long-term projects rather than short demonstrations."], ["项目面向大学生、研究生及青年科研人员，提供热带生态学、生物多样性监测、保护生物学与野外研究的实践机会。实习生将加入长期项目，而非短暂演示活动。"]),
+      S("Biodiversity inventory", "生物多样性调查", ["Help document birds, mammals, amphibians, reptiles, insects, and plants through field observations, photography, identification, GPS records, and biodiversity databases."], ["通过野外观察、摄影、物种识别、GPS 记录与数据库整理，协助记录鸟类、哺乳动物、两栖爬行动物、昆虫和植物。"]),
+      S("Wildlife monitoring", "野生动物监测", ["Use camera traps, transects, point counts, night surveys, behavioral observations, and habitat records to follow wildlife presence, activity patterns, and habitat use."], ["运用红外相机、样线、定点计数、夜间调查、行为观察和生境记录，追踪野生动物的出现、活动节律与栖息地利用。"]),
+      S("Research focus areas", "研究方向", ["Current opportunities span tropical birds, amphibians and reptiles, insects, freshwater ecosystems, and ecological restoration."], ["当前研究机会覆盖热带鸟类、两栖爬行动物、昆虫、淡水生态系统与生态恢复。"], [L("Bird breeding, behavior, and habitat use", "鸟类繁殖、行为与栖息地利用"), L("Amphibian and reptile ecology", "两栖爬行动物生态"), L("Insect diversity, pollination, and chemical ecology", "昆虫多样性、授粉与化学生态"), L("Forest and watershed recovery", "森林与流域恢复")]),
+      S("Skills acquired", "你将获得的能力", ["Interns develop species identification, field sampling, ecological data collection, scientific note-taking, nature photography, data organization, teamwork, and ethical wildlife observation."], ["实习生将学习物种识别、野外采样、生态数据采集、科学笔记、自然摄影、数据整理、团队协作与低干扰野生动物观察。"]),
+      S("Independent research", "独立研究机会", ["Participants may develop an independent project with OneK's guidance and use the reserve's habitats and long-term records to explore an original question."], ["参与者可在 OneK 指导下设计独立项目，利用保护区生境和长期记录探索原创研究问题。"]),
+      S("Who should apply?", "适合人群", ["Students in biology, ecology, environmental science, conservation, wildlife management, forestry, and related fields are encouraged to apply. Motivation and field readiness are more important than extensive prior experience."], ["欢迎生物学、生态学、环境科学、自然保护、野生动物管理、林业及相关专业学生申请。学习动力与野外准备比丰富的既往经验更重要。"]),
+    ], quote: L("Observe carefully. Record consistently. Let the rainforest guide the question.", "认真观察，持续记录，让雨林引导问题。"),
+  },
+  {
+    path: "volunteer/conservation", eyebrow: L("ONEK INTERNATIONAL PROGRAMS", "OneK 国际项目"), title: L("OneK Conservation Volunteer Program", "OneK 自然保护志愿者项目"), subtitle: L("Hands-on conservation in a tropical rainforest", "在热带雨林中亲身参与保护"), intro: L("Learn conservation by doing conservation. Learn how to protect nature.", "在行动中学习保护，学习如何守护自然。"), image: "/onek/volunteer.jpg", sections: [
+      S("About the program", "项目简介", ["The program gives people from around the world a direct role in tropical rainforest conservation. Volunteers work alongside OneK staff to protect wildlife, restore habitats, and understand tropical ecology."], ["项目为来自世界各地的参与者提供直接加入热带雨林保护工作的机会。志愿者将与 OneK 团队一起保护野生动物、恢复生境并理解热带生态。"]),
+      S("What makes OneK different?", "为什么选择 OneK？", ["OneK is not a zoo, wildlife park, or tourist attraction. It is an active conservation area where monitoring, restoration, patrols, and education take place every day."], ["OneK 不是动物园、野生动物园或旅游景区，而是一片每天都在开展监测、恢复、巡护和教育工作的自然保护区。"]),
+      S("Wildlife monitoring", "野生动物监测", ["Maintain camera traps, observe wildlife, document species, and help organize biodiversity records. Possible encounters include puma, ocelot, tapir, peccary, poison frogs, toucans, and manakins."], ["参与红外相机维护、野生动物观察、物种记录与数据整理，有机会记录美洲狮、虎猫、中美貘、白唇野猪、箭毒蛙、巨嘴鸟与娇鹟。"]),
+      S("Rainforest patrols", "雨林巡护", ["Trail inspection, boundary monitoring, habitat assessment, and wildlife observations help maintain the integrity of the protected area."], ["步道检查、边界巡查、生境评估和野生动物记录共同维护保护区的完整性。"]),
+      S("Restoration and freshwater protection", "生态恢复与淡水保护", ["Plant native trees, care for seedlings, control invasive vegetation, document forest recovery, and monitor streams, amphibian breeding activity, habitat conditions, and restoration progress."], ["种植原生树种、养护幼苗、控制入侵植被、记录森林恢复，并监测溪流、两栖动物繁殖、生境状况和恢复进展。"]),
+      S("Biodiversity and education", "生物多样性与环境教育", ["Photography, species identification, iNaturalist records, nature interpretation, workshops, youth outreach, and citizen science turn observations into shared conservation knowledge."], ["通过摄影、物种识别、iNaturalist 记录、自然导览、工作坊、青少年活动和公民科学，把观察转化为共享的保护知识。"]),
+      S("What you will learn", "你将收获什么", ["Training covers rainforest ecology, wildlife conservation, monitoring methods, habitat restoration, camera-trap technology, species identification, and environmental education. No scientific background is required."], ["培训涵盖雨林生态、野生动物保护、监测方法、生境恢复、红外相机、物种识别与环境教育，无需科研背景。"]),
+      S("Our conservation philosophy", "OneK 的保护理念", ["Protection is a continuous process of observation, restoration, learning, and action. Every patrol matters. Every record has value. Every planted tree helps shape the forest's future."], ["保护是观察、恢复、学习与行动持续发生的过程。每一次巡护都有意义，每一份记录都有价值，每一棵树都在塑造未来的森林。"]),
+    ], quote: L("Experience the rainforest beyond tourism. Participate in real conservation.", "走进雨林，参与保护，让热爱自然变成实际行动。"),
+  },
+  {
+    path: "volunteer/youth", eyebrow: L("FUTURE CONSERVATIONISTS PROGRAM", "未来自然保护者培养计划"), title: L("OneK Youth Rainforest Camp", "OneK 青少年雨林营"), subtitle: L("Inspiring the next generation of conservationists", "培养未来自然保护者"), intro: L("An immersive program where young people become explorers, field naturalists, and conservation leaders.", "这是一次让青少年成为探索者、小小自然学家和未来保护者的沉浸式成长之旅。"), image: "/onek/education.jpg", sections: [
+      S("Program overview", "项目简介", ["Hosted at OneK Biological Station, the camp combines scientific exploration, wildlife observation, environmental education, and hands-on conservation. It is not a traditional summer camp."], ["项目依托 OneK 生物站开展，融合科学探索、野生动物观察、环境教育与保护实践，不是普通的夏令营。"]),
+      S("Our vision", "我们的愿景", ["Children protect what they understand, and they understand what they experience. Time in the rainforest can build curiosity, ecological understanding, critical thinking, and lifelong respect for biodiversity."], ["孩子们会保护他们所理解的事物，而理解来自亲身体验。走进雨林能够培养好奇心、生态理解、批判思维以及对生物多样性的终身尊重。"]),
+      S("Wildlife discovery", "野生动物发现之旅", ["Participants search for toucans, hummingbirds, frogs, butterflies, beetles, orchid bees, mammals, and reptiles while learning how rainforest ecosystems function."], ["参与者寻找巨嘴鸟、蜂鸟、蛙类、蝴蝶、甲虫、兰花蜂、哺乳动物和爬行动物，并学习雨林生态系统如何运转。"]),
+      S("Junior naturalist training", "小小自然学家训练", ["Young explorers practice wildlife observation, nature journaling, species identification, field photography, ecological recording, and scientific questioning."], ["学习野外观察、自然笔记、物种识别、生态摄影、数据记录与科学提问，像真正的生物学家一样认识自然。"]),
+      S("Rainforest ecology and night walks", "雨林生态课堂与夜观", ["Food webs, predation, pollination, seed dispersal, succession, and conservation are explored outdoors. At night, frogs, insects, sleeping birds, reptiles, and nocturnal mammals reveal another rainforest."], ["在户外理解食物网、捕食、授粉、种子传播、森林更新与保护；入夜后观察蛙类、昆虫、睡眠中的鸟、爬行动物和夜行哺乳动物。"]),
+      S("Conservation in action", "保护行动实践", ["Native tree planting, habitat restoration, wildlife monitoring, citizen science, and biodiversity documentation show that conservation is something people do—not simply something people discuss."], ["原生树种种植、生境恢复、野生动物监测、公民科学和生物多样性记录，让孩子明白保护不是口号，而是一种行动。"]),
+      S("Photography and storytelling", "自然摄影与表达", ["Photography, sketching, journaling, and presentations help participants document discoveries and share their relationship with nature."], ["通过摄影、绘画、自然日记和主题分享记录发现与成长，让观察变成表达，让热爱变成行动。"]),
+      S("Who can participate?", "招募对象", ["Programs welcome students aged 10–18, families, homeschool groups, international youth programs, and school groups, with content adapted to age and learning goals."], ["适合 10—18 岁青少年、热爱自然的家庭、Homeschool 家庭、国际青少年项目与学校研学团队，课程可按年龄和学习目标调整。"]),
+      S("Natural Echo", "Natural Echo 青少年自然社团", ["Participants may learn with Natural Echo, a youth-led initiative founded at OneK. Peer-to-peer experiences demonstrate that conservation leadership can begin at any age."], ["雨林营与 OneK 旗下 Natural Echo 青少年自然社团紧密合作。青少年通过同伴学习看到：保护自然不需要等到长大，每个人都可以从现在开始。"]),
+    ], quote: L("We do not aim to create tourists. We aim to nurture explorers.", "我们不希望培养游客，而希望培养探索者。"),
+  },
+  {
+    path: "education", eyebrow: L("FROM DISCOVERY TO STEWARDSHIP", "从认识自然，到守护自然"), title: L("Experience, observe, and grow through nature", "在真实的自然中，观察、探索与成长"), subtitle: L("Inspiring curiosity, knowledge, and stewardship", "培养好奇心、科学素养与守护自然的责任感"), intro: L("At OneK, nature education begins in the rainforest itself. True nature education is not only about identifying species, but understanding the relationships connecting all life and recognizing our place within the ecosystem.", "OneK 的自然教育始于真实的雨林。真正的自然教育不仅是认识更多物种，更是理解生命之间的联系，以及人类在生态系统中的角色。"), image: "/onek/education.jpg", sections: [
+      S("Nature is the classroom", "让自然成为课堂", ["Through observation, exploration, and hands-on experiences, participants build curiosity, respect, scientific literacy, and a commitment to conservation."], ["通过观察、探索与实践，帮助参与者建立对自然的好奇、尊重、科学素养与守护之心。"]),
+    ], cards: educationCards, quote: L("Let the rainforest be the teacher.", "让自然成为课堂，让雨林成为老师。"),
+  },
+  {
+    path: "education/about", eyebrow: L("NATURE EDUCATION", "自然教育与野外学习"), title: L("From discovering nature to protecting nature", "从认识自然，到守护自然"), subtitle: L("A journey built through experience, science, and action", "一条由体验、科学与行动连接的成长路径"), intro: L("Since 2013, our nature education journey has brought young people into some of the world's most remarkable ecosystems—from the Amazon and Papua to Borneo, the Galápagos, and Costa Rica.", "自 2013 年起，我们带领青少年走进亚马逊雨林、巴布亚、新几内亚、婆罗洲、加拉帕戈斯与哥斯达黎加等重要生态区域，让自然成为最真实的课堂。"), image: "/onek/about-old/story.jpg", sections: [
+      S("From education to conservation", "从自然教育到自然保护", ["In 2018, nature education found a permanent home when OneK Nature Reserve was established. The reserve gradually became a living classroom where participants could return, observe change, and contribute to long-term protection."], ["2018 年，OneK 自然保护区成立，自然教育由此拥有一处长期实践基地。这里逐渐成为可以反复走进、观察变化并参与长期保护的真实课堂。"]),
+      S("Learning in real nature", "让孩子走进真实的自然", ["We invite learners to slow down, use their senses, ask questions, and notice relationships: Why does a bird choose one stream? How does a forest recover? What changes after dark?"], ["我们鼓励学习者放慢脚步，调动感官、提出问题并观察联系：鸟为什么选择这条溪流？森林如何恢复？入夜后发生了什么变化？"]),
+      S("Science as a tool", "让科学成为理解自然的工具", ["Species identification, field notebooks, photography, camera traps, water observations, biodiversity databases, and citizen science help turn curiosity into evidence."], ["物种识别、野外笔记、自然摄影、红外相机、水环境观察、生物多样性数据库与公民科学，让好奇心转化为证据。"]),
+      S("Understanding becomes action", "让保护成为一种行动", ["Participants can plant native trees, document wildlife, support habitat restoration, share knowledge, and communicate conservation stories with their communities."], ["参与者可以种植原生树种、记录野生动物、支持生境恢复、分享知识，并把保护故事带回自己的社区。"]),
+      S("Education, research, and conservation", "教育、科研与保护同行", ["At OneK, education does not stand apart from field research or reserve management. Each strengthens the others and helps people see how knowledge can guide responsible action."], ["在 OneK，自然教育并不独立于野外研究或保护区管理。三者彼此支持，让参与者理解知识如何引导负责任的行动。"]),
+      S("What we believe", "我们相信", ["People care for what they know, and protect what they love. Meaningful experiences in nature can inspire the next generation of naturalists, scientists, and conservationists."], ["人们会关心自己真正认识的事物，也会守护自己热爱的生命。真实而有意义的自然体验，能够启发下一代自然观察者、科学探索者与保护行动者。"]),
+    ], cards: educationCards.slice(1),
+  },
+  {
+    path: "education/international-base", eyebrow: L("NATURE EDUCATION", "自然教育"), title: L("International Ecological Education Base", "国际生态教育基地"), subtitle: L("Immersive learning in a living rainforest", "在真实雨林中开展沉浸式学习"), intro: L("A field platform connecting ecological education, scientific observation, and conservation practice.", "连接生态教育、科学观察与自然保护实践的野外平台。"), image: "/onek/explore.jpg", sections: [
+      S("A rainforest learning platform", "一座雨林学习平台", ["OneK welcomes schools, families, educational organizations, universities, and international groups to experience tropical ecosystems through guided exploration and field learning."], ["OneK 面向学校、家庭、教育机构、高校与国际团体开放，通过引导式探索与野外学习认识热带生态系统。"]),
+      S("Learning across cultures", "跨文化自然教育", ["Programs can connect participants from different countries through shared observation, scientific curiosity, environmental responsibility, and community exchange."], ["项目以共同观察、科学好奇心、环境责任与社区交流连接不同国家和文化背景的参与者。"]),
+      S("Designed around each group", "因团队而设计", ["Activities can be adapted to age, curriculum, group size, season, and learning goals while maintaining safe and low-impact field practices."], ["活动可根据年龄、课程、团队规模、季节与学习目标调整，同时坚持安全、低干扰的野外原则。"]),
+    ], quote: L("Let nature become the classroom and the rainforest the teacher.", "让自然成为课堂，让雨林成为老师。"),
+  },
+  {
+    path: "education/rainforest-school", eyebrow: L("NATURE EDUCATION", "自然教育"), title: L("Rainforest School", "雨林学校"), subtitle: L("A long-term field-based learning system", "一套扎根野外的长期学习体系"), intro: L("The forest, streams, wildlife, weather, and ecological change form a curriculum that is alive and never exactly the same twice.", "森林、溪流、野生动物、天气与生态变化共同构成一套鲜活、每次都不完全相同的课程。"), image: "/onek/education.jpg", sections: [
+      S("Learning through direct experience", "在真实体验中学习", ["Participants observe, ask questions, keep nature journals, identify species, and connect individual discoveries to larger ecological systems."], ["参与者通过观察、提问、自然笔记与物种识别，把个体发现连接到更完整的生态系统。"]),
+      S("A continuing relationship", "与自然建立长期关系", ["Rainforest School is not defined by a single visit. Repeated observations reveal seasons, breeding cycles, restoration, and the slow changes that shape a living forest."], ["雨林学校并不由一次探访定义。持续观察能够看见季节、繁殖周期、生态恢复以及塑造森林的缓慢变化。"]),
+      S("Ecological literacy for life", "培养终身受益的自然素养", ["The goal is to develop curiosity, scientific thinking, patience, teamwork, respect for life, and the confidence to participate in conservation."], ["课程旨在培养好奇心、科学思维、耐心、团队合作、对生命的尊重，以及参与保护行动的信心。"]),
+    ], quote: L("Begin by knowing nature; grow into caring for it.", "从认识自然开始，培养终身受益的自然素养。"),
+  },
+  {
+    path: "education/youth-nature", eyebrow: L("NATURE EDUCATION", "自然教育"), title: L("Youth Nature Programs", "青少年自然课程"), subtitle: L("Learn through exploration. Grow through nature.", "在探索中学习，在自然中成长"), intro: L("Flexible, hands-on programs introduce young people to biodiversity, field observation, scientific thinking, creative expression, and conservation action.", "灵活而重实践的课程，带领青少年认识生物多样性、学习野外观察与科学思维，并用创意表达参与保护。"), image: "/onek/volunteer.jpg", sections: [
+      S("Explore biodiversity", "探索生物多样性", ["Birdwatching, insect observation, amphibian and reptile walks, rainforest ecology, and freshwater exploration help participants discover the diversity around them."], ["通过观鸟、昆虫观察、两栖爬行动物夜观、雨林生态与淡水探索，发现身边丰富的生命。"]),
+      S("Observe, record, and express", "观察、记录与表达", ["Nature journaling, photography, drawing, species identification, and storytelling turn fleeting encounters into lasting understanding."], ["自然笔记、摄影、绘画、物种识别与故事表达，把短暂相遇转化为持续理解。"]),
+      S("Participate in conservation", "参与真实保护", ["Citizen science, wildlife monitoring, native planting, habitat restoration, and environmental communication show young people that their actions matter."], ["公民科学、野生动物监测、原生植物种植、生境恢复与环境传播，让青少年看到自己的行动能够产生影响。"]),
+    ], quote: L("Meaningful conservation begins with meaningful experiences in nature.", "真正的自然保护始于真实的自然体验。"),
+  },
+];
