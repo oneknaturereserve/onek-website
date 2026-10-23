@@ -1,5 +1,6 @@
 import { archiveHistoryContent } from "./archive-history-content";
 import { programPages } from "./program-content";
+import observationStoryContent from "./observation-story-content.json";
 
 export type Lang = "en" | "zh";
 export type Localized = { en: string; zh: string };
@@ -87,6 +88,7 @@ const projectCards = researchProjects.map(([en, zh, enSummary, zhSummary, slug, 
 const collaborationCards = collaborations.map(([en, zh, enSummary, zhSummary, slug, image]) => card(`/research/collaboration/${slug}`, image, "INTERNATIONAL COLLABORATION", "国际合作", en, zh, enSummary, zhSummary));
 const historyCards = history.map(([date, en, zh, enSummary, zhSummary, slug], index) => card(`/archive/${slug}`, index % 3 === 0 ? "/onek/hero.jpg" : index % 3 === 1 ? "/onek/about.jpg" : "/onek/explore.jpg", date, date, en, zh, enSummary, zhSummary));
 const observationCards = observations.map(([date, en, zh, enSummary, zhSummary, slug, image]) => card(`/discover-observe/${slug}`, image, date, date, en, zh, enSummary, zhSummary));
+const observationStories = observationStoryContent as Record<string, { en: ArchiveStorySection[]; zh: ArchiveStorySection[] }>;
 
 const pages: Record<string, SitePage> = {};
 const add = (page: SitePage) => { pages[page.path] = page; };
@@ -241,12 +243,17 @@ history.forEach(([date, en, zh, enSummary, zhSummary, slug], index) => {
   });
 });
 
-add({ path: "discover-observe", eyebrow: L("DISCOVER & OBSERVE", "发现与观察"), title: L("Look closer. Discover more.", "靠近观察，发现更多"), subtitle: L("Species events recorded through the years", "这些年发现并记录的物种事件"), intro: L("Unexpected encounters often become the starting point for longer questions, new projects, and a deeper understanding of the rainforest.", "一次偶然相遇，常常会成为更长期问题、新项目以及更深入理解雨林的起点。"), image: "/onek/fieldnote.jpg", cards: observationCards });
+add({ path: "discover-observe", eyebrow: L("Discoveries & Observations", "发现与观察"), title: L("Every Encounter Deepens Our Understanding of the Rainforest", "每一次相遇，都让我们更深入地理解雨林"), subtitle: L("Natural history notes and field observations from OneK Nature Reserve, documenting the remarkable lives of the species that share this forest.", "来自 OneK 自然保护区的自然历史笔记与野外观察，记录与这片森林共同生活的物种所展现的非凡生命。"), intro: L("", ""), image: "/onek/fieldnote.jpg", cards: observationCards });
 
-observations.forEach(([date, en, zh, enSummary, zhSummary, slug, image]) => add({ path: `discover-observe/${slug}`, eyebrow: L("FIELD OBSERVATION", "野外观察记录"), title: L(en, zh), subtitle: L(date, date), intro: L(enSummary, zhSummary), image, imagePlaceholder: true, sections: [
-  section("Observation", "观察记录", ["The record captures a specific encounter in time and place, preserving behavior, habitat, and environmental context for future comparison."], ["这条记录保存了特定时间与地点的相遇，也保留行为、生境和环境背景，便于未来比较。"]),
-  section("Why we keep watching", "为什么持续观察", ["Natural-history observations can reveal breeding strategies, seasonal activity, food webs, habitat quality, and ecological relationships that formal surveys may miss."], ["自然历史观察能够揭示繁殖策略、季节活动、食物网、生境质量，以及标准调查可能错过的生态联系。"]),
-] }));
+observations.forEach(([, , , , , slug, image]) => add({
+  path: `discover-observe/${slug}`,
+  eyebrow: L("Discoveries & Observations", "发现与观察"),
+  title: L("Every Encounter Deepens Our Understanding of the Rainforest", "每一次相遇，都让我们更深入地理解雨林"),
+  subtitle: L("Natural history notes and field observations from OneK Nature Reserve, documenting the remarkable lives of the species that share this forest.", "来自 OneK 自然保护区的自然历史笔记与野外观察，记录与这片森林共同生活的物种所展现的非凡生命。"),
+  intro: L("", ""),
+  image,
+  archiveStory: observationStories[slug],
+}));
 
 add({ path: "support", eyebrow: L("NONPROFIT ORGANIZATION", "非营利组织"), title: L("Protect the rainforest. Protect life.", "守护雨林，保护生命"), subtitle: L("Asociación ONEK de Conservación de Biodiversidad Costa Rica", "Asociación ONEK de Conservación de Biodiversidad Costa Rica"), intro: L("Registration No. 3-002-971175. OneK's nonprofit platform advances biodiversity conservation, ecological restoration, research, environmental education, and community participation.", "注册号 3-002-971175。OneK 的非营利平台致力于生物多样性保护、生态恢复、科学研究、环境教育与社区参与。"), image: "/onek/conservation-logo.jpg", sections: [
   section("Purpose", "组织宗旨", ["The association protects and restores Costa Rica's biodiversity and natural ecosystems while promoting environmental education, scientific research, sustainability, and community participation."], ["协会旨在保护、维护与恢复哥斯达黎加的生物多样性及自然生态系统，并推动环境教育、科学研究、可持续发展与社区参与。"]),

@@ -20,6 +20,7 @@ export default function InteriorPage({ page }: { page: SitePage }) {
   const isNaturalEchoActivity = page.path.startsWith("natural-echo/");
   const isArchivePage = page.path === "archive" || page.path.startsWith("archive/");
   const isFieldNotes = page.path === "field-notes";
+  const isObservationStory = page.path.startsWith("discover-observe/");
   const isFieldNotesSection = isFieldNotes || page.path === "discover-observe" || page.path.startsWith("discover-observe/");
   const isArchiveStory = Boolean(page.archiveStory);
   const isProgramPage = page.path === "volunteer" || page.path.startsWith("volunteer/") || page.path === "education" || page.path.startsWith("education/");
@@ -69,7 +70,7 @@ export default function InteriorPage({ page }: { page: SitePage }) {
           <article><p className="story-legacy-kicker">{String(index + 2).padStart(2, "0")}</p><h2>{section.title}</h2>{section.blocks.map((block, blockIndex) => block.type === "paragraph" ? <p key={blockIndex}>{block.text}</p> : <ul key={blockIndex}>{block.items.map((item) => <li key={item}>{item}</li>)}</ul>)}</article>
           <figure className="story-legacy-image"><img src={archiveImages[(index + 1) % archiveImages.length]} alt={section.title} /></figure>
         </section>)}</div>}
-        <div className="story-legacy-back"><Link href="/archive">← {lang === "en" ? "Back to the historical archive" : "返回历史档案"}</Link></div>
+        <div className="story-legacy-back"><Link href={isObservationStory ? "/discover-observe" : "/archive"}>← {isObservationStory ? (lang === "en" ? "Back to Discoveries & Observations" : "返回发现与观察") : (lang === "en" ? "Back to the historical archive" : "返回历史档案")}</Link></div>
       </div> : page.sections ? page.sections.map((item, index) => {
         const isNonprofitActions = page.path === "support" && item.title.zh === "行动方向";
         return <section className={`interior-section ${index % 2 ? "tint" : ""}${isNonprofitActions ? " nonprofit-actions-section" : ""}${isProgramPage ? " program-story-section" : ""}`} key={`${item.title.en}-${index}`}>

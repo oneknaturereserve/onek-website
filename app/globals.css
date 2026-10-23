@@ -309,6 +309,7 @@
 .field-notes-feature ul{list-style:none;margin:30px 0;padding:20px 0;border-top:1px solid rgba(31,51,40,.18);border-bottom:1px solid rgba(31,51,40,.18)}
 .field-notes-feature li{padding:5px 0;font:.82rem/1.6 Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif;color:#526057}
 .field-notes-feature blockquote{margin:34px 0 0;padding-left:24px;border-left:3px solid var(--field-gold);color:var(--field-forest);font:600 1.35rem/1.5 "Cormorant Garamond",Georgia,serif}
+.field-notes-page.archive-story-page .archive-story-content article>p{white-space:pre-line}
 .field-notes-index{padding:118px 0;background:var(--field-soft);overflow:hidden}.field-notes-index-heading{width:min(1120px,94%);margin:0 auto 54px;text-align:center}.field-notes-index-heading p{margin:0 0 12px;color:var(--field-gold);font-size:.92rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}.field-notes-index-heading h2{margin:0;color:var(--field-forest);font:600 clamp(2.7rem,5vw,4.4rem)/1.06 "Cormorant Garamond",Georgia,serif}
 @media (max-width:920px){.field-notes-feature{grid-template-columns:1fr}.field-notes-feature figure{position:relative;top:auto;height:560px}}
 @media (max-width:560px){.field-notes-page .interior-header{height:70px}.field-notes-feature,.field-notes-index{padding-top:84px;padding-bottom:84px}.field-notes-feature{gap:38px}.field-notes-feature figure{height:420px;border-radius:24px}.field-notes-feature h2{font-size:clamp(2.35rem,11vw,3.2rem)}}
