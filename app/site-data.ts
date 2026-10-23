@@ -3,7 +3,8 @@ import { programPages } from "./program-content";
 
 export type Lang = "en" | "zh";
 export type Localized = { en: string; zh: string };
-export type ContentSection = { title: Localized; label?: Localized; body: Localized[]; bullets?: Localized[]; afterBullets?: Localized[] };
+export type DocumentBlock = { type: "paragraph"; text: string } | { type: "list"; items: string[] };
+export type ContentSection = { title: Localized; label?: Localized; body: Localized[]; bullets?: Localized[]; afterBullets?: Localized[]; documentBlocks?: { en: DocumentBlock[]; zh: DocumentBlock[] } };
 export type ArchiveStoryBlock = { type: "paragraph"; text: string } | { type: "list"; items: readonly string[] };
 export type ArchiveStorySection = { title: string; blocks: readonly ArchiveStoryBlock[] };
 export type PageCard = { href: string; image: string; kicker: Localized; title: Localized; summary: Localized; placeholder?: boolean };

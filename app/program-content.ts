@@ -1,4 +1,5 @@
 import type { ContentSection, Localized, PageCard, SitePage } from "./site-data";
+import volunteerDocs from "./volunteer-doc-content.json";
 
 const L = (en: string, zh: string): Localized => ({ en, zh });
 const S = (en: string, zh: string, enBody: string[], zhBody: string[], bullets?: Localized[]): ContentSection => ({
@@ -130,3 +131,26 @@ export const programPages: SitePage[] = [
     ], quote: L("Meaningful conservation begins with meaningful experiences in nature.", "真正的自然保护始于真实的自然体验。"),
   },
 ];
+
+type VolunteerDocKey = keyof typeof volunteerDocs;
+const documentSections = (key: VolunteerDocKey): ContentSection[] => {
+  const document = volunteerDocs[key];
+  return document.en.sections.map((section, index) => ({
+    title: L(section.title, document.zh.sections[index]?.title ?? section.title),
+    body: [],
+    documentBlocks: {
+      en: section.blocks.map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }),
+      zh: (document.zh.sections[index]?.blocks ?? []).map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }),
+    },
+  }));
+};
+
+(["research", "conservation", "youth"] as const).forEach((key) => {
+  const page = programPages.find((candidate) => candidate.path === `volunteer/${key}`);
+  if (!page) return;
+  page.title = L(volunteerDocs[key].en.title, volunteerDocs[key].zh.title);
+  page.subtitle = L(volunteerDocs[key].en.subtitle, volunteerDocs[key].zh.subtitle);
+  page.intro = L("", "");
+  page.sections = documentSections(key);
+  page.quote = undefined;
+});
