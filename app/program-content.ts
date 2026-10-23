@@ -137,15 +137,25 @@ const documentSections = (key: VolunteerDocKey): ContentSection[] => {
   const document = volunteerDocs[key];
   return document.en.sections.flatMap((section, index) => {
     if (key === "conservation" && section.title === "Volunteer Activities") return [];
+    if (key === "research" && (section.title === "Research Focus Areas" || section.title === "Join the OneK Research Internship Program")) return [];
+    const enBlocks = section.blocks.map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" });
+    const zhBlocks = (document.zh.sections[index]?.blocks ?? []).map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" });
+    if (key === "research" && section.title === "Our Mission") {
+      const enJoin = document.en.sections[index + 1];
+      const zhJoin = document.zh.sections[index + 1];
+      enBlocks.push({ type: "paragraph", text: enJoin.title }, ...enJoin.blocks.map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }));
+      zhBlocks.push({ type: "paragraph", text: zhJoin.title }, ...zhJoin.blocks.map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }));
+    }
     const content: ContentSection = {
       title: L(section.title, document.zh.sections[index]?.title ?? section.title),
       body: [],
       documentBlocks: {
-        en: section.blocks.map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }),
-        zh: (document.zh.sections[index]?.blocks ?? []).map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }),
+        en: enBlocks,
+        zh: zhBlocks,
       },
     };
     if (key === "conservation" && section.title === "Wildlife Monitoring") content.label = L("Volunteer Activities", "志愿者参与内容");
+    if (key === "research" && section.title === "Biodiversity Inventory and Species Documentation") content.label = L("Research Focus Areas", "主要研究方向");
     return [content];
   });
 };
