@@ -45,6 +45,7 @@ export default function InteriorPage({ page }: { page: SitePage }) {
       {isNaturalEchoActivity ? <div className="interior-hero-inner"><p className="interior-eyebrow">NATURAL ECHO</p><h1>{lang === "en" ? "Let the Voice of Nature Be Heard by More Children" : "让自然的声音，被更多孩子听见"}</h1><h2>{lang === "en" ? "Youth–Led Nature Education" : "由青少年发起的自然教育项目"}</h2><div className="interior-hero-links"><a href="#content">{lang === "en" ? "Read the activity" : "阅读活动内容"} ↓</a></div></div> : <div className="interior-hero-inner"><p className="interior-eyebrow">{page.eyebrow[lang]}</p><h1>{page.title[lang]}</h1><h2>{page.subtitle[lang]}</h2>{page.intro[lang] && <p>{page.intro[lang]}</p>}<div className="interior-hero-links"><a href="#content">{t.explore} ↓</a><Link href="/contact">{t.apply} ↗</Link></div></div>}
       {page.path === "volunteer/conservation" && <p className="program-hero-subline">{lang === "en" ? "Protecting Rainforests Through Action" : "在行动中保护雨林"}</p>}
       {page.path === "volunteer/research" && <p className="program-hero-subline">{lang === "en" ? "Tropical Ecology, Biodiversity Monitoring and Conservation Research" : "热带生态学、生物多样性监测与自然保护实践"}</p>}
+      {page.path === "volunteer/youth" && <p className="program-hero-subline">{lang === "en" ? "Inspiring the Next Generation of Conservationists" : "培养未来自然保护者的成长计划"}</p>}
       {!isNaturalEchoActivity && page.imagePlaceholder && <span className="interior-placeholder">{t.placeholder}</span>}
     </section>
 

@@ -138,6 +138,7 @@ const documentSections = (key: VolunteerDocKey): ContentSection[] => {
   return document.en.sections.flatMap((section, index) => {
     if (key === "conservation" && section.title === "Volunteer Activities") return [];
     if (key === "research" && (section.title === "Research Focus Areas" || section.title === "Join the OneK Research Internship Program")) return [];
+    if (key === "youth" && section.title === "Learning Through Exploration") return [];
     const enBlocks = section.blocks.map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" });
     const zhBlocks = (document.zh.sections[index]?.blocks ?? []).map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" });
     if (key === "research" && section.title === "Our Mission") {
@@ -156,6 +157,7 @@ const documentSections = (key: VolunteerDocKey): ContentSection[] => {
     };
     if (key === "conservation" && section.title === "Wildlife Monitoring") content.label = L("Volunteer Activities", "志愿者参与内容");
     if (key === "research" && section.title === "Biodiversity Inventory and Species Documentation") content.label = L("Research Focus Areas", "主要研究方向");
+    if (key === "youth" && section.title === "Wildlife Discovery") content.label = L("Learning Through Exploration", "雨林探索课程");
     return [content];
   });
 };
