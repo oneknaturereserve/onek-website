@@ -31,7 +31,7 @@ export default function InteriorPage({ page }: { page: SitePage }) {
     ? ["/onek/education.jpg", "/legacy-exploration/ExplorationPageImage/ClassroomImage.JPG", "/legacy-exploration/ExplorationPageImage/birdWatching.jpeg", "/onek/explore.jpg"]
     : ["/onek/volunteer.jpg", "/onek/research-old/ResearchHeader.JPG", "/onek/camera.jpg", "/onek/about-old/biodiversity.jpg", "/legacy-exploration/ExplorationPageImage/Hiking.jpg"];
 
-  return <main className={`interior-page${isNaturalEchoActivity ? " natural-echo-activity-page" : ""}${isArchiveStory ? " story-legacy-page archive-story-page" : ""}${isArchivePage ? " archive-page" : ""}${isFieldNotesSection ? " field-notes-page" : ""}${isProgramPage ? ` program-detail-page${isProgramIndex ? " program-index-page" : " program-story-detail-page"}` : ""}${page.path === "education" ? " education-index-page" : ""}${page.path === "education/about" ? " education-about-page" : ""}`} id="top">
+  return <main className={`interior-page${page.path === "support" ? " conservation-page" : ""}${isNaturalEchoActivity ? " natural-echo-activity-page" : ""}${isArchiveStory ? " story-legacy-page archive-story-page" : ""}${isArchivePage ? " archive-page" : ""}${isFieldNotesSection ? " field-notes-page" : ""}${isProgramPage ? ` program-detail-page${isProgramIndex ? " program-index-page" : " program-story-detail-page"}` : ""}${page.path === "education" ? " education-index-page" : ""}${page.path === "education/about" ? " education-about-page" : ""}`} id="top">
     <header className="interior-header">
       <Link className="interior-brand" href="/" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link>
       <nav className={menu ? "is-open" : ""} aria-label="Primary navigation">
