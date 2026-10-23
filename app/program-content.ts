@@ -1,5 +1,6 @@
 import type { ContentSection, Localized, PageCard, SitePage } from "./site-data";
 import volunteerDocs from "./volunteer-doc-content.json";
+import educationDoc from "./education-doc-content.json";
 
 const L = (en: string, zh: string): Localized => ({ en, zh });
 const S = (en: string, zh: string, enBody: string[], zhBody: string[], bullets?: Localized[]): ContentSection => ({
@@ -95,9 +96,9 @@ export const programPages: SitePage[] = [
     ], quote: L("We do not aim to create tourists. We aim to nurture explorers.", "我们不希望培养游客，而希望培养探索者。"),
   },
   {
-    path: "education", eyebrow: L("FROM DISCOVERY TO STEWARDSHIP", "从认识自然，到守护自然"), title: L("Experience, observe, and grow through nature", "在真实的自然中，观察、探索与成长"), subtitle: L("Inspiring curiosity, knowledge, and stewardship", "培养好奇心、科学素养与守护自然的责任感"), intro: L("At OneK, nature education begins in the rainforest itself. True nature education is not only about identifying species, but understanding the relationships connecting all life and recognizing our place within the ecosystem.", "OneK 的自然教育始于真实的雨林。真正的自然教育不仅是认识更多物种，更是理解生命之间的联系，以及人类在生态系统中的角色。"), image: "/onek/education.jpg", sections: [
-      S("Nature is the classroom", "让自然成为课堂", ["Through observation, exploration, and hands-on experiences, participants build curiosity, respect, scientific literacy, and a commitment to conservation."], ["通过观察、探索与实践，帮助参与者建立对自然的好奇、尊重、科学素养与守护之心。"]),
-    ], cards: educationCards, quote: L("Let the rainforest be the teacher.", "让自然成为课堂，让雨林成为老师。"),
+    path: "education", eyebrow: L("FROM DISCOVERY TO STEWARDSHIP", "从认识自然，到守护自然"), title: L("Experience, observe, and grow through nature", "在真实的自然中，观察、探索与成长"), subtitle: L("Inspiring curiosity, knowledge, and stewardship", "培养好奇心、科学素养与守护自然的责任感"), intro: L("", ""), image: "/onek/education.jpg", sections: [
+      S("Nature Education", "自然教育简介", ["At OneK, nature education begins in the rainforest itself. We believe that true nature education is not only about identifying species, but also about understanding the relationships that connect all life and recognizing our place within the ecosystem. Through observation, exploration, and hands-on experiences, we inspire curiosity, respect, and a commitment to conservation."], ["OneK 的自然教育始于真实的雨林。我们相信，真正的自然教育不仅是认识更多物种，更是理解生命之间的联系，以及人类在生态系统中的角色。通过观察、探索与实践，帮助参与者建立对自然的好奇、尊重与守护之心。"]),
+    ], cards: educationCards.slice(1),
   },
   {
     path: "education/about", eyebrow: L("NATURE EDUCATION", "自然教育与野外学习"), title: L("From discovering nature to protecting nature", "从认识自然，到守护自然"), subtitle: L("A journey built through experience, science, and action", "一条由体验、科学与行动连接的成长路径"), intro: L("Since 2013, our nature education journey has brought young people into some of the world's most remarkable ecosystems—from the Amazon and Papua to Borneo, the Galápagos, and Costa Rica.", "自 2013 年起，我们带领青少年走进亚马逊雨林、巴布亚、新几内亚、婆罗洲、加拉帕戈斯与哥斯达黎加等重要生态区域，让自然成为最真实的课堂。"), image: "/onek/about-old/story.jpg", sections: [
@@ -169,5 +170,54 @@ const documentSections = (key: VolunteerDocKey): ContentSection[] => {
   page.subtitle = L(volunteerDocs[key].en.subtitle, volunteerDocs[key].zh.subtitle);
   page.intro = L("", "");
   page.sections = documentSections(key);
+  page.quote = undefined;
+});
+
+const educationAbout = programPages.find((page) => page.path === "education/about");
+if (educationAbout) {
+  educationAbout.eyebrow = L("FROM DISCOVERY TO STEWARDSHIP", "从认识自然，到守护自然");
+  educationAbout.title = L("Experience, observe, and grow through nature", "在真实的自然中，观察、探索与成长");
+  educationAbout.subtitle = L("Inspiring curiosity, knowledge, and stewardship", "培养好奇心、科学素养与守护自然的责任感");
+  educationAbout.intro = L("", "");
+  educationAbout.image = "/onek/education.jpg";
+  educationAbout.cards = undefined;
+  educationAbout.quote = undefined;
+  educationAbout.sections = educationDoc.en.sections.flatMap((section, index) => {
+    if (section.title === "Our Philosophy of Nature Education") return [];
+    const content: ContentSection = {
+      title: L(section.title, educationDoc.zh.sections[index]?.title ?? section.title),
+      body: [],
+      documentBlocks: {
+        en: section.blocks.map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }),
+        zh: (educationDoc.zh.sections[index]?.blocks ?? []).map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }),
+      },
+    };
+    if (section.title === "Bringing Children into Real Nature") content.label = L("Our Philosophy of Nature Education", "OneK 的自然教育理念");
+    return [content];
+  });
+}
+
+const educationPageCopy = {
+  "education/international-base": {
+    en: ["The OneK International Ecological Education Base provides immersive learning experiences in one of the world’s most biodiverse tropical rainforest ecosystems.", "Designed for schools, families, educational organizations, and international groups, the program combines rainforest exploration, wildlife observation, ecological learning, and conservation practice to help participants develop a deeper understanding of nature and humanity’s relationship with it.", "Let the rainforest become the classroom, and nature become the teacher."],
+    zh: ["OneK 国际生态教育基地依托哥斯达黎加热带雨林生态系统，为学校、家庭、教育机构和国际团体提供沉浸式自然学习体验。", "参与者将通过雨林探索、生物观察、生态实践和保护项目，近距离了解热带生态系统的运作方式，建立人与自然之间真实而深刻的连接。", "让自然成为课堂，让雨林成为老师。"],
+  },
+  "education/rainforest-school": {
+    en: ["Rainforest School is OneK’s long-term nature education initiative, designed to inspire curiosity, scientific thinking, and environmental stewardship through direct experiences in nature.", "Using the rainforest as a living classroom, participants explore biodiversity, ecological relationships, and natural history through observation, discovery, and hands-on learning.", "Learning happens not only in classrooms, but also in forests, rivers, and the natural world itself."],
+    zh: ["雨林学校是 OneK 长期开展的自然教育项目。", "课程以热带雨林为学习场景，通过观察、探索和实践，引导孩子认识生物多样性、理解生态系统，并培养科学观察能力与环境责任感。", "在这里，学习不仅发生在教室里，更发生在森林、溪流和真实的自然世界之中。", "从认识自然开始，培养终身受益的自然素养。"],
+  },
+  "education/youth-nature": {
+    en: ["OneK’s Youth Nature Programs offer hands-on learning opportunities for young people through topics such as insects, birds, amphibians, ecology, nature photography, and citizen science.", "By encouraging exploration, observation, and field-based discovery, these programs help participants develop scientific skills, a deeper appreciation for biodiversity, and a lifelong connection with nature.", "Learn through exploration. Grow through nature."],
+    zh: ["OneK 青少年自然课程面向不同年龄段的青少年设计，内容涵盖昆虫、鸟类、两栖动物、生态摄影、自然观察与公民科学等主题。", "课程强调亲身参与和实践探索，帮助孩子建立观察能力、科学思维和对自然的热爱。", "我们希望每一次发现都能成为成长的起点，让更多年轻人成为未来的自然守护者。", "在探索中学习，在自然中成长。"],
+  },
+} as const;
+
+Object.entries(educationPageCopy).forEach(([path, copy]) => {
+  const page = programPages.find((candidate) => candidate.path === path);
+  const card = educationCards.find((candidate) => candidate.href === `/${path}`);
+  if (card) card.summary = L(copy.en.join(" "), copy.zh.join(" "));
+  if (!page) return;
+  page.intro = L("", "");
+  page.sections = [S(page.title.en, page.title.zh, [...copy.en], [...copy.zh])];
   page.quote = undefined;
 });
