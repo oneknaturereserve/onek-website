@@ -96,7 +96,7 @@ export const programPages: SitePage[] = [
     ], quote: L("We do not aim to create tourists. We aim to nurture explorers.", "我们不希望培养游客，而希望培养探索者。"),
   },
   {
-    path: "education", eyebrow: L("FROM DISCOVERY TO STEWARDSHIP", "从认识自然，到守护自然"), title: L("Experience, observe, and grow through nature", "在真实的自然中，观察、探索与成长"), subtitle: L("Inspiring curiosity, knowledge, and stewardship", "培养好奇心、科学素养与守护自然的责任感"), intro: L("", ""), image: "/onek/education.jpg", sections: [
+    path: "education", eyebrow: L("From Discovering Nature to Protecting Nature", "从认识自然，到守护自然"), title: L("Experience, observe, and grow through nature", "在真实的自然中，观察、探索与成长"), subtitle: L("Inspiring curiosity, knowledge, and stewardship", "培养好奇心、科学素养与守护自然的责任感"), intro: L("", ""), image: "/onek/education.jpg", sections: [
       S("Nature Education", "自然教育简介", ["At OneK, nature education begins in the rainforest itself. We believe that true nature education is not only about identifying species, but also about understanding the relationships that connect all life and recognizing our place within the ecosystem. Through observation, exploration, and hands-on experiences, we inspire curiosity, respect, and a commitment to conservation."], ["OneK 的自然教育始于真实的雨林。我们相信，真正的自然教育不仅是认识更多物种，更是理解生命之间的联系，以及人类在生态系统中的角色。通过观察、探索与实践，帮助参与者建立对自然的好奇、尊重与守护之心。"]),
     ], cards: educationCards.slice(1),
   },
@@ -215,7 +215,10 @@ const educationPageCopy = {
 Object.entries(educationPageCopy).forEach(([path, copy]) => {
   const page = programPages.find((candidate) => candidate.path === path);
   const card = educationCards.find((candidate) => candidate.href === `/${path}`);
-  if (card) card.summary = L(copy.en.join(" "), copy.zh.join(" "));
+  if (card) {
+    card.summary = L(copy.en.slice(0, -1).join(" "), copy.zh.slice(0, -1).join(" "));
+    card.closing = L(copy.en.at(-1) ?? "", copy.zh.at(-1) ?? "");
+  }
   if (!page) return;
   page.intro = L("", "");
   page.sections = [S(page.title.en, page.title.zh, [...copy.en], [...copy.zh])];

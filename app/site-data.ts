@@ -7,7 +7,7 @@ export type DocumentBlock = { type: "paragraph"; text: string } | { type: "list"
 export type ContentSection = { title: Localized; label?: Localized; body: Localized[]; bullets?: Localized[]; afterBullets?: Localized[]; documentBlocks?: { en: DocumentBlock[]; zh: DocumentBlock[] } };
 export type ArchiveStoryBlock = { type: "paragraph"; text: string } | { type: "list"; items: readonly string[] };
 export type ArchiveStorySection = { title: string; blocks: readonly ArchiveStoryBlock[] };
-export type PageCard = { href: string; image: string; kicker: Localized; title: Localized; summary: Localized; placeholder?: boolean };
+export type PageCard = { href: string; image: string; kicker: Localized; title: Localized; summary: Localized; closing?: Localized; placeholder?: boolean };
 export type SitePage = {
   path: string;
   eyebrow: Localized;

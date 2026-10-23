@@ -81,7 +81,7 @@ export default function InteriorPage({ page }: { page: SitePage }) {
       }) : null}
 
       {!isFieldNotes && page.cards ? <section className="interior-related"><div className="interior-related-heading"><p>{page.eyebrow[lang]}</p><h2>{page.path === "education" ? (lang === "en" ? "At OneK, we believe that meaningful conservation begins with meaningful experiences in nature. Through education, exploration, and discovery, we hope to inspire the next generation of naturalists, scientists, and conservationists." : "我们相信，真正的自然保护始于真实的自然体验。通过教育、探索与发现，我们希望激发下一代自然观察者、科学探索者和自然守护者的成长。") : t.related}</h2></div><div className="interior-card-grid">
-        {page.cards.map((item) => <Link className="interior-card" href={item.href} key={item.href}><div className="interior-card-image"><img src={item.image} alt={item.title[lang]} />{item.placeholder && <span>{t.placeholder}</span>}</div><div className="interior-card-copy"><small>{item.kicker[lang]}</small><h3>{item.title[lang]}</h3><p>{item.summary[lang]}</p><b>{t.explore} ↗</b></div></Link>)}
+        {page.cards.map((item) => <Link className="interior-card" href={item.href} key={item.href}><div className="interior-card-image"><img src={item.image} alt={item.title[lang]} />{item.placeholder && <span>{t.placeholder}</span>}</div><div className="interior-card-copy"><small>{item.kicker[lang]}</small><h3>{item.title[lang]}</h3><p>{item.summary[lang]}</p>{item.closing?.[lang] && <p>{item.closing[lang]}</p>}<b>{t.explore} ↗</b></div></Link>)}
       </div></section> : null}
 
       {page.quote ? <blockquote className="interior-quote">“{page.quote[lang]}”</blockquote> : null}
