@@ -50,7 +50,7 @@ export default function ResearchPage() {
     <section className="research-station-collaboration" id="collaboration"><div className="research-station-heading"><p>{text.collaborationKicker}</p><h2>{text.collaborationTitle}</h2><span className="research-station-subtitle">{text.collaborationSubtitle}</span>{text.collaboration.map((paragraph) => <span key={paragraph}>{paragraph}</span>)}</div><Cards items={collaborations} lang={lang} /></section>
     <Feature image="/onek/research-old/MammalResearch.jpg" kicker={text.monitoringKicker} title={text.monitoringTitle} paragraphs={text.monitoring} href="/research/projects" label={text.explore} />
     <Feature image="/onek/research-old/ResearchInsect.jpg" kicker={text.reportKicker} title={text.reportTitle} paragraphs={text.report} href="/research/annual-reports" label={text.explore} reverse />
-    <section className="research-cta-section"><div className="research-cta-card"><p className="research-cta-kicker">{text.invitation}</p><h2>{text.invitationTitle}</h2><p className="research-cta-body">{text.invitationText}</p><div className="research-cta-actions"><Link className="research-cta-primary" href="/contact">{text.contact}</Link><Link className="research-cta-outline" href="/exploration">{text.reserve}</Link></div></div></section>
+    <section className="research-cta-section"><div className="research-cta-card"><p className="research-cta-kicker">{text.invitation}</p><h2>{text.invitationTitle}</h2><p className="research-cta-body">{text.invitationText}</p><div className="research-cta-actions"><Link className="research-cta-primary" href="/contact">{text.contact}</Link></div></div></section>
     <SiteEnding lang={lang} hideContact />
   </main>;
 }
