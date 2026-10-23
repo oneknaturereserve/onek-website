@@ -175,7 +175,7 @@ const documentSections = (key: VolunteerDocKey): ContentSection[] => {
 
 const educationAbout = programPages.find((page) => page.path === "education/about");
 if (educationAbout) {
-  educationAbout.eyebrow = L("FROM DISCOVERY TO STEWARDSHIP", "从认识自然，到守护自然");
+  educationAbout.eyebrow = L("From Discovering Nature to Protecting Nature", "从认识自然，到守护自然");
   educationAbout.title = L("Experience, observe, and grow through nature", "在真实的自然中，观察、探索与成长");
   educationAbout.subtitle = L("Inspiring curiosity, knowledge, and stewardship", "培养好奇心、科学素养与守护自然的责任感");
   educationAbout.intro = L("", "");
