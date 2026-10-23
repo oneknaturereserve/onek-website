@@ -135,14 +135,19 @@ export const programPages: SitePage[] = [
 type VolunteerDocKey = keyof typeof volunteerDocs;
 const documentSections = (key: VolunteerDocKey): ContentSection[] => {
   const document = volunteerDocs[key];
-  return document.en.sections.map((section, index) => ({
-    title: L(section.title, document.zh.sections[index]?.title ?? section.title),
-    body: [],
-    documentBlocks: {
-      en: section.blocks.map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }),
-      zh: (document.zh.sections[index]?.blocks ?? []).map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }),
-    },
-  }));
+  return document.en.sections.flatMap((section, index) => {
+    if (key === "conservation" && section.title === "Volunteer Activities") return [];
+    const content: ContentSection = {
+      title: L(section.title, document.zh.sections[index]?.title ?? section.title),
+      body: [],
+      documentBlocks: {
+        en: section.blocks.map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }),
+        zh: (document.zh.sections[index]?.blocks ?? []).map((block) => block.type === "list" ? { type: "list" as const, items: block.items ?? [] } : { type: "paragraph" as const, text: block.text ?? "" }),
+      },
+    };
+    if (key === "conservation" && section.title === "Wildlife Monitoring") content.label = L("Volunteer Activities", "志愿者参与内容");
+    return [content];
+  });
 };
 
 (["research", "conservation", "youth"] as const).forEach((key) => {
