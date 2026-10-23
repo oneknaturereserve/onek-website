@@ -330,6 +330,7 @@
 .program-detail-page .program-story-image figcaption{position:absolute;left:16px;bottom:16px;padding:8px 11px;border-radius:999px;background:rgba(251,248,242,.93);color:#5e655b;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 .program-detail-page .program-story-section .interior-section-title{grid-area:title;align-self:end}
 .program-detail-page .program-story-section .interior-section-title>p{color:var(--program-gold);font-size:.92rem;letter-spacing:2px}
+.program-detail-page .program-story-section .interior-section-title>p.section-specific-label{color:#233126}
 .program-detail-page .program-story-section .interior-section-title h2{max-width:620px;color:var(--program-forest);font-size:clamp(2.2rem,4vw,3.2rem);line-height:1.08}
 .program-detail-page .program-story-section .interior-section-body{grid-area:body;align-self:start;max-width:620px}
 .program-detail-page .program-story-section .interior-section-body ul{grid-template-columns:1fr;margin-top:24px}
