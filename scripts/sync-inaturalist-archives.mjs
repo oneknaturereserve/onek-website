@@ -4,9 +4,9 @@ import path from "node:path";
 const api = "https://api.inaturalist.org/v1";
 const root = process.cwd();
 const projects = [
-  { id: 141655, key: "insects", title: "One K保护区昆虫调查" },
-  { id: 141844, key: "herps", title: "One K保护区两栖爬行动物调查" },
-  { id: 141847, key: "mammals", title: "One K保护区哺乳动物调查" },
+  { ids: [141655, 142328, 142329], key: "insects", title: "One K保护区昆虫、蝴蝶与蛾类调查" },
+  { ids: [141844], key: "herps", title: "One K保护区两栖爬行动物调查" },
+  { ids: [141847], key: "mammals", title: "One K保护区哺乳动物调查" },
 ];
 
 const orderZh = {
@@ -20,8 +20,12 @@ const orderZh = {
   Squamata: "有鳞目", Testudines: "龟鳖目", Trichoptera: "毛翅目",
 };
 
-async function getJson(url) {
+async function getJson(url, attempt = 0) {
   const response = await fetch(url, { headers: { "User-Agent": "OneK-website-species-archives/1.0" } });
+  if (response.status === 429 && attempt < 6) {
+    await new Promise((resolve) => setTimeout(resolve, 1500 * (attempt + 1)));
+    return getJson(url, attempt + 1);
+  }
   if (!response.ok) throw new Error(`${response.status} ${url}`);
   return response.json();
 }
@@ -40,19 +44,21 @@ async function taxa(ids, locale = "en") {
   for (let index = 0; index < ids.length; index += 25) {
     const data = await getJson(`${api}/taxa/${ids.slice(index, index + 25).join(",")}?locale=${encodeURIComponent(locale)}`);
     data.results.forEach((taxon) => map.set(taxon.id, taxon));
+    await new Promise((resolve) => setTimeout(resolve, 350));
   }
   return map;
 }
 
 for (const project of projects) {
-  const observations = await getObservations(project.id);
+  const observations = (await Promise.all(project.ids.map(getObservations))).flat().sort((a, b) => b.observed_on.localeCompare(a.observed_on));
   const unique = new Map();
   for (const observation of observations) {
     if (observation.taxon && observation.photos?.length && !unique.has(observation.taxon.id)) unique.set(observation.taxon.id, observation);
   }
   const allAncestorIds = [...new Set([...unique.values()].flatMap((observation) => observation.taxon.ancestor_ids))];
   const speciesIds = [...unique.keys()];
-  const [ancestorTaxa, chineseTaxa] = await Promise.all([taxa(allAncestorIds), taxa(speciesIds, "zh-CN")]);
+  const ancestorTaxa = await taxa(allAncestorIds);
+  const chineseTaxa = await taxa(speciesIds, "zh-CN");
   const imageDir = path.join(root, "public", "onek", "inaturalist", project.key);
   await mkdir(imageDir, { recursive: true });
   const records = [];
