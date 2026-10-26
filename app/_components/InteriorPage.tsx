@@ -9,8 +9,8 @@ import SiteEnding from "./SiteEnding";
 import { featuredFieldNote } from "../field-notes-content";
 
 const copy = {
-  en: { home: "Home", menu: "Menu", contact: "Contact", support: "Support", explore: "Explore", back: "Back", placeholder: "Temporary image · replace after confirmation", related: "Continue exploring", apply: "Contact OneK", footer: "Protecting rainforest through research, education, and conservation." },
-  zh: { home: "主页", menu: "菜单", contact: "联系我们", support: "支持我们", explore: "了解更多", back: "返回", placeholder: "临时图片 · 确认素材后替换", related: "继续探索", apply: "联系 OneK", footer: "以科研、教育与保护行动守护热带雨林。" },
+  en: { home: "Home", menu: "Menu", contact: "Contact", support: "Support", explore: "Explore", back: "Back", placeholder: "Temporary image · replace after confirmation", related: "Continue exploring", apply: "Apply online", contactOneK: "Contact OneK", footer: "Protecting rainforest through research, education, and conservation." },
+  zh: { home: "主页", menu: "菜单", contact: "联系我们", support: "支持我们", explore: "了解更多", back: "返回", placeholder: "临时图片 · 确认素材后替换", related: "继续探索", apply: "在线报名", contactOneK: "联系 OneK", footer: "以科研、教育与保护行动守护热带雨林。" },
 };
 
 export default function InteriorPage({ page }: { page: SitePage }) {
@@ -43,7 +43,7 @@ export default function InteriorPage({ page }: { page: SitePage }) {
     </header>
 
     <section className={`interior-hero ${isNaturalEchoActivity ? "natural-echo-shared-hero" : ""}`} style={{ backgroundImage: `linear-gradient(90deg,rgba(13,27,19,.78),rgba(13,27,19,.12)),linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34)),url('${isNaturalEchoActivity ? "/onek/explore.jpg" : page.image}')` }}>
-      {isNaturalEchoActivity ? <div className="interior-hero-inner"><p className="interior-eyebrow">NATURAL ECHO</p><h1>{lang === "en" ? "Let the Voice of Nature Be Heard by More Children" : "让自然的声音，被更多孩子听见"}</h1><h2>{lang === "en" ? "Youth–Led Nature Education" : "由青少年发起的自然教育项目"}</h2><div className="interior-hero-links"><a href="#content">{lang === "en" ? "Read the activity" : "阅读活动内容"} ↓</a></div></div> : <div className="interior-hero-inner"><p className="interior-eyebrow">{page.eyebrow[lang]}</p><h1>{page.title[lang]}</h1><h2>{page.subtitle[lang]}</h2>{page.intro[lang] && <p>{page.intro[lang]}</p>}<div className="interior-hero-links"><a href="#content">{t.explore} ↓</a><Link href="/contact">{t.apply} ↗</Link></div></div>}
+      {isNaturalEchoActivity ? <div className="interior-hero-inner"><p className="interior-eyebrow">NATURAL ECHO</p><h1>{lang === "en" ? "Let the Voice of Nature Be Heard by More Children" : "让自然的声音，被更多孩子听见"}</h1><h2>{lang === "en" ? "Youth–Led Nature Education" : "由青少年发起的自然教育项目"}</h2><div className="interior-hero-links"><a href="#content">{lang === "en" ? "Read the activity" : "阅读活动内容"} ↓</a></div></div> : <div className="interior-hero-inner"><p className="interior-eyebrow">{page.eyebrow[lang]}</p><h1>{page.title[lang]}</h1><h2>{page.subtitle[lang]}</h2>{page.intro[lang] && <p>{page.intro[lang]}</p>}<div className="interior-hero-links"><a href="#content">{t.explore} ↓</a><Link href={page.path === "volunteer" || page.path.startsWith("volunteer/") ? "/apply" : "/contact"}>{page.path === "volunteer" || page.path.startsWith("volunteer/") ? t.apply : t.contactOneK} ↗</Link></div></div>}
       {page.path === "volunteer/conservation" && <p className="program-hero-subline">{lang === "en" ? "Protecting Rainforests Through Action" : "在行动中保护雨林"}</p>}
       {page.path === "volunteer/research" && <p className="program-hero-subline">{lang === "en" ? "Tropical Ecology, Biodiversity Monitoring and Conservation Research" : "热带生态学、生物多样性监测与自然保护实践"}</p>}
       {page.path === "volunteer/youth" && <p className="program-hero-subline">{lang === "en" ? "Inspiring the Next Generation of Conservationists" : "培养未来自然保护者的成长计划"}</p>}

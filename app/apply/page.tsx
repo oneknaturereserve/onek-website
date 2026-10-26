@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import SiteEnding from "../_components/SiteEnding";
+import { navItems } from "../navigation";
 
 type Lang = "en" | "zh";
 type SubmitState = "idle" | "sending" | "sent" | "error";
@@ -29,6 +30,7 @@ const interests = [
 const text = {
   en: {
     back: "Back to programs", switcher: "中文", eyebrow: "ONEK INTERNATIONAL PROGRAMS",
+    home: "Home", menu: "Menu", contact: "Contact", support: "Support",
     title: "Begin your rainforest journey.", subtitle: "Volunteer application",
     intro: "Tell us what you hope to contribute and learn. This first-stage application takes about 8–10 minutes; no passport, medical documents, or payment are requested.",
     fit: "Before you apply", fitItems: ["Applicants for adult field programs should be 18 or older.", "Field days may include heat, humidity, rain, insects, uneven trails, and basic living conditions.", "Activities depend on season, weather, conservation priorities, and staff capacity.", "Submitting an application does not guarantee placement. We review each application for a responsible match."],
@@ -40,6 +42,7 @@ const text = {
   },
   zh: {
     back: "返回国际项目", switcher: "EN", eyebrow: "ONEK 国际项目",
+    home: "主页", menu: "菜单", contact: "联系我们", support: "支持我们",
     title: "从这里，开始你的雨林旅程。", subtitle: "志愿者在线报名",
     intro: "请告诉我们你希望学习什么、能够贡献什么。首轮申请约需 8–10 分钟，无需提交护照、医疗文件或支付任何费用。",
     fit: "申请前请确认", fitItems: ["成人野外项目申请人原则上应年满 18 周岁。", "野外工作可能面对高温、高湿、降雨、昆虫、不平整山路和较为基础的生活条件。", "具体活动取决于季节、天气、保护工作重点和工作人员安排。", "提交申请不代表自动录取；我们会逐一评估是否能够形成安全、负责任且有价值的匹配。"],
@@ -57,6 +60,7 @@ function Field({ label, children, wide = false, help }: { label: string; childre
 
 export default function ApplyPage() {
   const [lang, setLang] = useState<Lang>("en");
+  const [menu, setMenu] = useState(false);
   const [step, setStep] = useState(0);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [reference, setReference] = useState("");
@@ -107,7 +111,15 @@ export default function ApplyPage() {
   const emailLink = `mailto:OneK.CR2018@gmail.com?subject=${encodeURIComponent("[OneK] Volunteer application")}&body=${encodeURIComponent(fallbackBody)}`;
 
   return <main className="application-page" id="top">
-    <header className="application-header"><Link href="/" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link><div><Link href="/volunteer">← {t.back}</Link><button type="button" onClick={() => setLang(lang === "en" ? "zh" : "en")}>{t.switcher}</button></div></header>
+    <header className="interior-header">
+      <Link className="interior-brand" href="/" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link>
+      <nav className={menu ? "is-open" : ""} aria-label="Primary navigation">
+        <Link href="/">{t.home}</Link>
+        {navItems.map(([en, zh, href]) => <Link key={href} href={href}>{lang === "en" ? en : zh}</Link>)}
+        <Link href="/contact">{t.contact}</Link><Link className="interior-support" href="/support">{t.support}</Link>
+      </nav>
+      <div className="interior-actions"><button type="button" onClick={() => setLang(lang === "en" ? "zh" : "en")} aria-label="Switch language"><b>{lang === "en" ? "EN" : "中"}</b><span>{lang === "en" ? "中" : "EN"}</span></button><button type="button" className="interior-menu" onClick={() => setMenu(!menu)} aria-expanded={menu}>{t.menu}</button></div>
+    </header>
 
     <section className="application-hero">
       <div><p>{t.eyebrow}</p><h1>{t.title}</h1><h2>{t.subtitle}</h2><p className="application-hero-intro">{t.intro}</p><div className="application-hero-meta"><span>8–10 MIN</span><span>4 STEPS</span><span>NO DOCUMENT UPLOAD</span></div></div>
