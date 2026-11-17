@@ -106,7 +106,7 @@ const copy = {
 const programs = [
   { no: "01", tagEn: "Adventure", tagZh: "探索", titleEn: "Exploration Journey", titleZh: "探索之旅", img: "/onek/explore.jpg", focus: "50% 50%", href: "/exploration", bodyEn: ["Journey into one of the most biodiverse rainforests in Costa Rica, where rivers, waterfalls, and wildlife await around every corner."], bodyZh: ["走进哥斯达黎加生物多样性最丰富的热带雨林之一，在这里，河流、瀑布与野生动物出现在探索旅程的每一个转角。"] },
   { no: "02", tagEn: "Explore. Learn. Protect.", tagZh: "探索自然 · 学习科学 · 守护雨林", titleEn: "International Volunteer Program", titleZh: "国际志愿者项目", img: "/onek/home-volunteer-camera-trap.jpg", focus: "50% 55%", href: "/volunteer", bodyEn: ["OneK International Programs connect people from around the world with real rainforest conservation, ecological research, and environmental education in Costa Rica.", "Join us to experience the rainforest, contribute to meaningful conservation work, and become part of a global community dedicated to protecting biodiversity."], bodyZh: ["OneK 国际项目连接来自世界各地的自然爱好者、学生和青年研究者，共同参与哥斯达黎加热带雨林的自然保护、生态研究和环境教育工作。", "在这里，你不仅是自然的观察者，更是保护行动的参与者。"] },
-  { no: "03", tagEn: "Nature Education", tagZh: "自然教育", titleEn: "Nature Education", titleZh: "自然教育", img: "/onek/education.jpg", focus: "50% 50%", href: "/education", bodyEn: ["At OneK, the rainforest becomes the classroom. Through observation, exploration, and hands-on experiences, participants develop an understanding of ecological connections and a deeper commitment to conservation."], bodyZh: ["OneK 的自然教育以真实的雨林为课堂，通过观察、探索与实践，引导参与者理解生命之间的联系，并在体验中建立对自然的尊重与守护意识。"] },
+  { no: "03", tagEn: "Nature Education", tagZh: "自然教育", titleEn: "Nature Education", titleZh: "自然教育", img: "/onek/uploads/home-nature-education.jpg", focus: "50% 48%", href: "/education", bodyEn: ["At OneK, the rainforest becomes the classroom. Through observation, exploration, and hands-on experiences, participants develop an understanding of ecological connections and a deeper commitment to conservation."], bodyZh: ["OneK 的自然教育以真实的雨林为课堂，通过观察、探索与实践，引导参与者理解生命之间的联系，并在体验中建立对自然的尊重与守护意识。"] },
 ];
 
 const species = [
@@ -181,7 +181,7 @@ export default function Home() {
 
     <section className="about section-shell cinema-reveal" id="about">
       <div className="section-index">01</div>
-      <div className="about-image image-placeholder"><img src="/onek/about.jpg" alt="OneK rainforest life"/><span>{t.temp}</span></div>
+      <div className="about-image"><img src="/onek/uploads/home-about.jpg" alt="The OneK family in the rainforest"/></div>
       <div className="about-copy"><p className="kicker">{t.aboutKicker}</p><h2>{t.aboutTitle}</h2><p className="lead">{t.aboutBody}</p><p className="mission-line">Research · Education · Conservation</p><a className="text-link" href="/about">{t.readStory} <b>↗</b></a></div>
     </section>
 
@@ -197,9 +197,9 @@ export default function Home() {
       <div className="research-copy"><p className="kicker light">{t.researchKicker}</p><h2>{t.researchTitle}</h2><p>{t.researchBody}</p><a className="light-link" href="/research">{t.enterStation} ↗</a></div>
       <div className={`camera-card ${cameraOpen ? "revealed" : ""}`}>
         <div className="camera-top"><span>CAM 07</span><span>02:14:38</span><span className="rec">REC</span></div>
-        <img src="/onek/camera.jpg" alt="Camera trap wildlife at OneK" />
+        <img src="/onek/uploads/home-research-monitoring.jpg" alt="Puma recorded by a camera trap at OneK" />
         {!cameraOpen && <button onClick={() => setCameraOpen(true)}><i></i>{t.cameraPrompt}</button>}
-        {cameraOpen && <div className="camera-caption"><b>{t.cameraKicker}</b><span>{t.cameraFact}</span><small>{t.temp}</small></div>}
+        {cameraOpen && <div className="camera-caption"><b>{t.cameraKicker}</b><span>{t.cameraFact}</span></div>}
       </div>
     </section>
 

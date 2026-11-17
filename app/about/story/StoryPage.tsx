@@ -58,8 +58,8 @@ const chapters: readonly StorySection[] = [
   {
     enTitle: "Finding Our Direction in the Forest",
     zhTitle: "在森林里寻找方向",
-    image: "/onek/about-old/research.jpg",
-    imagePosition: "center 42%",
+    image: "/onek/uploads/story-section-01.jpg",
+    imagePosition: "center center",
     en: [
       "During the first few years, we devoted much of our time to daily observation.",
       "Recording birds.",
@@ -90,8 +90,8 @@ const chapters: readonly StorySection[] = [
   {
     enTitle: "The Rainforest Changed Us",
     zhTitle: "雨林改变了我们",
-    image: "/onek/about-old/biodiversity.jpg",
-    imagePosition: "center 45%",
+    image: "/onek/uploads/story-section-02.jpg",
+    imagePosition: "center 48%",
     en: [
       "As time passed, we gradually came to realize:",
       "Conservation is not simply about owning a piece of forest.",
@@ -206,7 +206,7 @@ const closing = {
 function TemporaryImage({ src, alt, position, isEn }: { src: string; alt: string; position?: string; isEn: boolean }) {
   return <figure className="story-legacy-image">
     <img src={src} alt={alt} style={{ objectPosition: position }} />
-    <figcaption>{isEn ? "Temporary image · to be replaced" : "临时图片 · 待正式照片替换"}</figcaption>
+    {!src.startsWith("/onek/uploads/") && <figcaption>{isEn ? "Temporary image · to be replaced" : "临时图片 · 待正式照片替换"}</figcaption>}
   </figure>;
 }
 
@@ -223,7 +223,7 @@ export default function StoryPage() {
     </header>
 
     <section className="story-legacy-hero">
-      <img src="/onek/about-old/hero.jpg" alt={isEn ? "OneK rainforest" : "OneK 热带雨林"} />
+      <img src="/onek/uploads/story-hero.jpg" alt={isEn ? "OneK rainforest landscape" : "OneK 雨林景观"} />
       <div className="story-legacy-hero-shade" />
       <div className="story-legacy-hero-copy">
         <p>{isEn ? "THE STORY OF ONEK" : "ONEK 的故事"}</p>
