@@ -221,7 +221,7 @@ export default function Home() {
     </section>
 
     <section className="dual-feature section-shell cinema-reveal">
-      <article className="nonprofit-card"><div className="org-logo"><img src="/onek/conservation-logo-cream.png" alt="OneK Conservation logo" /></div><div><p className="kicker">{t.nonprofitKicker}</p><h2>{t.nonprofitTitle}</h2><p>{t.nonprofitBody}</p><a className="dark-button" href="/support">{t.support}</a></div></article>
+      <article className="nonprofit-card"><div className="org-logo"><img src="/onek/conservation-logo-transparent-v2.png" alt="OneK Conservation logo" /></div><div><p className="kicker">{t.nonprofitKicker}</p><h2>{t.nonprofitTitle}</h2><p>{t.nonprofitBody}</p><a className="dark-button" href="/support">{t.support}</a></div></article>
     </section>
 
     <section className="contact-section legacy-contact cinema-reveal"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><p className="legacy-contact-body">{t.contactBody}</p><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact OneK" : "联系 OneK"}</a><a href="/#programs">{lang === "en" ? "Join a Program" : "参与项目"}</a><a href="/support">{lang === "en" ? "Support Conservation" : "支持保护行动"}</a></div></section>
