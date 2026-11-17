@@ -194,7 +194,7 @@ export default function Home() {
 
     <section className="research-section cinema-reveal">
       <div className="research-bg"></div>
-      <div className="research-copy"><p className="kicker light">{t.researchKicker}</p><h2>{t.researchTitle}</h2><p>{t.researchBody}</p><a className="light-link" href="/research">{t.enterStation} ↗</a></div>
+      <div className="research-copy"><p className="kicker light">{t.researchKicker}</p><h2>{lang === "en" ? <>The forest changes.<br />We keep listening.</> : <>森林不断变化，<br />我们持续聆听。</>}</h2><p>{t.researchBody}</p><a className="light-link" href="/research">{t.enterStation} ↗</a></div>
       <div className={`camera-card ${cameraOpen ? "revealed" : ""}`}>
         <div className="camera-top"><span>CAM 07</span><span>02:14:38</span><span className="rec">REC</span></div>
         <img src="/onek/uploads/home-research-monitoring.jpg" alt="Puma recorded by a camera trap at OneK" />
