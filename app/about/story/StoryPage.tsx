@@ -258,7 +258,7 @@ export default function StoryPage() {
         <p>{isEn ? "Today, OneK continues to carry out:" : "如今，OneK 持续开展："}</p>
       </div>
       <div className="story-legacy-work-body">
-        <TemporaryImage src="/onek/about-old/conservation.jpg" position="center 42%" alt={isEn ? "Conservation work at OneK" : "OneK 的保护工作"} isEn={isEn} />
+        <figure className="story-legacy-image"><img src="/onek/about-old/conservation.jpg" alt={isEn ? "Conservation work at OneK" : "OneK 的保护工作"} style={{ objectPosition: "center 42%" }} /></figure>
         <article>
           <ul>{(isEn ? workItems.en : workItems.zh).map((item) => <li key={item}>{item}</li>)}</ul>
           <p>{isEn ? "These projects may appear different, yet they all arise from the same goal:" : "这些项目看似不同，却都源于同一个目标："}</p>
