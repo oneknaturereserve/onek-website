@@ -339,6 +339,155 @@
 .field-notes-index{padding:118px 0;background:var(--field-soft);overflow:hidden}.field-notes-index-heading{width:min(1120px,94%);margin:0 auto 54px;text-align:center}.field-notes-index-heading p{margin:0 0 12px;color:var(--field-gold);font-size:.92rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}.field-notes-index-heading h2{margin:0;color:var(--field-forest);font:600 clamp(2.7rem,5vw,4.4rem)/1.06 "Cormorant Garamond",Georgia,serif}
 @media (max-width:920px){.field-notes-feature{grid-template-columns:1fr}.field-notes-feature figure{position:relative;top:auto;height:560px}}
 @media (max-width:560px){.field-notes-page .interior-header{height:70px}.field-notes-feature,.field-notes-index{padding-top:84px;padding-bottom:84px}.field-notes-feature{gap:38px}.field-notes-feature figure{height:420px;border-radius:24px}.field-notes-feature h2{font-size:clamp(2.35rem,11vw,3.2rem)}}
+
+/* Global typography alignment with the original OneK website. */
+:root{
+  --type-display:"Cormorant Garamond",Georgia,serif;
+  --type-body:Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  --type-nav-size:14px;
+  --type-nav-tracking:1.4px;
+  --type-eyebrow-size:.92rem;
+  --type-eyebrow-tracking:2px;
+  --type-hero-size:clamp(3rem,7vw,4.8rem);
+  --type-hero-leading:1.05;
+  --type-section-size:clamp(2.2rem,4vw,3.2rem);
+  --type-section-leading:1.08;
+  --type-card-size:1.8rem;
+  --type-body-size:1rem;
+  --type-body-leading:1.8;
+  --type-longform-leading:1.9;
+  --type-button-size:.95rem;
+  --type-button-tracking:.04em;
+}
+
+body{font-family:var(--type-body);font-size:var(--type-body-size);line-height:1.7}
+h1,h2,h3{font-family:var(--type-display);font-weight:600;letter-spacing:normal}
+p,li{font-family:var(--type-body)}
+
+/* Navigation and language controls */
+.site-header,.interior-header{height:78px}
+.brand img,.interior-brand img{width:158px;height:48px;object-fit:contain;filter:none}
+.site-header nav a,.interior-header nav a{
+  font-family:var(--type-body);
+  font-size:var(--type-nav-size);
+  font-weight:600;
+  line-height:1.2;
+  letter-spacing:var(--type-nav-tracking);
+}
+.language,.interior-actions button{font-size:13px;line-height:1.2;letter-spacing:.04em}
+
+/* Shared labels, headings, copy and actions */
+.kicker,.eyebrow,.interior-eyebrow,.natural-echo-kicker,.story-legacy-kicker,
+.field-notes-kicker,.research-cta-kicker,.program-copy small,.species-legacy-meta,
+.interior-section-title>p,.interior-related-heading>p,.natural-echo-activities-heading>p,
+.about-achievement-heading>p,.about-work-heading>p,.about-archive-heading>p{
+  font-family:var(--type-body);
+  font-size:var(--type-eyebrow-size);
+  font-weight:700;
+  line-height:1.35;
+  letter-spacing:var(--type-eyebrow-tracking);
+  text-transform:uppercase;
+}
+
+.hero h1,.interior-hero h1,.about-detail-hero h1,.story-legacy-hero h1,
+.natural-echo-hero h1,.research-station-hero h1,.species-calendar-hero h1,
+.application-hero h1,.contact-hero h1{
+  font-family:var(--type-display);
+  font-size:var(--type-hero-size);
+  font-weight:600;
+  line-height:var(--type-hero-leading);
+  letter-spacing:normal;
+}
+
+h2,.about-copy h2,.field-note-card-copy h2,.research-copy h2,.program-heading h2,
+.species-legacy-heading h2,.nonprofit-card h2,.echo-card h2,.archive-section h2,
+.contact-section h2,.interior-section-title h2,.interior-related-heading h2,
+.about-achievement-heading h2,.about-work-heading h2,.about-archive-heading h2,
+.story-legacy-opening h2,.story-legacy-chapter h2,.story-legacy-work-heading h2,
+.natural-echo-intro h2,.natural-echo-story-section h2,.natural-echo-vision h2,
+.natural-echo-activities-heading h2,.research-station-heading h2,
+.species-calendar-intro h2,.species-calendar-source h2,.field-notes-index-heading h2,
+.application-form-heading h2,.direct-contact h2{
+  font-family:var(--type-display);
+  font-size:var(--type-section-size);
+  font-weight:600;
+  line-height:var(--type-section-leading);
+  letter-spacing:.02em;
+}
+
+.lead,.about-copy .lead,.field-note-body,.research-copy>p:not(.kicker),
+.program-heading p,.species-legacy-body,.nonprofit-card>div:last-child>p:not(.kicker),
+.echo-card>div:last-child>p:not(.kicker),.archive-section>div:nth-child(2)>p:not(.kicker),
+.interior-hero-inner>p:not(.interior-eyebrow),.interior-section-body>p,
+.interior-card-copy p,.about-story-copy p,.achievement-card-copy p,
+.story-legacy-opening article>p,.story-legacy-chapter article>p,.story-legacy-work-body p,
+.natural-echo-intro p,.natural-echo-story-section p,.natural-echo-vision p,
+.research-station-page p,.field-notes-feature article>p,.contact-hero>p:last-child,
+.application-page p{
+  font-family:var(--type-body);
+  font-size:var(--type-body-size);
+  font-weight:400;
+  line-height:var(--type-longform-leading);
+  letter-spacing:normal;
+}
+
+.program-copy h3,.species-legacy-copy h3,.interior-card-copy h3,
+.achievement-card-copy h3,.about-timeline h3,.natural-echo-activity-row h3,
+.species-calendar-card h3,.research-station-card-grid h3,.application-choice-grid h3{
+  font-family:var(--type-display);
+  font-size:var(--type-card-size);
+  font-weight:600;
+  line-height:1.08;
+  letter-spacing:normal;
+}
+
+.program-copy p,.species-calendar-card p,.research-station-card-grid p,
+.natural-echo-activity-row p,.enquiry-grid p,.application-choice-grid p{
+  font-size:var(--type-body-size);
+  line-height:var(--type-body-leading);
+}
+
+.round-link,.text-link,.light-link,.dark-button,.program-copy a,
+.species-legacy-copy>a,.interior-hero-links a,.interior-card-copy b,
+.program-story-link,.species-calendar-source>a,.research-cta-actions a,
+.contact-links a,.contact-links button,.enquiry-grid b,.application-form-actions button{
+  font-family:var(--type-body);
+  font-size:var(--type-button-size);
+  font-weight:600;
+  line-height:1.2;
+  letter-spacing:var(--type-button-tracking);
+}
+
+.legacy-footer,.interior-footer{font-family:var(--type-body);font-size:var(--type-body-size);line-height:1.7}
+.legacy-footer h3,.interior-footer h3{font-family:var(--type-display);font-size:2rem;font-weight:600;line-height:1.1;letter-spacing:normal}
+.legacy-footer p,.legacy-footer a,.legacy-footer span,.interior-footer p,.interior-footer a,.interior-footer span{font-size:var(--type-body-size);line-height:1.7;letter-spacing:normal}
+
+/* Preserve intentional semantic line breaks while preventing short CJK orphans. */
+h1,h2,h3{text-wrap:balance;word-break:auto-phrase;overflow-wrap:normal;hyphens:none}
+.support-title-zh,.echo-intro-title-zh,.keep-together{white-space:nowrap}
+
+@media (max-width:1300px){
+  .site-header nav,.interior-header nav{gap:10px}
+  .site-header nav a,.interior-header nav a{font-size:13px;letter-spacing:1.2px}
+}
+
+@media (max-width:1150px){
+  .brand img,.interior-brand img{width:128px;height:44px}
+}
+
+@media (max-width:700px){
+  :root{
+    --type-hero-size:clamp(2.7rem,13vw,4.2rem);
+    --type-section-size:clamp(2rem,10vw,2.9rem);
+    --type-card-size:1.7rem;
+  }
+  .site-header,.interior-header{height:70px}
+  .brand img,.interior-brand img{width:112px;height:42px}
+  .site-header nav a,.interior-header nav a{font-size:13px;letter-spacing:1.2px}
+  .hero h1,.interior-hero h1,.about-detail-hero h1,.story-legacy-hero h1,
+  .natural-echo-hero h1,.research-station-hero h1,.species-calendar-hero h1,
+  .application-hero h1,.contact-hero h1{font-size:var(--type-hero-size);line-height:1.05}
+}
 .program-detail-page .interior-header{position:fixed;height:78px;background:rgba(17,30,22,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1)}.program-detail-page .interior-header nav a{font-size:clamp(9px,.82vw,12px);font-weight:600}.program-detail-page .interior-actions button{font-size:12px}.program-detail-page .interior-hero{min-height:100vh;background-position:center}.program-detail-page .interior-section-body>p{margin:0 0 16px;font-family:Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif;font-size:1rem;line-height:1.9;color:#33463a}.program-detail-page .interior-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (max-width:700px){.program-detail-page .interior-header{height:70px}.program-detail-page .interior-card-grid{grid-template-columns:1fr}}
 .program-detail-page{--program-cream:#f6f1e8;--program-soft:#fbf8f2;--program-forest:#1f3328;--program-gold:#b79b62;font-family:Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--program-cream)}
@@ -377,3 +526,41 @@
 .education-index-page .interior-related-heading h2{max-width:1050px;margin:0 auto;font:500 clamp(1.7rem,3vw,2.65rem)/1.35 var(--serif)}.education-index-page .interior-card-copy{min-height:460px}
 .program-hero-subline{position:absolute;z-index:3;left:max(8vw,40px);bottom:5.5vh;margin:0;color:rgba(255,255,255,.9);font-size:clamp(1rem,1.6vw,1.3rem);font-weight:500;letter-spacing:.04em}
 @media(max-width:850px){.program-detail-page .program-story-section,.program-detail-page .program-story-section.tint,.program-detail-page .program-story-section:nth-of-type(even){padding:84px 18px;grid-template-columns:1fr;grid-template-areas:"image" "title" "body";gap:28px}.program-detail-page .program-story-image{height:430px}.program-detail-page .interior-card-grid{grid-template-columns:1fr}}
+
+/* Keep program pages on the same original-site type scale as every other page. */
+.program-detail-page .interior-hero h1{font-size:var(--type-hero-size);font-weight:600;line-height:var(--type-hero-leading);letter-spacing:normal}
+.program-detail-page .interior-hero h2{font-size:clamp(1.08rem,2vw,1.35rem);line-height:1.65}
+.program-detail-page .program-story-section .interior-section-title h2{font-size:var(--type-section-size);line-height:var(--type-section-leading);letter-spacing:.02em}
+.program-detail-page .interior-card-copy h3{font-size:var(--type-card-size);line-height:1.08}
+.program-detail-page .interior-card-copy p{font-size:var(--type-body-size);line-height:var(--type-body-leading)}
+.education-index-page .interior-related-heading h2{font:600 var(--type-section-size)/var(--type-section-leading) var(--type-display);letter-spacing:.02em}
+@media(max-width:700px){.program-detail-page .interior-hero h1{font-size:var(--type-hero-size)}}
+
+/* Keep the original site's 14px navigation type without crowding the expanded new sitemap. */
+.interior-page .interior-header nav a,.contact-page .interior-header nav a,
+.about-detail-page .interior-header nav a,.conservation-page .interior-header nav a,
+.story-legacy-page .interior-header nav a,.natural-echo-page .interior-header nav a,
+.species-calendar-page .interior-header nav a,.field-notes-page .interior-header nav a,
+.program-detail-page .interior-header nav a,.site-header nav a{
+  font-size:var(--type-nav-size);
+  font-weight:600;
+  line-height:1.2;
+  letter-spacing:var(--type-nav-tracking);
+}
+@media(max-width:1500px){
+  .site-header{grid-template-columns:158px 1fr auto}
+  .site-header nav{position:fixed;inset:78px 0 auto;background:rgba(7,22,14,.98);padding:25px 5vw;display:none;grid-template-columns:repeat(2,1fr)}
+  .site-header nav.nav-open{display:grid}
+  .site-header nav a{padding:12px 0}
+  .site-header nav .nav-contact{padding:12px 0;border-left:0}
+  .site-header nav .nav-support{padding:12px;border-color:rgba(216,233,145,.55)}
+  .menu-button{display:block}
+  .interior-header{grid-template-columns:158px 1fr auto}
+  .interior-header nav{position:absolute;top:78px;left:18px;right:18px;padding:24px;background:rgba(7,22,14,.97);display:none;grid-template-columns:repeat(2,1fr);gap:18px;border:1px solid rgba(255,255,255,.16)}
+  .interior-header nav.is-open{display:grid}
+  .interior-menu{display:block!important}
+}
+@media(max-width:700px){
+  .site-header nav{inset:70px 0 auto}
+  .interior-header nav{top:70px}
+}
