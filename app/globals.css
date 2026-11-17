@@ -262,6 +262,8 @@
 .natural-echo-intro figure img{width:100%;height:auto;mix-blend-mode:multiply}
 .natural-echo-intro article{max-width:700px}
 .natural-echo-intro h2{margin:14px 0 34px;color:var(--echo-forest);font-size:clamp(2.3rem,4.3vw,3.45rem);font-weight:600;line-height:1.08}
+.natural-echo-intro h2.echo-intro-title-zh{font-size:clamp(1.35rem,3.2vw,2.65rem);white-space:nowrap}
+.keep-together{white-space:nowrap}
 .natural-echo-intro article>p:not(.natural-echo-kicker){margin:0 0 18px;color:var(--echo-text);font:1rem/1.9 Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif}
 .natural-echo-intro .echo-emphasis{color:var(--echo-forest)!important;font-family:"Cormorant Garamond",Georgia,serif!important;font-size:1.42rem!important;font-weight:600!important;line-height:1.55!important}
 .natural-echo-story-sections{background:var(--echo-soft)}
