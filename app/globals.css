@@ -344,8 +344,8 @@
 :root{
   --type-display:"Cormorant Garamond",Georgia,serif;
   --type-body:Inter,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
-  --type-nav-size:14px;
-  --type-nav-tracking:1.4px;
+  --type-nav-size:9px;
+  --type-nav-tracking:.07em;
   --type-eyebrow-size:.92rem;
   --type-eyebrow-tracking:2px;
   --type-hero-size:clamp(3rem,7vw,4.8rem);
@@ -367,13 +367,14 @@ p,li{font-family:var(--type-body)}
 /* Navigation and language controls */
 .site-header,.interior-header{height:78px}
 .brand img,.interior-brand img{width:158px;height:48px;object-fit:contain;filter:none}
-.site-header nav a,.interior-header nav a{
+.site-header nav a{
   font-family:var(--type-body);
   font-size:var(--type-nav-size);
   font-weight:600;
   line-height:1.2;
   letter-spacing:var(--type-nav-tracking);
 }
+.interior-header nav a{font-family:var(--type-body);font-size:clamp(9px,.82vw,12px);font-weight:600;line-height:1.2;letter-spacing:.08em}
 .language,.interior-actions button{font-size:13px;line-height:1.2;letter-spacing:.04em}
 
 /* Shared labels, headings, copy and actions */
@@ -468,7 +469,6 @@ h1,h2,h3{text-wrap:balance;word-break:auto-phrase;overflow-wrap:normal;hyphens:n
 
 @media (max-width:1300px){
   .site-header nav,.interior-header nav{gap:10px}
-  .site-header nav a,.interior-header nav a{font-size:13px;letter-spacing:1.2px}
 }
 
 @media (max-width:1150px){
@@ -483,7 +483,6 @@ h1,h2,h3{text-wrap:balance;word-break:auto-phrase;overflow-wrap:normal;hyphens:n
   }
   .site-header,.interior-header{height:70px}
   .brand img,.interior-brand img{width:112px;height:42px}
-  .site-header nav a,.interior-header nav a{font-size:13px;letter-spacing:1.2px}
   .hero h1,.interior-hero h1,.about-detail-hero h1,.story-legacy-hero h1,
   .natural-echo-hero h1,.research-station-hero h1,.species-calendar-hero h1,
   .application-hero h1,.contact-hero h1{font-size:var(--type-hero-size);line-height:1.05}
@@ -536,31 +535,14 @@ h1,h2,h3{text-wrap:balance;word-break:auto-phrase;overflow-wrap:normal;hyphens:n
 .education-index-page .interior-related-heading h2{font:600 var(--type-section-size)/var(--type-section-leading) var(--type-display);letter-spacing:.02em}
 @media(max-width:700px){.program-detail-page .interior-hero h1{font-size:var(--type-hero-size)}}
 
-/* Keep the original site's 14px navigation type without crowding the expanded new sitemap. */
+/* Retain the compact navigation scale required by the expanded new sitemap. */
 .interior-page .interior-header nav a,.contact-page .interior-header nav a,
 .about-detail-page .interior-header nav a,.conservation-page .interior-header nav a,
 .story-legacy-page .interior-header nav a,.natural-echo-page .interior-header nav a,
 .species-calendar-page .interior-header nav a,.field-notes-page .interior-header nav a,
-.program-detail-page .interior-header nav a,.site-header nav a{
-  font-size:var(--type-nav-size);
+.program-detail-page .interior-header nav a{
+  font-size:clamp(9px,.82vw,12px);
   font-weight:600;
   line-height:1.2;
-  letter-spacing:var(--type-nav-tracking);
-}
-@media(max-width:1500px){
-  .site-header{grid-template-columns:158px 1fr auto}
-  .site-header nav{position:fixed;inset:78px 0 auto;background:rgba(7,22,14,.98);padding:25px 5vw;display:none;grid-template-columns:repeat(2,1fr)}
-  .site-header nav.nav-open{display:grid}
-  .site-header nav a{padding:12px 0}
-  .site-header nav .nav-contact{padding:12px 0;border-left:0}
-  .site-header nav .nav-support{padding:12px;border-color:rgba(216,233,145,.55)}
-  .menu-button{display:block}
-  .interior-header{grid-template-columns:158px 1fr auto}
-  .interior-header nav{position:absolute;top:78px;left:18px;right:18px;padding:24px;background:rgba(7,22,14,.97);display:none;grid-template-columns:repeat(2,1fr);gap:18px;border:1px solid rgba(255,255,255,.16)}
-  .interior-header nav.is-open{display:grid}
-  .interior-menu{display:block!important}
-}
-@media(max-width:700px){
-  .site-header nav{inset:70px 0 auto}
-  .interior-header nav{top:70px}
+  letter-spacing:.08em;
 }
