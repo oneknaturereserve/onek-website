@@ -87,7 +87,7 @@ const copy = {
     speciesIntro: "数千种生物共同交织成这片热带雨林生态系统生生不息的生命网络。",
     nonprofitKicker: "非营利组织",
     nonprofitTitle: "守护雨林，保护生命。",
-    nonprofitBody: "Asociación ONEK de Conservación de Biodiversidad Costa Rica（注册号 3-002-971175）致力于生物多样性保护、生态恢复、科学研究、环境教育与社区参与。",
+    nonprofitBody: "哥斯达黎加 ONEK 生物多样性保护协会（西文名称：Asociación ONEK de Conservación de Biodiversidad Costa Rica；注册号：3-002-971175）致力于生物多样性保护、生态恢复、科学研究、环境教育与社区参与。",
     support: "支持保护行动",
     echoKicker: "自然回声 Natural Echo",
     echoTitle: "让自然的声音，被更多孩子听见",
@@ -167,8 +167,8 @@ export default function Home() {
       <div className="hero-content">
         <p className="eyebrow">{t.reserve}</p>
         <h1><span>OneK</span><span>{lang === "en" ? "Nature Reserve" : "自然保护区"}</span></h1>
-        <p className="hero-mission">Research <i>•</i> Education <i>•</i> Conservation</p>
-        <p className="hero-line">A place where people and nature grow together.</p>
+        <p className="hero-mission">{lang === "en" ? <>Research <i>•</i> Education <i>•</i> Conservation</> : <>科学研究 <i>•</i> 自然教育 <i>•</i> 生态保护</>}</p>
+        <p className="hero-line">{lang === "en" ? "A place where people and nature grow together." : "一个人与自然共同成长的地方。"}</p>
         <div className="hero-actions-row">
           <a className="round-link" href="#about"><span>{t.enter}</span><b>↓</b></a>
           <button className="sound-button" onClick={() => setSoundMessage(!soundMessage)}><span className="sound-bars"><i></i><i></i><i></i><i></i></span>{t.sound}</button>
@@ -187,7 +187,7 @@ export default function Home() {
 
     <section className="field-note-section cinema-reveal">
       <article className="field-note-card">
-        <div className="field-note-card-copy"><p className="kicker">{t.fieldKicker}</p><h2>{t.fieldTitle}</h2><p className="latin">Black-cheeked Ant-Tanager · <i>Driophlox atrimaxillaris</i></p><p className="field-note-body">{t.fieldBody}</p><div className="data-row"><span><b>TYPE</b>Field observation</span><span><b>HABITAT</b>Rainforest understory</span><span><b>STATION</b>OneK</span></div><a href="/field-notes">{t.readNote} <b>↗</b></a></div>
+        <div className="field-note-card-copy"><p className="kicker">{t.fieldKicker}</p><h2>{lang === "en" ? <>A Costa Rican endemic<br />appears in the understory</> : <>在林下遇见<br />哥斯达黎加特有鸟</>}</h2><p className="latin">Black-cheeked Ant-Tanager · <i>Driophlox atrimaxillaris</i></p><p className="field-note-body">{t.fieldBody}</p><div className="data-row"><span><b>TYPE</b>Field observation</span><span><b>HABITAT</b>Rainforest understory</span><span><b>STATION</b>OneK</span></div><a href="/field-notes">{t.readNote} <b>↗</b></a></div>
         <a className="field-note-card-image" href="/field-notes" aria-label={lang === "en" ? "Open the field note" : "打开雨林信息"}><img src="/onek/inaturalist/birds/333618082.jpg" alt={lang === "en" ? "Black-cheeked Ant-Tanager recorded at OneK" : "OneK 记录的黑颊蚁唐纳雀"}/><div className="photo-label">FIELD RECORD · 2025.07</div></a>
       </article>
     </section>
@@ -224,7 +224,7 @@ export default function Home() {
       <article className="nonprofit-card"><div className="org-logo"><img src="/onek/conservation-logo-transparent-v2.png" alt="OneK Conservation logo" /></div><div><p className="kicker">{t.nonprofitKicker}</p><h2>{t.nonprofitTitle}</h2><p>{t.nonprofitBody}</p><a className="dark-button" href="/support">{t.support}</a></div></article>
     </section>
 
-    <section className="contact-section legacy-contact cinema-reveal"><p>RESEARCH · EDUCATION · CONSERVATION</p><h2>{t.contactTitle}</h2><p className="legacy-contact-body">{t.contactBody}</p><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact OneK" : "联系 OneK"}</a><a href="/#programs">{lang === "en" ? "Join a Program" : "参与项目"}</a><a href="/support">{lang === "en" ? "Support Conservation" : "支持保护行动"}</a></div></section>
+    <section className="contact-section legacy-contact cinema-reveal"><p>{lang === "en" ? "RESEARCH · EDUCATION · CONSERVATION" : "科学研究 · 自然教育 · 生态保护"}</p><h2>{t.contactTitle}</h2><p className={`legacy-contact-body${lang === "zh" ? " legacy-contact-body-zh" : ""}`}>{t.contactBody}</p><div className="contact-links"><a href="/contact">{lang === "en" ? "Contact OneK" : "联系 OneK"}</a><a href="/#programs">{lang === "en" ? "Join a Program" : "参与项目"}</a><a href="/support">{lang === "en" ? "Support Conservation" : "支持保护行动"}</a></div></section>
 
     <footer className="legacy-footer"><div className="legacy-footer-inner">
       <div className="legacy-footer-about"><img src="/onek/logo.png" alt="OneK Nature Reserve"/><b>{lang === "en" ? "Established in 2018" : "始于 2018 年"}</b><p>{lang === "en" ? "OneK protects tropical rainforest through habitat conservation, ecological restoration, long–term research, nature education, and community participation in southern Costa Rica." : "OneK 在哥斯达黎加南部通过栖息地保护、生态恢复、长期科研、自然教育与社区参与守护热带雨林。"}</p></div>
