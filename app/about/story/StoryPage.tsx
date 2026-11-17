@@ -20,8 +20,8 @@ type StorySection = {
 const opening: StorySection = {
   enTitle: "It Began with a Dream",
   zhTitle: "从一个梦想开始",
-  image: "/onek/about-old/story.jpg",
-  imagePosition: "65% center",
+  image: "/onek/uploads/story-hero.jpg",
+  imagePosition: "center center",
   en: [
     "The story of OneK began with a simple yet unwavering wish:",
     "To have a piece of land that belonged to nature, and to do everything within our power to protect it.",
@@ -124,7 +124,7 @@ const chapters: readonly StorySection[] = [
   {
     enTitle: "From Nature Reserve to Biological Station",
     zhTitle: "从保护区走向生物站",
-    image: "/onek/camera.jpg",
+    image: "/onek/uploads/story-section-03.jpg",
     imagePosition: "center",
     en: [
       "As our observations grew deeper, we began to build systems for long–term documentation.",
@@ -223,7 +223,7 @@ export default function StoryPage() {
     </header>
 
     <section className="story-legacy-hero">
-      <img src="/onek/uploads/story-hero.jpg" alt={isEn ? "OneK rainforest landscape" : "OneK 雨林景观"} />
+      <img src="/onek/about-old/hero.jpg" alt={isEn ? "OneK rainforest" : "OneK 热带雨林"} />
       <div className="story-legacy-hero-shade" />
       <div className="story-legacy-hero-copy">
         <p>{isEn ? "THE STORY OF ONEK" : "ONEK 的故事"}</p>

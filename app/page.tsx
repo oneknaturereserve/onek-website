@@ -31,7 +31,7 @@ const copy = {
     cameraKicker: "Camera trap · Night signal",
     cameraTitle: "The forest does not sleep",
     cameraPrompt: "Reveal tonight’s visitor",
-    cameraFact: "Collared peccary · forest floor survey · temporary image",
+    cameraFact: "Puma · forest floor monitoring",
     programsKicker: "Explore OneK Private Reserve",
     programsTitle: "Immerse yourself in the rainforest through field exploration, conservation volunteering, and professional research opportunities.",
     speciesKicker: "Species archive",
@@ -79,7 +79,7 @@ const copy = {
     cameraKicker: "红外相机 · 深夜信号",
     cameraTitle: "雨林从不入睡",
     cameraPrompt: "揭晓今晚的访客",
-    cameraFact: "领西猯 · 林下监测 · 临时示意图片",
+    cameraFact: "美洲狮 · 林下监测",
     programsKicker: "探索 OneK 私人自然保护区",
     programsTitle: "通过野外探索、保护志愿服务和专业研究机会，深入体验热带雨林。",
     speciesKicker: "物种档案",
@@ -188,7 +188,7 @@ export default function Home() {
     <section className="field-note-section cinema-reveal">
       <article className="field-note-card">
         <div className="field-note-card-copy"><p className="kicker">{t.fieldKicker}</p><h2>{t.fieldTitle}</h2><p className="latin">Black-cheeked Ant-Tanager · <i>Driophlox atrimaxillaris</i></p><p className="field-note-body">{t.fieldBody}</p><div className="data-row"><span><b>TYPE</b>Field observation</span><span><b>HABITAT</b>Rainforest understory</span><span><b>STATION</b>OneK</span></div><a href="/field-notes">{t.readNote} <b>↗</b></a></div>
-        <a className="field-note-card-image image-placeholder" href="/field-notes" aria-label={lang === "en" ? "Open the field note" : "打开雨林信息"}><img src="/onek/fieldnote.jpg" alt="Bird recorded at OneK"/><span>{t.temp}</span><div className="photo-label">FIELD RECORD · 2025.07</div></a>
+        <a className="field-note-card-image" href="/field-notes" aria-label={lang === "en" ? "Open the field note" : "打开雨林信息"}><img src="/onek/inaturalist/birds/333618082.jpg" alt={lang === "en" ? "Black-cheeked Ant-Tanager recorded at OneK" : "OneK 记录的黑颊蚁唐纳雀"}/><div className="photo-label">FIELD RECORD · 2025.07</div></a>
       </article>
     </section>
 
