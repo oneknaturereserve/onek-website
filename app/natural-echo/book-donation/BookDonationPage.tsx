@@ -49,7 +49,7 @@ export default function BookDonationPage() {
       <div className="story-legacy-hero-shade" />
       <div className="story-legacy-hero-copy">
         <p>NATURAL ECHO</p>
-        <h1>{isEn ? "Let the Voice of Nature Be Heard by More Children" : "让自然的声音，被更多孩子听见"}</h1>
+        <h1>{isEn ? <>Let the Voice of Nature Be Heard<br />by More Children</> : <>让自然的声音，<br />被更多孩子听见</>}</h1>
         <h2>{isEn ? "Youth–Led Nature Education" : "由青少年发起的自然教育项目"}</h2>
         <a href="#book-donation-content">{isEn ? "Read the activity" : "阅读活动内容"} ↓</a>
       </div>
