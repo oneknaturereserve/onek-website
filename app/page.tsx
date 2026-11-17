@@ -187,14 +187,14 @@ export default function Home() {
 
     <section className="field-note-section cinema-reveal">
       <article className="field-note-card">
-        <div className="field-note-card-copy"><p className="kicker">{t.fieldKicker}</p><h2>{lang === "en" ? <>A Costa Rican endemic<br />appears in the understory</> : <>在林下遇见<br />哥斯达黎加特有鸟</>}</h2><p className="latin">Black-cheeked Ant-Tanager · <i>Driophlox atrimaxillaris</i></p><p className="field-note-body">{t.fieldBody}</p><div className="data-row"><span><b>TYPE</b>Field observation</span><span><b>HABITAT</b>Rainforest understory</span><span><b>STATION</b>OneK</span></div><a href="/field-notes">{t.readNote} <b>↗</b></a></div>
+        <div className="field-note-card-copy"><p className="kicker">{t.fieldKicker}</p><h2 className="field-note-home-title">{lang === "en" ? <><span>A Costa Rican endemic</span><span>appears in the understory</span></> : <><span>在林下遇见</span><span>哥斯达黎加特有鸟</span></>}</h2><p className="latin">Black-cheeked Ant-Tanager · <i>Driophlox atrimaxillaris</i></p><p className="field-note-body">{t.fieldBody}</p><div className="data-row"><span><b>TYPE</b>Field observation</span><span><b>HABITAT</b>Rainforest understory</span><span><b>STATION</b>OneK</span></div><a href="/field-notes">{t.readNote} <b>↗</b></a></div>
         <a className="field-note-card-image" href="/field-notes" aria-label={lang === "en" ? "Open the field note" : "打开雨林信息"}><img src="/onek/inaturalist/birds/333618082.jpg" alt={lang === "en" ? "Black-cheeked Ant-Tanager recorded at OneK" : "OneK 记录的黑颊蚁唐纳雀"}/><div className="photo-label">FIELD RECORD · 2025.07</div></a>
       </article>
     </section>
 
     <section className="research-section cinema-reveal">
       <div className="research-bg"></div>
-      <div className="research-copy"><p className="kicker light">{t.researchKicker}</p><h2>{lang === "en" ? <>The forest changes.<br />We keep listening.</> : <>森林不断变化，<br />我们持续聆听。</>}</h2><p>{t.researchBody}</p><a className="light-link" href="/research">{t.enterStation} ↗</a></div>
+      <div className="research-copy"><p className="kicker light">{t.researchKicker}</p><h2 className="research-home-title">{lang === "en" ? <><span>The forest changes.</span><span>We keep listening.</span></> : <><span>森林不断变化，</span><span>我们持续聆听。</span></>}</h2><p>{t.researchBody}</p><a className="light-link" href="/research">{t.enterStation} ↗</a></div>
       <div className={`camera-card ${cameraOpen ? "revealed" : ""}`}>
         <div className="camera-top"><span>CAM 07</span><span>02:14:38</span><span className="rec">REC</span></div>
         <img src="/onek/uploads/home-research-monitoring.jpg" alt="Puma recorded by a camera trap at OneK" />

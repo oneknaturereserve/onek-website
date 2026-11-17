@@ -546,3 +546,49 @@ h1,h2,h3{text-wrap:balance;word-break:auto-phrase;overflow-wrap:normal;hyphens:n
   line-height:1.2;
   letter-spacing:.08em;
 }
+
+/* Homepage title lines stay intentional and complete in both languages. */
+.field-note-home-title,.research-home-title{font-size:clamp(2rem,3.4vw,2.65rem);line-height:1.08}
+.field-note-home-title span,.research-home-title span{display:block;white-space:nowrap}
+
+/* Contact labels use the same scale as the Nonprofit Organization kicker. */
+.legacy-contact>p:first-child,.legacy-contact .legacy-contact-body{font-size:var(--type-eyebrow-size);line-height:1.8}
+
+/* Reduce section-to-section vertical transitions by one third. */
+.about{padding-top:80px;padding-bottom:47px}
+.field-note-section{padding-top:27px;padding-bottom:74px}
+.research-section{padding-top:74px;padding-bottom:74px}
+.program-section{padding-top:74px;padding-bottom:80px}
+.species-section{padding-top:74px;padding-bottom:74px}
+.dual-feature{padding-top:97px;padding-bottom:60px}
+.legacy-contact{padding-top:74px;padding-bottom:67px}
+.interior-section{padding-top:74px;padding-bottom:74px}
+.interior-related{padding-top:80px;padding-bottom:80px}
+.about-story-block,.about-work,.about-location,.about-achievements,.about-archive,
+.story-legacy-opening,.story-legacy-chapter,.story-legacy-work,.story-legacy-belief,
+.research-station-collaboration,.research-station-monitoring,.research-station-invitation,
+.research-feature,.research-project-list,.natural-echo-intro,.natural-echo-story-section,
+.natural-echo-vision,.natural-echo-activities,.field-notes-feature,.field-notes-index,
+.program-detail-page .program-story-section,.program-detail-page .program-story-section.tint,
+.program-detail-page .interior-related{padding-top:79px;padding-bottom:79px}
+.research-station-report{padding-top:74px;padding-bottom:74px}
+.research-cta-section{padding-bottom:74px}
+.species-calendar-intro{padding-top:67px;padding-bottom:49px}
+.species-calendar-source{padding-top:74px;padding-bottom:74px}
+.application-hero{padding-top:74px;padding-bottom:60px}
+.application-workspace{padding-top:74px;padding-bottom:84px}
+
+@media(max-width:700px){
+  .field-note-home-title,.research-home-title{font-size:clamp(1.72rem,8.3vw,2.15rem)}
+  .about{padding-top:63px;padding-bottom:37px}
+  .field-note-section{padding-top:23px;padding-bottom:60px}
+  .research-section,.program-section,.species-section,.dual-feature,.legacy-contact{padding-top:60px;padding-bottom:60px}
+  .interior-section,.interior-related,.about-story-block,.about-work,.about-location,
+  .about-achievements,.about-archive,.story-legacy-opening,.story-legacy-chapter,
+  .story-legacy-work,.story-legacy-belief,.research-station-collaboration,
+  .research-station-monitoring,.research-station-invitation,.research-feature,
+  .research-project-list,.natural-echo-intro,.natural-echo-story-section,
+  .natural-echo-vision,.natural-echo-activities,.field-notes-feature,.field-notes-index,
+  .program-detail-page .program-story-section,.program-detail-page .program-story-section.tint,
+  .program-detail-page .interior-related{padding-top:56px;padding-bottom:56px}
+}
