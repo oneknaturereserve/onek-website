@@ -563,18 +563,14 @@ h1,h2,h3{text-wrap:balance;word-break:auto-phrase;overflow-wrap:normal;hyphens:n
 }
 .cinema-ready .hero-mission,
 .cinema-ready .hero-line{
-  margin-bottom:4px;
-  color:rgba(255,255,255,.92);
-  font-family:var(--type-body);
-  font-size:clamp(1.1rem,2vw,1.4rem);
-  font-style:normal;
-  font-weight:400;
-  line-height:1.6;
-  letter-spacing:normal;
+  margin-bottom:7px;
 }
-.cinema-ready .hero-mission i{padding:0 .35em;color:inherit}
-.cinema-ready .hero-actions-row{margin-top:30px}
-.cinema-ready .sound-button{font-size:var(--type-button-size);font-weight:600;letter-spacing:var(--type-button-tracking)}
+.cinema-ready .hero-mission{color:white;font-family:var(--type-body);font-size:13px;font-style:normal;font-weight:700;line-height:normal;letter-spacing:.07em}
+.cinema-ready .hero-line{color:rgba(255,255,255,.72);font-family:var(--type-display);font-size:17px;font-style:italic;font-weight:400;line-height:normal;letter-spacing:normal}
+.cinema-ready .hero-mission i{padding:0 6px;color:var(--acid)}
+.cinema-ready .hero-actions-row{margin-top:50px}
+.cinema-ready .round-link{font-size:9px;font-weight:400;letter-spacing:.12em}
+.cinema-ready .sound-button{font-size:9px;font-weight:400;letter-spacing:.1em}
 .cinema-ready .about-copy .lead{font-size:1.05rem;line-height:1.85}
 .cinema-ready .program-heading p,
 .cinema-ready .species-legacy-heading p{font-size:1.05rem;line-height:1.7}
@@ -590,5 +586,4 @@ h1,h2,h3{text-wrap:balance;word-break:auto-phrase;overflow-wrap:normal;hyphens:n
 
 @media(max-width:700px){
   .field-note-home-title,.research-home-title{font-size:clamp(1.72rem,8.3vw,2.15rem)}
-  .cinema-ready .hero-mission,.cinema-ready .hero-line{font-size:1.05rem}
 }
