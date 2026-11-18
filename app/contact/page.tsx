@@ -23,7 +23,7 @@ export default function ContactPage() {
     : { home: "主页", menu: "菜单", contact: "联系我们", support: "支持我们" };
 
   return <main className="contact-page" id="top">
-    <header className="interior-header">
+    <header className="interior-header" data-lang={lang}>
       <Link className="interior-brand" href="/" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link>
       <nav className={menu ? "is-open" : ""} aria-label="Primary navigation">
         <Link href="/">{t.home}</Link>

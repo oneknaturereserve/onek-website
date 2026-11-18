@@ -147,9 +147,9 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  return <main className="cinema-ready">
+  return <main className="cinema-ready" data-lang={lang}>
     <div className="cinema-opening" aria-hidden="true"><i className="cinema-shutter cinema-shutter-left"></i><i className="cinema-shutter cinema-shutter-right"></i><b className="cinema-lens"></b><span>ONEK · COSTA RICA</span></div>
-    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`} data-lang={lang}>
       <a className="brand" href="#top" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></a>
       <nav className={menu ? "nav-open" : ""} aria-label="Primary navigation">
         {t.nav.map(([label, href]) => <a href={href} key={href}>{label}</a>)}

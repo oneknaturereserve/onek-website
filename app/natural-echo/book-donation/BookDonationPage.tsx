@@ -38,7 +38,7 @@ export default function BookDonationPage() {
   const page = content[lang];
 
   return <main className="story-legacy-page book-donation-page" id="top">
-    <header className="interior-header">
+    <header className="interior-header" data-lang={lang}>
       <Link className="interior-brand" href="/" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link>
       <nav className={menu ? "is-open" : ""} aria-label="Primary navigation"><Link href="/">{isEn ? "Home" : "主页"}</Link>{navItems.map(([en, zh, href]) => <Link key={href} href={href}>{isEn ? en : zh}</Link>)}<Link href="/contact">{isEn ? "Contact" : "联系我们"}</Link></nav>
       <div className="interior-actions"><button onClick={() => setLang(isEn ? "zh" : "en")} aria-label="Switch language"><b>{isEn ? "EN" : "中"}</b><span>{isEn ? "中" : "EN"}</span></button><button className="interior-menu" onClick={() => setMenu(!menu)} aria-expanded={menu}>{isEn ? "Menu" : "菜单"}</button></div>

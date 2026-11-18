@@ -111,7 +111,7 @@ export default function ApplyPage() {
   const emailLink = `mailto:OneK.CR2018@gmail.com?subject=${encodeURIComponent("[OneK] Volunteer application")}&body=${encodeURIComponent(fallbackBody)}`;
 
   return <main className="application-page" id="top">
-    <header className="interior-header">
+    <header className="interior-header" data-lang={lang}>
       <Link className="interior-brand" href="/" aria-label="OneK home"><img src="/onek/logo.png" alt="OneK Nature Reserve" /></Link>
       <nav className={menu ? "is-open" : ""} aria-label="Primary navigation">
         <Link href="/">{t.home}</Link>

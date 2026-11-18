@@ -584,6 +584,14 @@ h1,h2,h3{text-wrap:balance;word-break:auto-phrase;overflow-wrap:normal;hyphens:n
 .cinema-ready .camera-caption b,
 .cinema-ready .camera-caption small{font-family:var(--type-body);font-size:.82rem;line-height:1.45}
 
+/* Chinese navigation needs a little more visual presence than the longer Latin labels. */
+.site-header[data-lang="zh"] nav a{font-size:11px;letter-spacing:.09em}
+.interior-header[data-lang="zh"] nav a{font-size:clamp(11px,.92vw,12.5px);letter-spacing:.09em}
+
+/* Keep the two Chinese hero lines visually balanced with their English counterparts. */
+.cinema-ready[data-lang="zh"] .hero-mission{font-size:15px;letter-spacing:.11em}
+.cinema-ready[data-lang="zh"] .hero-line{font-size:19px;letter-spacing:.035em}
+
 @media(max-width:700px){
   .field-note-home-title,.research-home-title{font-size:clamp(1.72rem,8.3vw,2.15rem)}
 }
