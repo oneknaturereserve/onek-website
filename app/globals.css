@@ -554,6 +554,41 @@ h1,h2,h3{text-wrap:balance;word-break:auto-phrase;overflow-wrap:normal;hyphens:n
 /* Contact labels use the same scale as the Nonprofit Organization kicker. */
 .legacy-contact>p:first-child,.legacy-contact .legacy-contact-body{font-size:var(--type-eyebrow-size);line-height:1.8}
 
+/* Homepage typography follows the original OneK homepage scale. */
+.cinema-ready .hero h1{
+  max-width:720px;
+  margin-bottom:18px;
+  font-weight:600;
+  line-height:1.05;
+}
+.cinema-ready .hero-mission,
+.cinema-ready .hero-line{
+  margin-bottom:4px;
+  color:rgba(255,255,255,.92);
+  font-family:var(--type-body);
+  font-size:clamp(1.1rem,2vw,1.4rem);
+  font-style:normal;
+  font-weight:400;
+  line-height:1.6;
+  letter-spacing:normal;
+}
+.cinema-ready .hero-mission i{padding:0 .35em;color:inherit}
+.cinema-ready .hero-actions-row{margin-top:30px}
+.cinema-ready .sound-button{font-size:var(--type-button-size);font-weight:600;letter-spacing:var(--type-button-tracking)}
+.cinema-ready .about-copy .lead{font-size:1.05rem;line-height:1.85}
+.cinema-ready .program-heading p,
+.cinema-ready .species-legacy-heading p{font-size:1.05rem;line-height:1.7}
+.cinema-ready .program-copy p,
+.cinema-ready .species-legacy-body,
+.cinema-ready .nonprofit-card>div:last-child>p:not(.kicker){font-size:1rem;line-height:1.8}
+.cinema-ready .mission-line{font-size:.95rem;line-height:1.7;letter-spacing:2px}
+.cinema-ready .photo-label,
+.cinema-ready .data-row span,
+.cinema-ready .camera-top,
+.cinema-ready .camera-caption b,
+.cinema-ready .camera-caption small{font-family:var(--type-body);font-size:.82rem;line-height:1.45}
+
 @media(max-width:700px){
   .field-note-home-title,.research-home-title{font-size:clamp(1.72rem,8.3vw,2.15rem)}
+  .cinema-ready .hero-mission,.cinema-ready .hero-line{font-size:1.05rem}
 }
